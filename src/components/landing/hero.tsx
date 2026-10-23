@@ -1,62 +1,28 @@
 'use client';
 
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { BRAND } from '@/lib/constants';
-import { Button } from '@/components/ui';
+import Image from 'next/image';
+import { ArrowRight, ArrowUpRight, Check, CheckCheck, CirclePlay, Flower2, Heart, Sparkles } from 'lucide-react';
+import { usePlanner } from '@/components/planner/planner-provider';
 
-/**
- * Hero section — prominent brand, tagline, and call-to-action.
- */
 export function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#faf7f2] to-white">
-      {/* Decorative background shapes */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-[#e8735a]/5 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-[#b8a9d4]/10 blur-3xl"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* AI badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#b8a9d4]/15 px-4 py-1.5 text-xs font-semibold text-[#8e7bb5]">
-            <Sparkles className="h-3.5 w-3.5" />
-            Powered by GenAI
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1e2a4a] leading-[1.1]">
-            {BRAND.name}
-          </h1>
-
-          {/* Tagline */}
-          <p className="mt-4 text-lg sm:text-xl font-medium text-[#e8735a]">
-            {BRAND.tagline}
-          </p>
-
-          {/* Description */}
-          <p className="mt-6 text-base sm:text-lg text-[#1e2a4a]/70 max-w-2xl mx-auto leading-relaxed">
-            Plan weddings, birthdays, and community events with AI-driven budgets,
-            timelines, vendor checklists, and personalized ideas — all adapting in
-            real time as your plans evolve.
-          </p>
-
-          {/* CTA */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" variant="primary" aria-label="Start planning your event">
-              Start Planning
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" aria-label="See how Eventura AI works">
-              See How It Works
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  const { startPlanning, viewSample } = usePlanner();
+  return <section className="hero container" aria-labelledby="hero-title">
+    <div className="hero-copy">
+      <div className="eyebrow hero-eyebrow"><span className="status-dot" /> YOUR OCCASION. A LITTLE EXTRAORDINARY.</div>
+      <h1 id="hero-title">Big moments.<br />Little details.<br /><em>Beautifully planned.</em></h1>
+      <p className="hero-description">Less juggling. More joy. Bring your wedding, birthday, or community gathering to life with a thoughtful plan that fits your vision and your budget.</p>
+      <div className="hero-actions"><button className="button button-coral" onClick={() => startPlanning()}>Start planning your event <ArrowUpRight size={18} /></button><button className="sample-link" onClick={viewSample}><CirclePlay size={20} strokeWidth={1.5} /> Explore a sample plan</button></div>
+      <div className="hero-reassurance"><span><Check size={14} /> No sign-up needed</span><span><Check size={14} /> Your budget, your rules</span></div>
+    </div>
+    <div className="hero-visual">
+      <div className="hero-image-wrap"><Image src="/images/wedding.jpg" alt="A sunlit wedding table with garden flowers, delicate glassware, and carefully arranged place settings" fill sizes="(max-width: 760px) 100vw, 48vw" preload className="hero-image" /><div className="image-shade" /><span className="photo-label"><span className="photo-label-dot" /> MADE FOR MOMENTS LIKE THIS</span><div className="photo-caption">A day to remember.<br /><em>A plan to make it happen.</em></div><span className="hero-flower" aria-hidden="true"><Flower2 size={59} strokeWidth={1} /></span></div>
+      <div className="floating-note"><span className="note-icon"><Sparkles size={17} /></span><div>A little inspiration.<strong>A whole lot of possibility.</strong></div><span className="note-sparkle" aria-hidden="true">✧</span></div>
+      <button className="hero-plan-card" onClick={viewSample} aria-label="Explore the sample wedding plan">
+        <div className="mini-plan-top"><span className="mini-heart"><Heart size={17} /></span><div><strong>The big day, in the making</strong><span>Wedding · Sample plan</span></div><ArrowUpRight size={17} /></div>
+        <div className="mini-plan-stats"><div><span>ESTIMATED BUDGET</span><strong>₹5,00,000</strong></div><div><span>GUEST LIST</span><strong>150 <small>lovely people</small></strong></div></div>
+        <div className="mini-budget-bar"><i /><i /><i /><i /></div><div className="mini-plan-footer"><CheckCheck size={15} /> Big picture. Every little detail.<span>Take a look <ArrowRight size={12} /></span></div>
+      </button>
+      <span className="handwritten-note" aria-hidden="true">You bring the occasion.<br />We’ll bring the order. <span>↗</span></span>
+    </div>
+  </section>;
 }

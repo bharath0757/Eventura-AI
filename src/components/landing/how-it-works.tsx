@@ -1,66 +1,14 @@
+import { ArrowUpRight, ClipboardPenLine, PartyPopper, SlidersHorizontal } from 'lucide-react';
+
 const STEPS = [
-  {
-    number: '01',
-    title: 'Choose Your Event',
-    description: 'Select wedding, birthday, or community event to get started.',
-  },
-  {
-    number: '02',
-    title: 'Tell Us the Details',
-    description:
-      'Enter the date, location, guest count, budget, and your preferences through a guided wizard.',
-  },
-  {
-    number: '03',
-    title: 'Get Your Plan',
-    description:
-      'Receive a complete event plan with budget breakdown, timeline, vendor checklist, and creative ideas.',
-  },
-  {
-    number: '04',
-    title: 'Refine & Adapt',
-    description:
-      'Adjust anything — budget, guest count, priorities — and watch the plan update in real time.',
-  },
-] as const;
+  { number: '01', title: 'Tell us what you’re dreaming of.', description: 'Your occasion, your people, your budget. A few details are all it takes to get started.', icon: ClipboardPenLine },
+  { number: '02', title: 'Give every detail a home.', description: 'Explore a starter budget, a practical timeline, and a vendor checklist in one clear plan.', icon: SlidersHorizontal },
+  { number: '03', title: 'Make room for the good part.', description: 'Fine-tune the details, tick things off, and spend more time looking forward to your day.', icon: PartyPopper },
+];
 
-/**
- * How-it-works section — four-step process walkthrough.
- */
 export function HowItWorks() {
-  return (
-    <section id="how-it-works" className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1e2a4a]">
-            How Eventura AI works
-          </h2>
-          <p className="mt-3 text-[#1e2a4a]/60 max-w-lg mx-auto">
-            From first idea to polished plan in four simple steps.
-          </p>
-        </div>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
-          {STEPS.map((step, i) => (
-            <div key={step.number} className="relative text-center">
-              {/* Connector line (hidden on first, hidden on mobile) */}
-              {i > 0 && (
-                <div
-                  aria-hidden
-                  className="hidden lg:block absolute top-6 -left-4 w-8 border-t-2 border-dashed border-[#e8735a]/30"
-                />
-              )}
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#e8735a] text-white text-sm font-bold shadow-sm">
-                {step.number}
-              </div>
-              <h3 className="mt-5 text-base font-semibold text-[#1e2a4a]">{step.title}</h3>
-              <p className="mt-2 text-sm text-[#1e2a4a]/60 leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="how-it-works" className="how-section section-space container">
+    <div className="section-heading centered"><span className="eyebrow">FROM “WHAT IF” TO “IT’S HAPPENING”</span><h2>A little input.<em> A lovely beginning.</em></h2><p>There’s a simpler way to get your plans off the ground.</p></div>
+    <div className="steps-grid">{STEPS.map(({ number, title, description, icon: Icon }) => <article className="step" key={number}><div className="step-top"><span className="step-icon"><Icon size={24} strokeWidth={1.5} /></span><span className="step-number">{number}</span><ArrowUpRight className="step-arrow" size={20} /></div><h3>{title}</h3><p>{description}</p></article>)}</div>
+  </section>;
 }

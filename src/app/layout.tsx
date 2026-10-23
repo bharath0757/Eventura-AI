@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: BRAND.name,
+  title: `${BRAND.name} — Beautifully planned.`,
+  icons: { icon: '/eventura-mark.svg' },
   description: BRAND.description,
   keywords: ['event planning', 'AI', 'wedding planner', 'birthday planner', 'event management'],
 };

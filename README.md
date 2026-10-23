@@ -11,7 +11,15 @@ Eventura AI is a GenAI-powered event-planning assistant that helps you plan wedd
 
 ---
 
-## Features
+## Current website experience
+
+The redesigned interface uses warm ivory, forest green, coral accents, and event photography. It includes responsive occasion selection, an interactive plan preview, a two-step event brief, and a downloadable starter plan.
+
+The planner is a **template-based demo**. Budget allocations respond to the occasion and selected priorities; they are estimates, not vendor quotes. Live AI generation and vendor booking are not connected. The latest event brief is saved in browser storage when available. Checklist and vendor-status changes are kept for the current session and included in the text download.
+
+Event photographs are bundled locally in `public/images/` from Unsplash: [wedding](https://images.unsplash.com/photo-1519225421980-715cb0215aed), [birthday](https://images.unsplash.com/photo-1530103862676-de8c9debad1d), and [community gathering](https://images.unsplash.com/photo-1511795409834-ef04bbd61622).
+
+## Product direction
 
 | Feature | Description |
 |---|---|
@@ -47,9 +55,9 @@ cp .env.example .env.local
 
 | Variable | Required | Description |
 |---|---|---|
-| `GEMINI_API_KEY` | No* | Google Gemini API key for AI features. The app provides a fully interactive demo fallback when this is not set. |
+| `GEMINI_API_KEY` | No | Reserved for future server-side AI integration; the current UI does not call Gemini. |
 
-\*The application is fully functional without an API key using deterministic demo data.
+The current starter-plan demo works without an API key.
 
 ### Development
 
