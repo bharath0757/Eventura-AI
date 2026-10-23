@@ -12,3 +12,6 @@ export type TimelineTask = EventPlan["timeline"][number];
 export type VendorTask = EventPlan["vendors"][number];
 export type PersonalizedIdea = EventPlan["ideas"][number];
 export type RiskRecommendation = EventPlan["risks"][number];
+
+/** Compatibility name retained from the Phase 1 foundation. */
+export type EventCategory = Category;

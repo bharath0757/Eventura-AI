@@ -6,7 +6,7 @@ import { categoryLabels } from "@/lib/config";
 import { money, formatDate } from "@/lib/dates";
 import { eventStore } from "@/lib/storage/events";
 import { useEvents } from "./use-events";
-import { ActionLink, Button, EmptyState, Notice, PageHeading } from "./ui";
+import { ActionLink, Button, EmptyState, Notice, PageHeading } from "./controls";
 export function SavedEvents() {
   const {snapshot,error,reload}=useEvents();
   const [selected,setSelected]=useState<{id:string;name:string}|null>(null);

@@ -54,7 +54,7 @@ npm run build
 - There is no authentication, external database, Gemini integration, API key or external planning request in Phase 2. People using the same browser profile can access its locally saved events.
 
 ## Repository baseline
-The supplied GitHub repository contained only its MIT license at commit `227841e2b65db2efe155cc5c5050abd9b1e1aaeb`. The Next.js foundation described in the brief was absent, so this implementation adds it without replacing application code. Original Git history and license are preserved.
+The supplied GitHub repository contained only its MIT license at commit `227841e2b65db2efe155cc5c5050abd9b1e1aaeb`. The Next.js foundation described in the brief was absent, so this implementation adds it without replacing application code. Original Git history and license are preserved. Before publication, newer Phase 1 commits through abf249d were merged. Their reusable landing, layout and UI components, brand constants, utilities, environment example and agent guidance are retained. The active Phase 2 routes use the verified canonical data model and PostCSS build configuration.
 
 Runtime: Next.js 16.4.3, React 19.3.1, TypeScript, Tailwind CSS 4, Lucide React, Zod 4 and Vitest 4.1.10. Exact resolved dependencies are recorded in package-lock.json.
 

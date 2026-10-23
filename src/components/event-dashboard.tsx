@@ -8,7 +8,7 @@ import { money, formatDate } from "@/lib/dates";
 import { eventStore } from "@/lib/storage/events";
 import { statusSchema } from "@/lib/validation/schemas";
 import { useEvents } from "./use-events";
-import { Button, EmptyState, Notice } from "./ui";
+import { Button, EmptyState, Notice } from "./controls";
 const statusLabels:Record<TaskStatus,string>={pending:"Pending","in-progress":"In progress",completed:"Completed"};
 export function EventDashboard({eventId}:{eventId:string}) {
   const {snapshot,error,reload}=useEvents();

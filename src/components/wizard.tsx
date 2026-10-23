@@ -9,7 +9,7 @@ import { detailsSchema, categoryDetailsSchema, budgetSchema, creationSchema, par
 import { todayLocal, money, formatDate } from "@/lib/dates";
 import { createRecord } from "@/lib/planner";
 import { eventStore } from "@/lib/storage/events";
-import { Button, Notice } from "./ui";
+import { Button, Notice } from "./controls";
 
 const steps=["The essentials","Make it yours","Budget & priorities","Review & create"];
 function defaults(category:Category):CategoryDetails {

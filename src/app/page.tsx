@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Heart, Cake, Users, Check, CalendarDays, ShieldCheck, Sparkles, Wallet, ListChecks } from "lucide-react";
-import { ActionLink } from "@/components/ui";
+import { ActionLink } from "@/components/controls";
 const eventTypes=[
   {key:"wedding",name:"Weddings",subtitle:"For your forever kind of day.",icon:Heart,className:"peach",detail:"Ceremony, catering & all the little details"},
   {key:"birthday",name:"Birthdays",subtitle:"Another year. A little more magic.",icon:Cake,className:"lavender",detail:"Cake, activities & moments worth celebrating"},

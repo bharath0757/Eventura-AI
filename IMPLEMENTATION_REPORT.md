@@ -14,7 +14,7 @@ Implemented the complete browser-local planning application for weddings, birthd
 - Graceful loading, empty, missing, corrupt-data and unavailable-storage states.
 - Mobile layouts, keyboard-operable controls, focus indicators, labels and reduced-motion support.
 
-The remote repository contained only LICENSE. Its Git history and original MIT license were retained; the missing Next.js foundation was added.
+At the initial inspection, the remote repository contained only LICENSE. Its Git history and original MIT license were retained; the missing Next.js foundation was added.
 
 ## B. Files changed
 
@@ -34,7 +34,7 @@ The remote repository contained only LICENSE. Its Git history and original MIT l
 | src/components/use-events.ts | Client hydration, reloads and cross-tab storage notifications |
 | src/components/saved-events.tsx | Saved-event cards and confirmation dialog |
 | src/components/event-dashboard.tsx | Budget, timeline, checklist, ideas, risks and original brief |
-| src/components/ui.tsx / shell.tsx | Shared accessible controls, navigation and footer |
+| src/components/controls.tsx / shell.tsx | Shared accessible controls, navigation and footer |
 | src/app/ | App Router pages, shared layout, responsive styles, favicon and error states |
 | tests/ | Validation, planning, dates and persistence tests |
 | README.md | Setup, architecture, limits and data-location instructions |
@@ -73,7 +73,7 @@ npm run build: PASS with Next.js 16.4.3. The optimized build completed compilati
 
 Routes built: /, /events, /events/new, /events/[eventId], the not-found route and /icon.svg.
 
-The final narrow-screen CSS adjustment was followed by another successful production build and verification against the restarted production server.
+The final narrow-screen CSS adjustment was followed by another successful production build and verification against the restarted production server. After merging the newer Phase 1 foundation, all 104 tests, lint, typecheck and the production build passed again. Phase 2 shared controls were renamed to avoid shadowing the retained Phase 1 UI component directory.
 
 ## F. Manual verification
 
@@ -111,9 +111,9 @@ Rules provide estimates and ideas, not real vendor quotations, confirmed availab
 
 ## H. Repository readiness
 
-Source size: **408434 bytes** across **37 files**, including existing tracked source and the new non-ignored application files. This is well below the 10,000,000-byte competition limit. Dependencies, .next, logs and TypeScript caches are excluded.
+Source size: **446291 bytes** across **53 files**, including all non-ignored application files. This is well below the 10,000,000-byte competition limit. Dependencies, .next, logs and TypeScript caches are excluded.
 
-Git baseline: main at 227841e2b65db2efe155cc5c5050abd9b1e1aaeb. The original LICENSE is unchanged. New implementation files remain untracked and uncommitted. Nothing was committed, pushed or deployed.
+Git baseline: main at 227841e2b65db2efe155cc5c5050abd9b1e1aaeb. The original LICENSE is unchanged. Publication was subsequently authorized. The Phase 2 implementation was committed, and newer Phase 1 history through abf249d was merged before pushing. Reusable Phase 1 components and assets are preserved. The active routes retain the Phase 2 implementation and canonical types; Tailwind uses the verified PostCSS pipeline. No deployment was requested.
 
 ## I. Next phase
 
