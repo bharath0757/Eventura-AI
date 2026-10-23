@@ -8,7 +8,7 @@ import { PlannerProvider } from '@/components/planner/planner-provider';
 import { CalendarCheck, HeartHandshake, Leaf, Wallet } from 'lucide-react';
 
 export default function HomePage() {
-  return <PlannerProvider>
+  return <div className="landing-site"><PlannerProvider>
     <a href="#main-content" className="skip-link">Skip to content</a>
     <Navbar />
     <main id="main-content">
@@ -16,5 +16,5 @@ export default function HomePage() {
       <div className="promise-strip"><div className="container"><span>A little more organised.<br /><strong>A lot more you.</strong></span><span><Wallet size={20} strokeWidth={1.4} /> Thoughtful budgets</span><span><CalendarCheck size={20} strokeWidth={1.4} /> Every detail, in place</span><span><HeartHandshake size={20} strokeWidth={1.4} /> Made around you</span><span><Leaf size={20} strokeWidth={1.4} /> Room to enjoy it</span></div></div>
       <EventCategoryCards /><Features /><HowItWorks /><QuestionsAndCTA />
     </main><Footer />
-  </PlannerProvider>;
+  </PlannerProvider></div>;
 }

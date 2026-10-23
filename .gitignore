@@ -46,3 +46,9 @@ next-env.d.ts
 
 # Testing
 /coverage
+
+# Phase 2 browser prototype
+*.log
+test-results/
+.env*
+!.env.example
