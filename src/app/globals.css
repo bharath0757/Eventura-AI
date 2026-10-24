@@ -1,45 +1,10 @@
 @import "tailwindcss";
-
-/*
- * Eventura AI — Global styles & design tokens
- *
- * Colour palette:
- *   Primary (midnight blue):  #1e2a4a
- *   Ivory (backgrounds):      #faf7f2
- *   Coral (actions):           #e8735a
- *   Emerald (positive):        #2d9f6f
- *   Lavender (AI):             #b8a9d4
- */
+@import "./design.css";
+@import "./responsive.css";
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-:root {
-  --background: #faf7f2;
-  --foreground: #1e2a4a;
-}
-
-/* No dark mode override — Eventura AI uses a fixed warm palette */
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Smooth scrolling for in-page links */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Focus-visible outlines for accessibility */
-:focus-visible {
-  outline: 2px solid #e8735a;
-  outline-offset: 2px;
 }

@@ -2,82 +2,40 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles, Menu, X } from 'lucide-react';
-import { BRAND } from '@/lib/constants';
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { usePlanner } from '@/components/planner/planner-provider';
 
-/**
- * Application header — midnight-blue navbar with the Eventura AI brand.
- */
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-
+  const { startPlanning, openSavedPlan } = usePlanner();
   return (
-    <header className="sticky top-0 z-50 bg-[#1e2a4a] text-white shadow-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo + brand */}
-        <Link href="/" className="flex items-center gap-2.5 group" aria-label="Eventura AI Home">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#e8735a] transition-transform group-hover:scale-105">
-            <Sparkles className="h-5 w-5 text-white" />
+    <header className="site-header">
+      <div className="container nav-inner">
+        <Link href="/" className="brand" aria-label="Eventura AI home">
+          <span className="brand-mark">
+            <Image
+              src="/logo-mark-rounded.png"
+              alt="Eventura AI Logo"
+              width={38}
+              height={38}
+              className="brand-logo-img"
+              priority
+            />
           </span>
-          <span className="text-lg font-bold tracking-tight">{BRAND.name}</span>
+          <span className="brand-text">eventura<span className="brand-ai">AI</span></span>
         </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="#features" className="text-white/80 transition-colors hover:text-white">
-            Features
-          </a>
-          <a href="#how-it-works" className="text-white/80 transition-colors hover:text-white">
-            How It Works
-          </a>
-          <a
-            href="#get-started"
-            className="rounded-lg bg-[#e8735a] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#c95a42]"
-          >
-            Start Planning
-          </a>
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {/* Mobile nav */}
-      <nav
-        className={cn(
-          'md:hidden overflow-hidden transition-all duration-300 bg-[#1e2a4a] border-t border-white/10',
-          mobileOpen ? 'max-h-48 py-3' : 'max-h-0 py-0',
-        )}
-      >
-        <div className="flex flex-col gap-2 px-4">
-          <a
-            href="#features"
-            className="rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="#how-it-works"
-            className="rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
-          >
-            How It Works
-          </a>
-          <a
-            href="#get-started"
-            className="rounded-lg bg-[#e8735a] px-3 py-2 text-sm font-semibold text-white text-center transition-colors hover:bg-[#c95a42]"
-          >
-            Start Planning
-          </a>
+        <nav className="desktop-nav" aria-label="Main navigation"><a href="#occasions">Occasions</a><a href="#features">The experience</a><a href="#how-it-works">How it works</a></nav>
+        <div className="nav-actions">
+          <button className="text-button saved-plan-button" onClick={openSavedPlan}>Your plan</button>
+          <button className="button button-dark nav-cta" onClick={() => startPlanning()}>Let’s plan something <ArrowUpRight size={16} /></button>
+          <button className="icon-button mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation">{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
         </div>
-      </nav>
+      </div>
+      {mobileOpen && <nav className="mobile-nav container" id="mobile-navigation" aria-label="Mobile navigation">
+        <a href="#occasions" onClick={() => setMobileOpen(false)}>Occasions</a><a href="#features" onClick={() => setMobileOpen(false)}>The experience</a><a href="#how-it-works" onClick={() => setMobileOpen(false)}>How it works</a>
+        <button onClick={() => { setMobileOpen(false); openSavedPlan(); }}>Your plan</button><button className="button button-dark" onClick={() => { setMobileOpen(false); startPlanning(); }}>Start planning <ArrowUpRight size={16} /></button>
+      </nav>}
     </header>
   );
 }
