@@ -30,4 +30,10 @@ describe("API safeguards", () => {
     const req = new Request("http://localhost", { method: "POST", headers: { "Content-Type": "application/json" }, body, duplex: "half" } as RequestInit);
     const pending = expect(readJson(req)).rejects.toMatchObject({ status: 408 }); await vi.advanceTimersByTimeAsync(5001); await pending; vi.useRealTimers();
   });
+  it("handles a rejected stream cancellation during the body timeout",async()=>{
+    vi.useFakeTimers();
+    const body=new ReadableStream<Uint8Array>({start(){},cancel(){return Promise.reject(new Error("producer cancellation failed"));}});
+    const request=new Request("http://localhost",{method:"POST",headers:{"Content-Type":"application/json"},body,duplex:"half"} as RequestInit);
+    const pending=expect(readJson(request)).rejects.toMatchObject({status:408});await vi.advanceTimersByTimeAsync(5001);await pending;vi.useRealTimers();
+  });
 });

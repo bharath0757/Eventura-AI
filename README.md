@@ -3,8 +3,12 @@
 
 A working Phase 3 competition prototype for weddings, birthdays and community events. Generate a transparent, rule-based starter plan with an exact INR budget, date-driven milestones, vendor checklist, personalized ideas and practical contingencies.
 
+Event planning spreads budgets, deadlines and supplier details across too many places. Eventura AI brings them into an **Adaptive Event Plan**: a deterministic starting plan with contextual recommendations, saved task progress and budget changes you can preview before approving. Gemini provides advisory guidance when configured; the application calculates and validates every monetary amount.
+
+Public repository access was verified without authentication on 24 October 2026: [Eventura AI on GitHub](https://github.com/bharath0757/Eventura-AI). The completed Phase 3 implementation is on [codex/eventura-ui-redesign](https://github.com/bharath0757/Eventura-AI/tree/codex/eventura-ui-redesign) at `8374316`; the default `main` branch is older. Select the complete branch when reviewing or preparing a deployment. Phase 4 verification changes are local until publication is authorized. See [PHASE4_REPORT.md](PHASE4_REPORT.md) and the [110-second demonstration plan](DEMO_PLAN.md).
+
 ## Run locally
-Use Node.js 20.9 or newer (verified with Node 24.19.0).
+Use Node.js 24 LTS for the complete development and test toolchain (verified with Node 24.19.0). Next.js declares a 20.9 runtime minimum, while the installed test tooling has newer engine requirements.
 ```powershell
 npm ci
 npm run dev
@@ -74,7 +78,7 @@ Optimize My Budget lets you enter a target, protect existing category amounts an
 
 ### Configure Gemini
 1. Obtain a key through [Google AI Studio](https://aistudio.google.com/apikey) and review Google's data-use and billing terms for your account.
-2. Copy `.env.example` to `.env.local`; set `GEMINI_API_KEY` locally. Never commit it or use a `NEXT_PUBLIC_` prefix.
+2. If `.env.local` does not exist, copy `.env.example` to it; otherwise preserve the existing file and edit only the required variables. Set `GEMINI_API_KEY` locally. Never commit it or use a `NEXT_PUBLIC_` prefix.
 3. `GEMINI_MODEL` is an optional override. The centralized default is `gemini-3.5-flash-lite`, verified in the [official model documentation](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) on 2026-10-23. It supports structured output. Recheck availability before deployment; models can change.
 4. Restart the server after environment changes. For deployment, enter the same server-side variables in the host's environment settings for the intended environment and redeploy. Do not embed values in source or build arguments that expose them to browsers.
 
@@ -101,3 +105,41 @@ The in-memory 30-requests/minute cap is shared by an individual server instance,
 
 ### Verification
 `npm test` runs the original planner/storage tests plus AI request/output, mocked official SDK, API, optimizer and React interaction tests. They never require credentials or make real provider calls. `npm run typecheck`, `npm run lint` and `npm run build` check the full application. See `PHASE3_REPORT.md` for actual final results and browser/live-provider verification boundaries. The existing `IMPLEMENTATION_REPORT.md` describes the earlier Phase 2 baseline.
+
+## Repeatable API smoke checks
+
+The smoke runner is separate from ordinary unit tests and builds. It uses five synthetic scenarios through the actual `/api/ai/plan` endpoint: wedding, birthday and community recommendations, a contextual question, and a protected budget proposal. It validates the response schema, honest source label, recommendation context clues, exact financial invariants and unchanged synthetic input. It never reads or writes browser-local saved events. Context-clue checks are a relevance signal, not a substitute for reviewing real generated advice.
+
+Start a local production build in one terminal:
+```powershell
+npm run build
+npm run start -- --port 3044
+```
+
+In another terminal, with a valid server-side `GEMINI_API_KEY` configured in `.env.local`:
+```powershell
+npm run ai:smoke
+```
+
+The runner loads production environment files with Next.js's environment loader, including `.env.local`; it never prints the key. Without a local key it reports **five blocked/skipped live scenarios and makes no API requests**. A green exit with skipped tests is not successful live verification. Restart the app after configuring the key. Do not paste credentials into chat, commit them or pass them in URLs. Model/account availability and quota must be checked with a real successful run; they were not established by the mocked tests.
+
+To verify fallback against a server intentionally running without a key:
+```powershell
+$env:AI_SMOKE_MODE = 'fallback'
+npm run ai:smoke
+Remove-Item Env:AI_SMOKE_MODE
+```
+
+Set `AI_SMOKE_URL` for another port. Requests run sequentially with a 28-second timeout and no retries; after the first failure, remaining scenarios are skipped to avoid repeated failed provider calls. Output contains scenario names, source labels and counts rather than prompts, complete event records, credentials or raw provider errors.
+
+Remote testing requires an explicit `AI_SMOKE_URL` and `AI_SMOKE_ALLOW_REMOTE=1`; use it only for an authorized deployment. The remote server holds its own credential, so no local key is required in this explicit mode. Never put credentials in the URL. Deployment-protected endpoints need an appropriate access flow before testing; this script does not bypass protection.
+
+## Deployment and competition status
+
+No `.vercel/project.json`, matching Vercel project, verified deployment URL or hosted demonstration video was available during this release audit. The connected personal account and available team were checked. Local production verification used `http://localhost:3044`; that is not a public deployment. Existing development usage on port 3000 was preserved.
+
+To prepare an authorized deployment, import the verified repository into Vercel, select the complete implementation branch, use the Next.js framework preset and `npm ci` / `npm run build`, and review the resulting preview before any production promotion. Configure `GEMINI_API_KEY` as a server-side secret in the project's [environment settings](https://vercel.com/docs/environment-variables/managing-environment-variables); set `GEMINI_MODEL` only if overriding the supported default. Scope variables to the intended Preview/Production environments and create a new deployment after changes. No `NEXT_PUBLIC_` prefix is used. A key is optional for a fallback demonstration.
+
+After deployment, rerun all five smoke scenarios and the browser journey on the actual returned URL. Verify mobile layout, saved-event navigation, fallback, errors and client bundles. Browser-local plans belong to an origin: localhost records do not automatically appear on a deployment or another device. Do not label a local production build as deployed, or fallback as live Gemini.
+
+The public repository's tracked source, Git object storage, historical blobs and all-refs pack estimate were measured against the 10 MB competition limit; supporting measurements are in `PHASE4_REPORT.md`. Dependencies, build output, environment secrets, screenshots and videos remain excluded from the submitted source. Record the actual demonstration after review and host its video externally as described in `DEMO_PLAN.md`; no video link has been created or invented.

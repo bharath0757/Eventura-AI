@@ -13,7 +13,8 @@ export async function readJson(request: Request) {
       while (true) { const { done, value } = await reader.read(); if (done) break; length += value.byteLength; if (length > AI_LIMITS.bodyBytes) throw new RequestFailure(413, "PAYLOAD_TOO_LARGE", "The request exceeds 64 KiB."); chunks.push(value); }
       try { return JSON.parse(Buffer.concat(chunks).toString("utf8")) as unknown; } catch { throw new RequestFailure(400, "INVALID_JSON", "The request contains invalid JSON."); }
     };
-    return await Promise.race([read(), new Promise<never>((_, reject) => { timer = setTimeout(() => { void reader.cancel(); reject(new RequestFailure(408, "REQUEST_TIMEOUT", "The request took too long to arrive.")); }, 5000); })]);
+    // A producer's failed cleanup must not escape as an unhandled process rejection.
+    return await Promise.race([read(), new Promise<never>((_, reject) => { timer = setTimeout(() => { void reader.cancel().catch(() => {}); reject(new RequestFailure(408, "REQUEST_TIMEOUT", "The request took too long to arrive.")); }, 5000); })]);
   } finally { clearTimeout(timer); void reader.cancel().catch(() => {}); }
 }
 /** Shared-instance cap cannot be bypassed by spoofing a forwarded IP. No request content retained. */
