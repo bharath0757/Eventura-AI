@@ -15,6 +15,9 @@ const success = (data: unknown) => ({ text: JSON.stringify(data), candidates: [{
 beforeEach(() => { vi.stubEnv("GEMINI_API_KEY", "mock-test-credential"); vi.stubEnv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL); sdk.generate.mockReset(); sdk.constructor.mockReset(); });
 afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); });
 describe("official provider boundary and service", () => {
+  it("defaults to the requested Gemini 3.8 Flash model without an override", () => {
+    for (const model of [undefined, "   "]) expect(providerConfig({ NODE_ENV: "test", GEMINI_API_KEY: "mock-test-credential", GEMINI_MODEL: model })).toMatchObject({ available: true, model: "gemini-3.8-flash" });
+  });
   it("missing key returns labelled fallback without initializing the SDK", async () => { vi.stubEnv("GEMINI_API_KEY", ""); const result = await assist(r()); expect(result.source).toBe("rule-based"); expect(result.message).toContain("not configured"); expect(sdk.constructor).not.toHaveBeenCalled(); });
   it("invalid configuration uses fallback", async () => { vi.stubEnv("GEMINI_MODEL", "https://wrong-host"); expect(providerConfig().available).toBe(false); expect((await assist(r())).source).toBe("rule-based"); expect(sdk.generate).not.toHaveBeenCalled(); });
   it("uses the configured model, JSON schema, token cap, cancellation and no retries", async () => {

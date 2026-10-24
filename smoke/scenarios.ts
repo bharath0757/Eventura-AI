@@ -31,7 +31,7 @@ export function verifySmokeResponse(scenario: SmokeScenario, payload: unknown, e
   const before = JSON.stringify(scenario.record);
   const result = resultSchema.parse(payload);
   requireCondition(result.operation === scenario.request.operation, "Response operation does not match the scenario.");
-  requireCondition(result.source === expectedSource, expectedSource === "live-ai" ? "Live verification failed: the API returned fallback. Check server configuration and provider availability." : "Fallback verification failed: the API returned live AI.");
+  requireCondition(result.source === expectedSource, expectedSource === "live-ai" ? `Live verification failed: the API returned fallback. ${result.message}` : "Fallback verification failed: the API returned live AI.");
   parseOutput(JSON.stringify(result.data), scenario.request);
   const text = JSON.stringify(result.data);
   const contextClues = scenario.signals.filter(signal => signal.test(text)).length;

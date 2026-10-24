@@ -1,5 +1,7 @@
 # Eventura AI — Phase 4 release verification
 
+This report preserves the initial fallback release audit. A subsequent, user-requested Gemini 3.8 Flash migration and credentialed production verification are in progress; the follow-up evidence will be appended before the final handoff.
+
 Verified on **24 October 2026** using Node.js **24.19.0**, Next.js **16.4.3**, the installed Google GenAI SDK **2.31.0**, and the existing npm lockfile. This is a release audit and targeted repair of the committed application, not a rebuild of the previous phases.
 
 ## 1. Branch and commit state

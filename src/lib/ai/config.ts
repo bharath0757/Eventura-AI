@@ -1,5 +1,5 @@
 import "server-only";
-export const DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite";
+export const DEFAULT_GEMINI_MODEL = "gemini-3.8-flash";
 export function providerConfig(env: NodeJS.ProcessEnv = process.env) {
   const apiKey = env.GEMINI_API_KEY?.trim();
   if (!apiKey) return { available: false as const, reason: "missing-key" as const };
