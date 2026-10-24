@@ -1,7 +1,7 @@
 import "server-only";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { z } from "zod";
-import { providerConfig } from "./config";
+import { DEFAULT_GEMINI_MODEL, providerConfig } from "./config";
 import { AI_LIMITS } from "./limits";
 import { buildPrompt, systemInstruction } from "./prompts";
 import { responseSchema, type AIRequest } from "./schemas";
@@ -17,7 +17,7 @@ export async function generate(r: AIRequest, signal?: AbortSignal): Promise<stri
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
     const ai = new GoogleGenAI({ apiKey: config.apiKey, httpOptions: { timeout: AI_LIMITS.timeoutMs, retryOptions: { attempts: 1 } } });
-    const pending = ai.models.generateContent({ model: config.model, contents: buildPrompt(r), config: { systemInstruction, responseMimeType: "application/json", responseJsonSchema: z.toJSONSchema(responseSchema(r.operation)), maxOutputTokens: AI_LIMITS.outputTokens, abortSignal: controller.signal } });
+    const pending = ai.models.generateContent({ model: config.model, contents: buildPrompt(r), config: { systemInstruction, responseMimeType: "application/json", responseJsonSchema: z.toJSONSchema(responseSchema(r.operation)), maxOutputTokens: AI_LIMITS.outputTokens, thinkingConfig: config.model === DEFAULT_GEMINI_MODEL ? { thinkingLevel: ThinkingLevel.LOW } : undefined, abortSignal: controller.signal } });
     const result = await Promise.race([pending, new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new ProviderFailure("timeout")); }, AI_LIMITS.timeoutMs); })]);
     if (controller.signal.aborted) throw new ProviderFailure("timeout");
     if (result.candidates?.[0]?.finishReason !== "STOP" || !result.text?.trim()) throw new ProviderFailure("invalid-output");
@@ -25,6 +25,12 @@ export async function generate(r: AIRequest, signal?: AbortSignal): Promise<stri
   } catch (e) {
     if (e instanceof ProviderFailure) throw e;
     const status = typeof e === "object" && e !== null && "status" in e ? e.status : undefined;
-    throw new ProviderFailure(controller.signal.aborted ? "timeout" : status === 401 || status === 403 ? "authentication" : status === 429 ? "rate-limit" : status === 400 || status === 404 ? "configuration" : "unavailable");
+    const name = typeof e === "object" && e !== null && "name" in e ? e.name : undefined;
+    const timedOut = controller.signal.aborted || status === 408 || status === 504 || ["APIConnectionTimeoutError", "RequestTimeoutError", "TimeoutError", "AbortError"].includes(String(name));
+    const reason: FailureReason = timedOut ? "timeout" : status === 401 || status === 403 ? "authentication" : status === 429 ? "rate-limit" : status === 400 || status === 404 ? "configuration" : "unavailable";
+    // Fixed labels and numeric status only; never log provider messages, prompts or credentials.
+    const knownErrors = ["ApiError", "APIError", "APIConnectionError", "APIConnectionTimeoutError", "RequestTimeoutError", "TimeoutError", "AbortError", "TypeError", "Error"];
+    console.warn("Eventura Gemini provider failure", { reason, httpStatus: typeof status === "number" && status >= 400 && status <= 599 ? status : null, errorType: typeof name === "string" && knownErrors.includes(name) ? name : "unknown" });
+    throw new ProviderFailure(reason);
   } finally { clearTimeout(timer); signal?.removeEventListener("abort", abort); }
 }
