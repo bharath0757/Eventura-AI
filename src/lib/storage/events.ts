@@ -1,5 +1,7 @@
 import type { EventRecord, TaskStatus } from "@/types";
 import { recordSchema, statusSchema } from "@/lib/validation/schemas";
+import { applyProposal, type BudgetProposal } from "@/lib/ai/optimizer";
+import { recommendationSchema, sourceSchema, type Recommendation, type Source } from "@/lib/ai/contracts";
 export const STORAGE_KEY="eventura-ai:v1:events";
 export interface StoragePort {getItem(key:string):string|null;setItem(key:string,value:string):void}
 export interface EventSnapshot {events:EventRecord[];warnings:string[]}
@@ -53,6 +55,17 @@ export function eventStore(storage?:StoragePort,clock=()=>new Date().toISOString
   return {
     list():EventSnapshot {const {events,warnings}=read();return {events:[...events].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)),warnings};},
     get,save,update,
+    acceptProposal(id:string,proposal:BudgetProposal) { return update(id,r=>applyProposal(r,proposal)); },
+    retainIdea(id:string,input:Recommendation,mode:Source) {
+      const idea=recommendationSchema.parse(input),source=sourceSchema.parse(mode);
+      return update(id,r=>{
+        if(!r.plan.budget.some(b=>b.category===idea.category)) throw new StorageError("This idea references an unknown budget category.");
+        const saved=r.savedIdeas??[];
+        if(saved.some(s=>s.idea.category===idea.category&&s.idea.title.toLowerCase()===idea.title.toLowerCase())) return r;
+        if(saved.length>=30) throw new StorageError("You can retain up to 30 assistant ideas per event.");
+        return {...r,savedIdeas:[...saved,{idea,source,savedAt:clock()}]};
+      });
+    },
     remove(id:string) {const snapshot=read();if(!snapshot.events.some(e=>e.id===id))throw new StorageError("This event could not be found.");write(snapshot.raw.filter(e=>recordId(e)!==id));},
     setTaskStatus(id:string,section:"timeline"|"vendors",taskId:string,status:TaskStatus) {
       const checked=statusSchema.parse(status);

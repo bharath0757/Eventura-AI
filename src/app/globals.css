@@ -2,6 +2,7 @@
 @import "./event-app.css";
 @import "./design.css";
 @import "./responsive.css";
+@import "./assistant.css";
 
 @theme inline {
   --color-background: var(--background);

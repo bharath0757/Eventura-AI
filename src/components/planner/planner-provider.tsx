@@ -69,7 +69,7 @@ export function PlannerProvider({ children }: { children: ReactNode }) {
         <h2 ref={heading} tabIndex={-1} id="planner-heading">Picture the possibilities.</h2>
         <p className="dialog-intro">A clear starting point, with room to make it your own.</p>
         <PlanPreview key={session} onProgressChange={setProgress} />
-        <p className="result-note">An illustrative wedding plan. Try the tabs, checklist, and vendor statuses. Sample changes last for this preview; your own events are saved in My events. Rule-based estimates; live AI isn’t connected.</p>
+        <p className="result-note">An illustrative wedding plan. Try the tabs, checklist, and vendor statuses. Sample changes last for this preview; your own events are saved in My events. This sample uses rule-based estimates. Your event dashboard offers optional AI assistance.</p>
         <div className="form-footer"><button className="text-button" onClick={() => startPlanning()}><ArrowLeft size={15} />Plan my own event</button><button className="button button-dark" onClick={downloadPlan}><Download size={16} />Download sample</button></div>
       </div>
     </dialog>

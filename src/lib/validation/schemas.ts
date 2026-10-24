@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { isCalendarDate, todayLocal } from "../dates";
 import { categories, priorityOptions, limits } from "../config";
+import { savedIdeaSchema } from "../ai/contracts";
 
 export const dateSchema = z.string().refine(isCalendarDate,"Enter a valid calendar date.");
 const text = (max: number) => z.string().trim().min(1,"This field is required.").max(max,`Use at most ${max} characters.`);
@@ -63,7 +64,8 @@ export const planSchema = z.object({
 }).strict();
 const timestamp=z.iso.datetime();
 export const recordSchema=z.object({
-  id:z.uuid(),schemaVersion:z.literal(1),brief:briefSchema,plan:planSchema,createdAt:timestamp,updatedAt:timestamp
+  id:z.uuid(),schemaVersion:z.literal(1),brief:briefSchema,plan:planSchema,createdAt:timestamp,updatedAt:timestamp,
+  savedIdeas:z.array(savedIdeaSchema).max(30).optional()
 }).strict().superRefine((record,ctx)=>{
   const {brief,plan}=record;
   const fail=(message:string)=>ctx.addIssue({code:"custom",path:["plan"],message});

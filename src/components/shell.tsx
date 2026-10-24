@@ -7,5 +7,5 @@ export function Header() {
   </nav></header>;
 }
 export function Footer() {
-  return <footer className="site-footer container"><div><Link href="/" className="footer-brand">eventura AI <ArrowUpRight size={13}/></Link><p>Thoughtful plans. Meaningful moments.</p></div><p>Saved in this browser · No account needed<br/><span>Rule-based starter plans · Phase 2</span></p></footer>;
+  return <footer className="site-footer container"><div><Link href="/" className="footer-brand">eventura AI <ArrowUpRight size={13}/></Link><p>Thoughtful plans. Meaningful moments.</p></div><p>Saved in this browser · No account needed<br/><span>Rule-based plans · Optional Gemini assistance</span></p></footer>;
 }

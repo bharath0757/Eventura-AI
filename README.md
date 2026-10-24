@@ -1,7 +1,7 @@
 # Eventura AI
 **Your Vision. Your Budget. Your Perfect Event.**
 
-A working Phase 2 competition prototype for weddings, birthdays and community events. Generate a transparent, rule-based starter plan with an exact INR budget, date-driven milestones, vendor checklist, personalized ideas and practical contingencies.
+A working Phase 3 competition prototype for weddings, birthdays and community events. Generate a transparent, rule-based starter plan with an exact INR budget, date-driven milestones, vendor checklist, personalized ideas and practical contingencies.
 
 ## Run locally
 Use Node.js 20.9 or newer (verified with Node 24.19.0).
@@ -51,7 +51,7 @@ npm run build
 - Amounts are planning estimates, not real vendor quotes or verified prices. The contingency reserve is part of the total, not additional money.
 - Storage key: `eventura-ai:v1:events`; envelope and records have explicit version 1. Events remain only in this browser/origin. They do not sync across devices. Clearing site data removes them.
 - The wizard preserves values while navigating its steps. Unsubmitted drafts are not saved across refreshes.
-- There is no authentication, external database, Gemini integration, API key or external planning request in Phase 2. People using the same browser profile can access its locally saved events.
+- There is no authentication or external database. Gemini requests are optional and initiated by the user from the selected event. People using the same browser profile can access its locally saved events.
 
 ## Repository baseline
 The supplied GitHub repository contained only its MIT license at commit `227841e2b65db2efe155cc5c5050abd9b1e1aaeb`. The Next.js foundation described in the brief was absent, so this implementation adds it without replacing application code. Original Git history and license are preserved. Before publication, newer Phase 1 commits through abf249d were merged. Their reusable landing, layout and UI components, brand constants, utilities, environment example and agent guidance are retained. The active Phase 2 routes use the verified canonical data model and PostCSS build configuration.
@@ -66,3 +66,38 @@ The landing page adds event photography, responsive occasion cards, FAQs, and an
 Landing styles are scoped to `.landing-site`, while the verified event application styles are scoped to `.event-app`. The `/events` layout retains the application header and footer. The canonical data model, exact budget calculations, dated milestones, persistence, and tests from Phase 2 are preserved. The sample preview uses separate session state and never writes to the saved-events collection.
 
 Photographs are bundled in `public/images/` from Unsplash: [wedding](https://images.unsplash.com/photo-1519225421980-715cb0215aed), [birthday](https://images.unsplash.com/photo-1530103862676-de8c9debad1d), and [community gathering](https://images.unsplash.com/photo-1511795409834-ef04bbd61622).
+
+## Phase 3: contextual assistance
+Open a saved event and choose **AI assistant** in its section navigation. Get Personalized Ideas provides separate recommendations, risks and next actions. Keep this idea saves a validated idea with its source label; repeated saves are deduplicated and each event may retain 30 ideas. Ask Eventura AI accepts a question of at most 1,000 characters. Neither action changes the budget.
+
+Optimize My Budget lets you enter a target, protect existing category amounts and explain priorities. Review every current/proposed amount, signed difference, reserve, rationale, alternative, trade-off and assumption. Check the acknowledgement and select **Confirm and save budget** to persist it. **Reject proposal** discards it. Changes to the budget or preferences invalidate an older proposal. Acceptance reads the latest saved event, preserving task progress, preferences, identifiers and timestamps of creation; it updates the modification timestamp and vendor planning allowances. Failed saves report failure and keep the stored record unchanged.
+
+### Configure Gemini
+1. Obtain a key through [Google AI Studio](https://aistudio.google.com/apikey) and review Google's data-use and billing terms for your account.
+2. Copy `.env.example` to `.env.local`; set `GEMINI_API_KEY` locally. Never commit it or use a `NEXT_PUBLIC_` prefix.
+3. `GEMINI_MODEL` is an optional override. The centralized default is `gemini-3.5-flash-lite`, verified in the [official model documentation](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) on 2026-10-23. It supports structured output. Recheck availability before deployment; models can change.
+4. Restart the server after environment changes. For deployment, enter the same server-side variables in the host's environment settings for the intended environment and redeploy. Do not embed values in source or build arguments that expose them to browsers.
+
+Without a key, every ordinary planner interaction still works. Assistant requests return clearly labelled **Rule-based fallback** ideas, topic-based answers and deterministic proposals. Configuration, authentication, quota, network, timeout and invalid-output failures also fall back without retry loops. Successful validated Gemini responses display **AI-generated · Live Gemini**. Users may deliberately retry. Model availability, request quotas, free-tier eligibility and billing depend on the provider and account; no free quota is guaranteed.
+
+### Data and provider boundary
+Only a user-initiated assistant request sends the selected event's brief (including name, location, date, preferences and notes), current plan and relevant instruction/target/protected selections to the server and, if configured, Google Gemini. Nothing is sent on opening a dashboard. No unrelated events, storage envelope, saved AI history, credentials or record timestamps/UUID are sent. The UI discloses this before the request. Avoid entering unnecessary personal information in event notes. The application does not retain raw prompts or responses server-side or log event records. Provider-side retention is governed by your Google terms.
+
+The official `@google/genai` SDK is imported only in `src/lib/ai/client.ts`, marked `server-only`. Configuration, prompts, validated services and API handling are separate from the React UI and financial engine. Structured JSON output is requested through `responseJsonSchema` and validated again with Zod, including actual category references. Responses with invalid fields, actions, categories, truncation or empty content are rejected. No provider tools, live vendor data, bookings, payments or external vendor calls are used. Obtain real quotations yourself before committing money.
+
+### Deterministic optimization policy
+All amounts are integer INR. Protected categories keep their current amounts exactly. The proposed reserve is at least `ceil(targetBudget / 10)` (10%), including when protected. This minimum is enforced for new proposals; legacy Phase 2 records remain readable even where rounding placed their original 10% allocation one rupee below that ceiling. An insufficient protected reserve or total is rejected, never silently changed.
+
+After fixed protected amounts and the reserve are deducted, flexible non-reserve weights start from the existing event category's canonical profile percentages. Validated guidance applies integer multipliers: reduce=75, maintain=100, increase=125, review=100. Missing guidance uses 100. Divide the remaining total proportionally using exact BigInt products and Hamilton largest remainders; original plan order breaks ties. Percentage labels are separately apportioned to exactly 100. Financial results always sum to the target exactly. If the reserve is the only unlocked category, it absorbs any additional remainder. If every category is protected, there must be no remainder. Advice to reduce a protected category cannot override its lock. The preview explains advisory actions; actual amounts follow these deterministic constraints.
+
+Before acceptance, the browser independently recomputes and validates the proposal against the latest saved brief and budget. The storage layer revalidates the full updated record before writing. Only optional `savedIdeas` metadata extends the version-1 record; old records without that field continue to load. Accepted proposals are not stored as pending plans, and rejected proposals never write to storage.
+
+### Limits and production considerations
+`POST /api/ai/plan` accepts JSON only: 64 KiB body limit checked during streaming, 5-second body-read timeout, 1,000-character instruction limit, bounded arrays/fields, 24,000-character provider output limit and 5,000 output tokens. Provider calls have a 20-second timeout and SDK cancellation, with one attempt. Browser requests time out at 28 seconds. Cancellation stops local handling; Google may still charge for provider work already started.
+
+HTTP errors use structured codes: 400 invalid request/JSON, 403 cross-origin, 408 slow request, 413 oversized body, 415 content type, 422 infeasible budget, 429 request limit, 503 unexpected service failure. Provider failures normally return a successful, explicitly labelled fallback response. API responses are `no-store` and never include raw provider errors or prompts.
+
+The in-memory 30-requests/minute cap is shared by an individual server instance, protecting against forwarded-IP spoofing without retaining identifying data. It is best-effort only: serverless instances/restarts each have separate counters, users share the local cap, and this is not global or enterprise-grade abuse prevention. Production should add an authenticated boundary, a distributed rate limit and provider spending controls. Browser-local storage is not transactional across simultaneous tabs/devices, backed up or encrypted; source context checks prevent stale budget approval within normal sequential usage, but simultaneous storage writes remain a prototype limitation.
+
+### Verification
+`npm test` runs the original planner/storage tests plus AI request/output, mocked official SDK, API, optimizer and React interaction tests. They never require credentials or make real provider calls. `npm run typecheck`, `npm run lint` and `npm run build` check the full application. See `PHASE3_REPORT.md` for actual final results and browser/live-provider verification boundaries. The existing `IMPLEMENTATION_REPORT.md` describes the earlier Phase 2 baseline.

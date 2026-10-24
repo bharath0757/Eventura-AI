@@ -21,7 +21,7 @@ export function Features() {
 const QUESTIONS = [
   { question: 'What can I plan with Eventura?', answer: 'Start with a wedding, birthday, or community gathering. Add your date, location, guest count, and budget, then choose a style and priorities to create a starter plan.' },
   { question: 'Do I need an account to get started?', answer: 'No account is needed. Your events and task progress are saved in this browser on this device when storage is available. Use “My events” in the navigation to return to your plans. The sample preview is separate and its changes last only for that preview.' },
-  { question: 'Are these real vendor prices or AI-generated plans?', answer: 'This project currently uses interactive, template-based demo plans. Budget amounts are suggested estimates, not live vendor quotes. Live AI generation and vendor bookings are not connected.' },
+  { question: 'Are these real vendor prices or AI-generated plans?', answer: 'Your starter plan uses transparent rules and estimated budgets. In your event dashboard, request Gemini ideas, contextual answers and budget proposals. Live AI requires provider configuration; otherwise clearly labelled rule-based guidance is available. Vendor quotes and bookings are not connected.' },
   { question: 'Can I change my budget or event details later?', answer: 'You can go back and edit every section before creating your event. Saved plans keep your original brief alongside your task progress. To explore a different budget or event details afterwards, create a new event.' },
 ];
 
