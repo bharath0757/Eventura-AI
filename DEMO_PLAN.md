@@ -1,6 +1,6 @@
 # Eventura AI — 110-second demonstration
 
-Use the actual local production app on `http://localhost:3044`, or replace that with a deployment URL only after it has been verified. The current recording plan uses **rule-based fallback**, because live Gemini verification is blocked by a missing key. Never call this run a live AI demonstration.
+The [actual deployed app](https://eventura-mp2ge4fjy-bharath0757s-projects.vercel.app) was verified on 24 October 2026. The local production app is also available on `http://localhost:3044` while its server is running. The demonstration uses **rule-based fallback**, because live Gemini verification is blocked by a missing key. Never call this run a live AI demonstration.
 
 Prepare a clean synthetic occasion. Use a future event date, Hyderabad, 120 guests, a sunflower garden wedding, ₹2,40,001, Food quality and Photography priorities, vegetarian catering and step-free entry. Keep existing personal plans and credentials out of the recording. Have one birthday and one community workshop already created for the final comparison. Leave the settings, terminal environment and browser developer tools closed.
 
@@ -24,4 +24,6 @@ If the pacing is tight, prepare the wizard fields in advance and show its review
 3. Upload the reviewed video to **unlisted YouTube**, or to Drive with the intended evaluation access. Keep the video outside Git and the source archive.
 4. Test the final sharing link in an unauthenticated/private browser session to verify the judge can view it. Add only that real, tested link to the submission.
 
-**Delivery status:** the demonstration plan is prepared. No recording was created or uploaded during this audit, and no hosted-video URL is claimed. A reviewed recording and an authorized hosting destination are still needed to publish the video.
+**Delivered walkthrough:** [Eventura AI — 115-second competition demo](https://drive.google.com/file/d/1eZxlgrBhcgzOtKNx_o6jMM_4rRk9JKAr/view). After explicit upload/sharing authorization, the reviewed MP4 was uploaded to Drive with anyone-with-link **Viewer** access and discovery disabled. Anonymous access returned HTTP 200 for the viewer and HTTP 206 with `video/mp4` and a valid MP4 signature for a byte-range media request. The original video decoded completely, with a measured duration of **115.00 seconds**, H.264 at 1280×900, and a size of **1,465,656 bytes**.
+
+The delivered video is a **silent captioned walkthrough assembled from unaltered screenshots of actual interactions with the deployed app**, rather than a continuous screen recording. Captions identify the synthetic records and rule-based fallback throughout. It shows the real wizard, dashboard, task progress, contextual assistance, protected comparison, rejection, acknowledgement, approved persistence and three event categories. Drive finished processing it, the hosted player displayed a 1:55 duration, and playback was exercised in the browser. Use the narration above for a continuous narrated take if the competition requires that specific format. Screenshots, encoding tools, captions and the MP4 are stored outside the Git repository.

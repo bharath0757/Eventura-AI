@@ -6,7 +6,7 @@ Verified on **24 October 2026** using Node.js **24.19.0**, Next.js **16.4.3**, t
 
 The verified implementation is in `C:\Users\BHARATH\.codex\worktrees\eventura-ui-redesign\Eventura AI`, on `codex/eventura-ui-redesign`, based on **8374316d019d9d214e0f176d64f362a47e273343**. Its Phase 3 commit and all earlier history remain intact. The remote is the intended `https://github.com/bharath0757/Eventura-AI.git`.
 
-The shared `D:\Eventura AI` checkout is still the earlier `main` checkout with pre-existing uncommitted work. It was inspected and left in place; no Phase 3 files were copied over it. Phase 4 changes remain **uncommitted and unpublished** for review. No cherry-pick, merge, rebase, reset, force-push, worktree deletion or duplicate Phase 3 commit was performed.
+The shared `D:\Eventura AI` checkout is still the earlier `main` checkout with pre-existing uncommitted work. It was inspected and left in place; no Phase 3 files were copied over it. After the user explicitly authorized publication and deployment, Phase 4 was committed as **88ecca1693f49a784818ebfd4ff98dd79dfafa22** and pushed normally to `origin/codex/eventura-ui-redesign`, without conflicts or rewriting remote changes. Final documentation follows that code release. No cherry-pick, merge, rebase, reset, force-push, worktree deletion or duplicate Phase 3 commit was performed.
 
 The initial worktree had only a generated `next-env.d.ts` development-type path change. Its original contents and initial diff were preserved outside Git before verification. Next's production build regenerated its production typing references. The user's port-3000 application and real event session were not used for synthetic testing.
 
@@ -51,7 +51,7 @@ To unblock live verification, put a valid key directly in the server's `.env.loc
 
 ## 4. Fallback verification
 
-All five synthetic smoke scenarios passed through the **actual local production API** at `http://localhost:3044`, without mocking the HTTP response. Output was honestly marked rule-based. No saved record was read or written by those tests.
+All five synthetic smoke scenarios passed through the **actual local production API** at `http://localhost:3044` and, after authorized deployment, through the **actual hosted API** at `https://eventura-mp2ge4fjy-bharath0757s-projects.vercel.app`, without mocking the HTTP response. Output was honestly marked rule-based. No saved record was read or written by those tests. Hosted results were A–C: four contextual clues each; D–E: three each, with five passed and zero failed.
 
 The browser also requested and rendered tailored fallback recommendations for all three categories. Wedding guidance used the garden theme, 120 guests, dietary preference and selected priorities; birthday guidance used a dinosaur craft party and 30 guests; community guidance used a repair workshop, 80 attendees and 12 volunteers. A contextual answer listed the unfinished due milestone while excluding an already-completed task.
 
@@ -83,6 +83,8 @@ A browser-driven walkthrough exercised the **actual production build**, on a sep
 
 Corrupt localStorage recovery and provider failure were verified with component/unit tests rather than mutating the user's browser storage. The production browser walkthrough and automated tests are separate evidence. Screenshots are stored outside the repository, including `saved-events-desktop.png` and `community-mobile.png` in the Phase 4 verification artifacts folder.
 
+The deployed origin was then independently exercised through its actual UI. A new synthetic wedding, birthday and community workshop were created through the complete wizard. The wedding used ₹2,40,001, the birthday ₹45,001 and the community event ₹60,001, with exact allocation sums. Wedding milestone completion, catering progress, tailored fallback recommendations, duplicate idea prevention and the contextual weekly question worked. A ₹1,80,001 proposal protected catering at ₹72,001 with a ₹18,001 reserve; rejection retained ₹2,40,001, while acknowledgement plus confirmation saved ₹1,80,001. Reload preserved the completed milestone, catering progress and one kept idea. The mobile workshop used 12 volunteers, showed a valid ₹50,001 comparison with Equipment protected at ₹12,000 and reserve ₹5,001, and rejection/reload retained ₹60,001. Mobile content measured 375 px wide with 375 px scroll width. All three cards appeared in My events. Missing valid UUID and malformed IDs showed recovery links, landing images loaded, and captured browser error logs were empty.
+
 ## 6. Security and financial audit
 
 - The key is accessed only from server-only configuration/client code; no `NEXT_PUBLIC_GEMINI_API_KEY` use was found. Provider errors map to safe messages. Current source and reachable historical text blobs were scanned for common credential/private-key patterns with **zero matches**; suspicious values were never printed. Such a scan complements review and cannot prove the absence of every possible secret format.
@@ -107,38 +109,40 @@ The competition threshold is **10 MB**. Measurements included all local refs and
 
 The largest tracked files were the lockfile (~319 KB in the working copy), wedding photo (188,580 bytes), community photo (80,149 bytes), birthday photo (65,005 bytes), and CSS. Historical large blobs were primarily earlier lockfiles; none approached the threshold. Git noted a pre-existing zero-byte worktree-metadata warning; it was preserved rather than deleting a worktree or rewriting history.
 
-Final working source including nonignored Phase 4 files: **1041538 bytes**. This value excludes `.git`, dependencies, build output and screenshots. It is distinct from the published GitHub size above because the Phase 4 patch is not published. New release files are small source/tests/documentation; generated dependencies/build output/videos were not tracked. No history cleanup was necessary. Current published size and all-history measurements support **under 10 MB**, with substantial margin; recheck GitHub after any later publication or added assets.
+At published code release `88ecca1`, tracked source measured **92 files / 1,041,538 bytes**, all-ref history measured **254 objects / 2,574,497 uncompressed bytes**, loose object storage was **1.03 MiB** with zero packs, and the read-only all-ref pack estimate was **578,511 bytes**. GitHub still reported **494 KB** shortly after publication; this metadata can lag a push. These supporting measurements remain below 10 MB without any history rewrite.
+
+Final working source including nonignored Phase 4 files: **1046692 bytes**. This value excludes `.git`, dependencies, build output, screenshots, the video encoder and the externally hosted 1.47 MB demonstration MP4. Source size, uncompressed historical object size and compressed pack estimate are distinct measurements. New release files are small source/tests/documentation; no history cleanup was necessary.
 
 ## 8. Public GitHub status
 
-Unauthenticated HTTP requests returned **200** for both the public repository page and GitHub repository API. API fields were `private: false`, `visibility: public`, `default_branch: main`, `size: 494`. The submission branch API also returned 200 and exact commit **8374316d019d9d214e0f176d64f362a47e273343**.
+Unauthenticated HTTP requests returned **200** for both the public repository page and GitHub repository API. API fields were `private: false`, `visibility: public`, `default_branch: main`, `size: 494`. After the authorized release push, the submission branch commit API also returned 200 and exact code-release commit **88ecca1693f49a784818ebfd4ff98dd79dfafa22**.
 
 Verified repository: [bharath0757/Eventura-AI](https://github.com/bharath0757/Eventura-AI). Verified complete implementation branch: [codex/eventura-ui-redesign](https://github.com/bharath0757/Eventura-AI/tree/codex/eventura-ui-redesign).
 
-**Submission caveat:** default `main` is older than the complete Phase 3 branch. Supply the complete branch link for review, or separately authorize the intended publication/promotion workflow. Phase 4 changes have not been pushed. No remote changes were overwritten.
+**Submission caveat:** default `main` is older than the complete feature branch. Supply the complete branch link for review. Phase 4 code is now published there, followed by this release documentation. No remote changes were overwritten and Phase 3 was not merged a second time.
 
 ## 9. Deployment status
 
-No `.vercel/project.json` or project deployment configuration was found in either local checkout. The connected Vercel account and its available team were searched by repository and project name; no matching target was returned. The GitHub homepage field was empty. Therefore **no deployment was performed and no public application URL is claimed**. A local production build is not a deployment.
+Initially no `.vercel/project.json` or matching Vercel project existed. After explicit user authorization, a new `eventura-ai` project was created in the connected team and commit `88ecca1` was deployed with Node 24, the Next.js preset, `npm ci` and `npm run build`. Deployment **dpl_HzotybGap4GoRN3MTJkGzA8rXzLA** reached **READY**, with its returned metadata identifying the correct GitHub repository, branch and exact commit. Vercel assigned this first build as the new project's primary deployment; it did not replace an existing deployment.
 
-The verified local production preview is `http://localhost:3044` while its server is running. The existing development server remains on port 3000. To deploy later, import/select the complete repository branch in an authorized Vercel project, use the Next.js preset, configure server-only variables in the intended environments, then test the returned URL before promotion. The README links the [current Vercel environment documentation](https://vercel.com/docs/environment-variables/managing-environment-variables). Never place a key in Git or a public variable.
+Verified public URLs: [immutable audited build](https://eventura-mp2ge4fjy-bharath0757s-projects.vercel.app) and [stable app address](https://eventura-ai.vercel.app). Both returned unauthenticated HTTP 200 and the correct page title. The local production preview remains `http://localhost:3044`, and the existing development server remains on port 3000; both also returned HTTP 200. No Gemini secret was configured or exposed. The README links the [current Vercel environment documentation](https://vercel.com/docs/environment-variables/managing-environment-variables) for future server-only key configuration.
 
-After a deployment exists, run the five real API scenarios and the three-category browser journey on that actual origin, check source labels/mobile/recovery, and scan page HTML/browser bundles for secrets. Those deployed checks remain unperformed.
+The five hosted fallback API scenarios and three-category hosted browser journey passed as described above. Anonymous page/script checks covered landing, saved events, creation and dashboard routes: all 15 distinct script chunks returned 200, with no Gemini key variable names or provider SDK endpoint implementation found. Local scanning separately covered all 18 production chunks. Live Gemini on the host remains explicitly blocked by the missing key, rather than being inferred from fallback success.
 
 ## 10. Remaining blockers and deliverables
 
 | Item | State / next concrete step |
 | --- | --- |
 | Live provider verification | Blocked by missing key; configure locally/securely, restart and run `npm run ai:smoke` |
-| Public application | No linked/matching Vercel target; authorize/configure a project and verify its actual deployment |
-| Phase 4 publication | Changes ready for review, uncommitted/unpushed; publication needs explicit authorization |
+| Public application | Deployed and publicly verified; exact code-release commit and URLs recorded above |
+| Phase 4 publication | Authorized, committed and pushed normally to the complete feature branch |
 | Competition branch | Complete Phase 3 is public on the feature branch; default main is older |
-| Demonstration | `DEMO_PLAN.md` provides an actual-app 110-second sequence; no video was recorded/uploaded, and no video URL is invented |
+| Demonstration | Reviewed 115-second captioned actual-app walkthrough uploaded and shared on Drive after explicit authorization; anonymous viewer/media access verified |
 
-README now documents the problem, tagline, three categories, Adaptive Event Plan, deterministic accounting, protected optimization, privacy/local storage, safe setup, smoke commands, actual public branch and deployment limitations. The demonstration plan specifies honest fallback labelling and external video hosting after a reviewed recording; videos and screenshots are excluded from Git.
+README now documents the problem, tagline, three categories, Adaptive Event Plan, deterministic accounting, protected optimization, privacy/local storage, safe setup, smoke commands, actual public branch, verified deployed app and live-provider limitation. The [hosted demonstration](https://drive.google.com/file/d/1eZxlgrBhcgzOtKNx_o6jMM_4rRk9JKAr/view) is a silent captioned walkthrough assembled from unaltered actual deployed-app screenshots, not a continuous recording. Its decoded duration is 115.00 seconds, with H.264 video at 1280×900 and a file size of 1,465,656 bytes. Drive permission metadata confirms `anyone` / `reader` / discovery disabled; unauthenticated requests returned 200 for its viewer and 206 for `video/mp4` media with a valid MP4 signature. The demo plan includes narration guidance if a continuous narrated take is required. The video, screenshots and encoder remain outside Git.
 
 ## 11. Competition-readiness assessment
 
-**Locally verified and ready for a truthful fallback demonstration.** All required available automated checks pass, the three event journeys were exercised in the production browser, financial constraints hold, public repository access is verified, and measured repository/history sizes are below 10 MB. The small timeout repair is regression-tested, and previous-phase history is preserved.
+**Published, deployed and verified for a truthful fallback demonstration.** All required available automated checks pass, the three event journeys were exercised in local production and on Vercel, financial constraints hold, public repository access is verified, and measured repository/history sizes are below 10 MB. The reviewed demo has an externally accessible viewer link. The small timeout repair is regression-tested, and previous-phase history and background work are preserved.
 
-**Not yet a verified live-Gemini or deployed submission.** Credentialed provider testing, an authorized deployment, publication of this release patch if desired, and any required hosted demonstration video remain explicit handoff items. They are not represented as completed by mocked tests or a successful local build.
+**Live Gemini is not verified.** The remaining configuration step is to set a valid key securely, redeploy and run the five live-provider smoke scenarios. The specification explicitly permits live verification to be documented as blocked. No mocked test, local build or rule-based response is represented as proof of a real Gemini call. Submit the complete feature-branch link, and check whether the competition requires a continuous narrated recording rather than the delivered captioned capture walkthrough.
