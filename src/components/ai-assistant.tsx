@@ -41,7 +41,7 @@ export function AIAssistant({ event, onSaved }: { event: EventRecord; onSaved: (
     locked.current = true; setBusy(true); setError(""); setNotice(""); setResult(null); setConfirmed(false);
     if (mode === "ask") setSubmittedQuestion(question.trim());
     const abort = new AbortController(); controller.current = abort;
-    const timeout = setTimeout(() => abort.abort(), 28_000);
+    const timeout = setTimeout(() => abort.abort(), AI_LIMITS.requestTimeoutMs);
     try {
       const response = await fetch("/api/ai/plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(parsed.data), signal: abort.signal });
       const payload: unknown = await response.json();
@@ -87,7 +87,7 @@ export function AIAssistant({ event, onSaved }: { event: EventRecord; onSaved: (
       </> : null}
       <Button type="submit" loading={busy} disabled={busy || (mode === "ask" && !question.trim()) || (mode === "optimize" && !validTarget)}>{busy ? "Preparing your guidance…" : mode === "ask" ? "Ask about my event" : mode === "optimize" ? "Preview budget proposal" : "Generate personalized ideas"}</Button>
     </fieldset></form>
-    {busy ? <div className="ai-loading" role="status"><span>Considering your event, priorities and current plan…</span><button className="text-link" onClick={() => controller.current?.abort()}>Cancel request</button></div> : null}
+    {busy ? <div className="ai-loading" role="status"><span>Considering your event, priorities and current plan. This may take up to a minute.</span><button className="text-link" onClick={() => controller.current?.abort()}>Cancel request</button></div> : null}
     {error ? <Notice>{error} <button className="text-link" disabled={busy} onClick={() => void request()}>Try again</button></Notice> : null}
     {notice ? <Notice tone="info">{notice}</Notice> : null}
     {result && !currentResult ? <Notice tone="info">Your event changed. Generate new guidance for the latest budget and preferences.</Notice> : null}

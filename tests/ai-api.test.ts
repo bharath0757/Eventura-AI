@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 vi.mock("@/lib/ai/client", () => ({ generate: vi.fn().mockRejectedValue(new Error("offline")), ProviderFailure: class extends Error { constructor(public reason: string) { super(reason); } } }));
-import { POST } from "@/app/api/ai/plan/route";
+import { POST, maxDuration } from "@/app/api/ai/plan/route";
 import { createThrottle, readJson } from "@/lib/ai/http";
 import { AI_LIMITS } from "@/lib/ai/limits";
 import { record } from "./fixtures";
@@ -9,6 +9,10 @@ beforeEach(() => { vi.useRealTimers(); });
 const input = () => ({ operation: "recommendations", brief: record().brief, plan: record().plan });
 function request(body: string, headers: Record<string,string> = {}) { return new Request("http://localhost/api/ai/plan", { method: "POST", headers: { "Content-Type": "application/json", ...headers }, body }); }
 describe("API safeguards", () => {
+  it("lets the provider finish before client and platform deadlines", () => {
+    expect(AI_LIMITS.timeoutMs).toBeLessThan(AI_LIMITS.requestTimeoutMs);
+    expect(AI_LIMITS.requestTimeoutMs).toBeLessThan(maxDuration * 1000);
+  });
   it("returns labelled usable fallback with no-store", async () => { const response = await POST(request(JSON.stringify(input()))); expect(response.status).toBe(200); expect(response.headers.get("Cache-Control")).toBe("no-store"); expect((await response.json()).source).toBe("rule-based"); });
   it("rejects malformed JSON", async () => { const response = await POST(request("{")); expect(response.status).toBe(400); expect((await response.json()).error.code).toBe("INVALID_JSON"); });
   it("rejects invalid operations", async () => expect((await POST(request(JSON.stringify({ ...input(), operation: "book" })))).status).toBe(400));

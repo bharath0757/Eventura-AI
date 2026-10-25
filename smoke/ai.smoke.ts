@@ -1,6 +1,7 @@
 import { loadEnvConfig } from "@next/env";
 import { describe, it } from "vitest";
 import { smokeScenarios, verifySmokeResponse } from "./scenarios";
+import { AI_LIMITS } from "../src/lib/ai/limits";
 
 // Match `next start` precedence; ordinary Vitest's NODE_ENV=test would ignore .env.local.
 loadEnvConfig(process.cwd(), false, { info() {}, error() {} });
@@ -19,7 +20,7 @@ describe.skipIf(Boolean(blocked))(`Actual Eventura API smoke test (${mode}${bloc
     if (previousFailure) context.skip();
     const before = JSON.stringify(scenario.record);
     try {
-      const response = await fetch(new URL("/api/ai/plan", base), { method: "POST", headers: { "Content-Type": "application/json", Origin: base.origin }, body: JSON.stringify(scenario.request), signal: AbortSignal.timeout(28_000), redirect: "error" });
+      const response = await fetch(new URL("/api/ai/plan", base), { method: "POST", headers: { "Content-Type": "application/json", Origin: base.origin }, body: JSON.stringify(scenario.request), signal: AbortSignal.timeout(AI_LIMITS.requestTimeoutMs), redirect: "error" });
       if (!response.ok) throw new Error(`API returned HTTP ${response.status}. No raw response or credentials were logged.`);
       let payload: unknown;
       try { payload = await response.json(); } catch { throw new Error("API returned unreadable JSON."); }

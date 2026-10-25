@@ -3,7 +3,7 @@ import { requestSchema } from "@/lib/ai/schemas";
 import { OptimizationError } from "@/lib/ai/optimizer";
 import { createThrottle, readJson, RequestFailure } from "@/lib/ai/http";
 export const runtime = "nodejs";
-export const maxDuration = 30;
+export const maxDuration = 75;
 const allow = createThrottle();
 const headers = { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff" };
 export async function POST(request: Request) {

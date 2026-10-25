@@ -1,13 +1,14 @@
 // @vitest-environment jsdom
 import { createElement, useState } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { AIAssistant } from "@/components/ai-assistant";
 import { eventStore, STORAGE_KEY } from "@/lib/storage/events";
 import { localRecommendations, localOptimization, localAnswer } from "@/lib/ai/fallback";
 import { optimizeBudget } from "@/lib/ai/optimizer";
 import type { AIRequest } from "@/lib/ai/schemas";
 import { record } from "./fixtures";
+import { AI_LIMITS } from "@/lib/ai/limits";
 const fetchMock = vi.fn();
 function Harness() { const [event,setEvent]=useState(()=>eventStore().get(record().id)!); return createElement(AIAssistant,{event,onSaved:()=>setEvent(eventStore().get(event.id)!)}); }
 function answer(request: AIRequest, source="rule-based") {
@@ -16,10 +17,24 @@ function answer(request: AIRequest, source="rule-based") {
 }
 function mockResponses(source="rule-based") { fetchMock.mockImplementation(async (_:string,init:RequestInit)=>({ok:true,json:async()=>answer(JSON.parse(String(init.body)),source)})); }
 beforeEach(()=>{ localStorage.clear();eventStore().save(record());fetchMock.mockReset();vi.stubGlobal("fetch",fetchMock);mockResponses(); });
-afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();});
+afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals();vi.restoreAllMocks();});
 const click=(name:string)=>fireEvent.click(screen.getByRole("button",{name}));
 async function preview(){click("Optimize My Budget");fireEvent.change(screen.getByLabelText("Target budget (INR)"),{target:{value:"12001"}});click("Preview budget proposal");await screen.findByText("Review your proposed budget");}
 describe("assistant interaction and persistence",()=>{
+  it("waits through the provider window and safely bounds an unresponsive request", async () => {
+    vi.useFakeTimers();
+    fetchMock.mockImplementation((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
+      init.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+    }));
+    const before = localStorage.getItem(STORAGE_KEY);
+    render(createElement(Harness)); click("Generate personalized ideas");
+    const signal = fetchMock.mock.calls[0][1].signal as AbortSignal;
+    await act(async () => { await vi.advanceTimersByTimeAsync(AI_LIMITS.timeoutMs); });
+    expect(signal.aborted).toBe(false); expect(screen.getByRole("button", { name: "Cancel request" })).toBeTruthy();
+    await act(async () => { await vi.advanceTimersByTimeAsync(AI_LIMITS.requestTimeoutMs - AI_LIMITS.timeoutMs + 1); });
+    expect(signal.aborted).toBe(true); expect(screen.getByRole("alert").textContent).toContain("saved event is unchanged");
+    expect(localStorage.getItem(STORAGE_KEY)).toBe(before);
+  });
   it("does not call the provider on mount",()=>{render(createElement(Harness));expect(fetchMock).not.toHaveBeenCalled();expect(screen.getByText(/sent to Google Gemini/)).toBeTruthy();});
   it.each(["rule-based","live-ai"])("displays honest %s recommendations and saves once",async source=>{
     mockResponses(source);render(createElement(Harness));click("Generate personalized ideas");await screen.findByText(/Practical next steps for/);
