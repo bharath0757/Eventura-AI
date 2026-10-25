@@ -1,7 +1,7 @@
 import { describe,expect,it } from "vitest";
 import { categories } from "@/lib/config";
 import { briefSchema,creationSchema,recordSchema,parseIntegerInput } from "@/lib/validation/schemas";
-import { addDays,formatDate,isCalendarDate,todayLocal } from "@/lib/dates";
+import { addDays,daysBetween,formatDate,isCalendarDate,todayLocal } from "@/lib/dates";
 import { fixture,record,reference } from "./fixtures";
 describe("event validation",()=>{
   for(const category of categories)it(`accepts a valid ${category}`,()=>expect(creationSchema(reference).safeParse(fixture(category)).success).toBe(true));
@@ -24,6 +24,10 @@ describe("event validation",()=>{
   it("rejects inconsistent timeline urgency",()=>{const r=record();r.plan.timeline[0].urgent=!r.plan.timeline[0].urgent;expect(recordSchema.safeParse(r).success).toBe(false);});
 });
 describe("date-only utilities",()=>{
+  it.each([['2028-02-28','2028-03-01',2],['2027-03-01','2027-02-28',-1],['2027-03-14','2027-03-15',1],['2027-01-01','2027-01-01',0]] as const)("counts whole calendar days from %s to %s",(start,end,days)=>expect(daysBetween(start,end)).toBe(days));
+  it("rejects invalid dates and fractional offsets before date arithmetic",()=>{expect(()=>addDays("2027-02-30",1)).toThrow();expect(()=>addDays("2027-02-28",0.5)).toThrow();});
+  it("enforces supported calendar-year boundaries",()=>{expect(isCalendarDate("0999-12-31")).toBe(false);expect(isCalendarDate("1000-01-01")).toBe(true);expect(isCalendarDate("9999-12-31")).toBe(true);});
+
   it("handles leap years",()=>{expect(isCalendarDate("2028-02-29")).toBe(true);expect(isCalendarDate("2027-02-29")).toBe(false);});
   it("crosses calendar boundaries without shifting the date",()=>{expect(addDays("2027-03-01",-1)).toBe("2027-02-28");expect(addDays("2028-03-01",-1)).toBe("2028-02-29");expect(addDays("2027-01-01",-1)).toBe("2026-12-31");});
   it("formats date-only input without a local timezone shift",()=>expect(formatDate("2027-02-14")).toContain("14"));

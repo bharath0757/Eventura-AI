@@ -31,6 +31,12 @@ npm run typecheck
 npm run build
 ```
 
+## Testing and evaluation
+
+The evaluated default-main demo did not contain the complete planner, Gemini service or tests. The exact verified branch discrepancy is documented in [the testing audit](docs/testing-audit.md); the complete implementation preserves that main history. [The remediation report](docs/remediation-report.md) records the current publication and CI state rather than assuming a local pass proves the evaluated branch is fixed.
+
+Use [the reproducible testing guide](docs/testing.md) for credential-free unit, API, component, coverage and desktop/mobile browser checks. `npm run test:coverage` enforces measured critical-logic regression gates. After `npm run build`, install Chromium with `npx playwright install --with-deps --only-shell chromium` and run `npm run test:e2e`. Ordinary validation never invokes the separate live Gemini smoke runner. The [requirements-to-evidence matrix](docs/problem-alignment.md) maps every challenge requirement to real screens, implementation and tests. GitHub Actions runs the same checks without production secrets.
+
 ## User journey
 - Choose an occasion on the landing page; its category is prefilled at `/events/new?category=wedding|birthday|community`.
 - Complete essentials, category-specific preferences, budget and priorities.
@@ -62,7 +68,7 @@ npm run build
 ## Repository baseline
 The supplied GitHub repository contained only its MIT license at commit `227841e2b65db2efe155cc5c5050abd9b1e1aaeb`. The Next.js foundation described in the brief was absent, so this implementation adds it without replacing application code. Original Git history and license are preserved. Before publication, newer Phase 1 commits through abf249d were merged. Their reusable landing, layout and UI components, brand constants, utilities, environment example and agent guidance are retained. The active Phase 2 routes use the verified canonical data model and PostCSS build configuration.
 
-Runtime: Next.js 16.4.3, React 19.3.1, TypeScript, Tailwind CSS 4, Lucide React, Zod 4 and Vitest 4.1.10. Exact resolved dependencies are recorded in package-lock.json.
+Runtime: Next.js 16.4.3, React 19.3.1, TypeScript, Tailwind CSS 4, Lucide React, Zod 4 and Vitest 4.1.12. Exact resolved dependencies are recorded in package-lock.json.
 
 Do not include node_modules, .next, logs, coverage or environment files in the competition source submission. See IMPLEMENTATION_REPORT.md for verification results and scope.
 

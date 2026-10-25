@@ -74,7 +74,7 @@ export function AIAssistant({ event, onSaved }: { event: EventRecord; onSaved: (
   }
   const saved = event.savedIdeas ?? [];
   return <section id="assistant" className="panel dashboard-section wide-section ai-panel" aria-labelledby="assistant-title">
-    <div className="ai-heading"><span className="ai-symbol"><Sparkles size={24} /></span><div><p className="eyebrow">A little guidance, shaped around you</p><h2 id="assistant-title">Your planning companion.</h2><p className="muted">Ideas, answers and budget options for {event.brief.name}.</p></div></div>
+    <div className="ai-heading"><span className="ai-symbol"><Sparkles size={24} /></span><div><p className="eyebrow">A little guidance, shaped around you</p><h2 id="assistant-title">Your AI planning assistant.</h2><p className="muted">Ideas, answers and budget options for {event.brief.name}.</p></div></div>
     <p className="ai-privacy">When you request assistance, this event’s brief, preferences, plan and question are sent to Google Gemini if configured. Other saved events are never sent. Advice changes your plan only when you choose to save it.</p>
     <div className="ai-actions" aria-label="Assistant actions">{actions.map(({ key, label, icon: Icon }) => <button key={key} type="button" aria-pressed={mode === key} disabled={busy} onClick={() => select(key)}><Icon size={18} />{label}</button>)}</div>
     <form className="ai-form" onSubmit={request} aria-busy={busy}><fieldset disabled={busy}>

@@ -52,3 +52,7 @@ next-env.d.ts
 test-results/
 .env*
 !.env.example
+
+# Browser test reports and traces
+/playwright-report/
+/blob-report/

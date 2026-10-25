@@ -23,6 +23,18 @@ describe("deterministic optimizer",()=>{
     const p=optimizeBudget(request(12001,keys),[{category:"food",action:"reduce",rationale:"Less food",alternative:"Short menu"}]);
     for(const key of keys)expect(p.allocations.find(b=>b.category===key)!.amount).toBe(record().plan.budget.find(b=>b.category===key)!.amount);
   });
+  it("retains every locked allocation when an elevated reserve makes the target feasible",()=>{
+    const original=record(),spending=original.plan.budget.filter(b=>!b.contingency).map(b=>b.category);
+    const saved=applyProposal(original,optimizeBudget(request(20000,spending),[]));
+    const input={...request(20000,saved.plan.budget.map(b=>b.category)),brief:saved.brief,plan:saved.plan};
+    expect(optimizeBudget(input,[]).allocations).toEqual(saved.plan.budget);
+    expect(()=>optimizeBudget({...input,targetBudget:20001},[])).toThrow(/All categories are protected/);
+    expect(()=>optimizeBudget({...input,targetBudget:19999},[])).toThrow(/cannot cover/);
+  });
+  it("rejects repeated guidance categories instead of silently overriding them",()=>{
+    const item={category:"food",action:"maintain" as const,rationale:"Priority",alternative:"Keep menu"};
+    expect(()=>optimizeBudget(request(),[item,item])).toThrow(/repeated category/);
+  });
   it("rejects insufficient protected budget",()=>expect(()=>optimizeBudget(request(1000,["food"]),[])).toThrow(/target cannot cover/));
   it("allows the reserve to absorb a higher target when every spending category is locked",()=>{
     const keys=record().plan.budget.filter(b=>!b.contingency).map(b=>b.category),p=optimizeBudget(request(20000,keys),[]);
