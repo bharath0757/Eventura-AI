@@ -12,3 +12,5 @@
 /* Keep decorative orbits and navigation within narrow viewports. */
 .event-app .hero{overflow:clip}.event-app .brand,.event-app .nav-links>a{white-space:nowrap}
 @media(max-width:360px){.event-app .nav{gap:10px}.event-app .nav-links{gap:8px}.event-app .brand{font-size:21px}.event-app .brand-icon{width:26px;height:26px;margin-right:5px}.event-app .nav-create{font-size:10px!important;padding:8px}.event-app .nav-create svg{width:13px}.event-app .nav-links>a:nth-child(2){font-size:9px}}
+
+.event-app .brand-icon img { display: block; object-fit: contain; border-radius: 8px; }

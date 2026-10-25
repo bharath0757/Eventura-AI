@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Menu, Sparkles, X } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { BRAND } from '@/lib/constants';
 import { usePlanner } from '@/components/planner/planner-provider';
 
 export function Navbar() {
@@ -11,7 +13,7 @@ export function Navbar() {
   return (
     <header className="site-header">
       <div className="container nav-inner">
-        <Link href="/" className="brand" aria-label="Eventura AI home"><span className="brand-mark"><Sparkles size={23} strokeWidth={1.8} /></span><span>eventura<span className="brand-ai">AI</span></span></Link>
+        <Link href="/" className="brand" aria-label="Eventura AI home"><span className="brand-mark"><Image src={BRAND.logoMark} alt="" width={38} height={38} className="brand-logo-img" priority /></span><span className="brand-text">eventura<span className="brand-ai">AI</span></span></Link>
         <nav className="desktop-nav" aria-label="Main navigation"><a href="#occasions">Occasions</a><a href="#features">The experience</a><a href="#how-it-works">How it works</a></nav>
         <div className="nav-actions">
           <button className="text-button saved-plan-button" onClick={openSavedPlan}>My events</button>

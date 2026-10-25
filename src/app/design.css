@@ -104,3 +104,8 @@ html:has(.landing-site) { scroll-behavior: smooth; scroll-padding-top: 100px; }
 .landing-site .priority-options button, .landing-site .form-footer .button, .landing-site .form-footer .text-button { font-size: 11px; }
 .landing-site .form-info p, .landing-site .result-note { font-size: 11px; }
 .landing-site .planner-dialog-result .preview-panel { min-height: 320px; }
+
+/* Official brand mark retained from the concurrent branding release. */
+.landing-site .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 9px; overflow: hidden; box-shadow: 0 4px 14px #07122e29; line-height: 0; flex-shrink: 0; background: #07122e; }
+.landing-site .brand-logo-img { border-radius: 9px; object-fit: contain; display: block; }
+.landing-site .brand-text { display: inline-flex; align-items: center; }

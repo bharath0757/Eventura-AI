@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { Sparkles, Plus, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { Plus, ArrowUpRight } from "lucide-react";
+import { BRAND } from "@/lib/constants";
 export function Header() {
   return <header className="site-header"><nav className="nav container" aria-label="Main navigation">
-    <Link href="/" className="brand"><span className="brand-icon"><Sparkles size={20} aria-hidden="true"/></span>eventura<span className="brand-ai">AI</span></Link>
+    <Link href="/" className="brand" aria-label="Eventura AI home"><span className="brand-icon"><Image src={BRAND.logoMark} alt="" width={32} height={32}/></span>eventura<span className="brand-ai">AI</span></Link>
     <div className="nav-links"><Link href="/#how-it-works">How it works</Link><Link href="/events">My events</Link><Link href="/events/new" className="nav-create"><Plus size={16} aria-hidden="true"/> Create event</Link></div>
   </nav></header>;
 }

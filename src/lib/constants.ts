@@ -7,6 +7,9 @@ export const BRAND = {
   tagline: 'Your Vision. Your Budget. Your Perfect Event.',
   description:
     'Eventura AI is a GenAI-powered event-planning assistant that helps you plan weddings, birthdays, and community events with personalized plans, smart budgets, and adaptive recommendations.',
+  logo: '/logo.png',
+  logoCropped: '/logo-cropped.png',
+  logoMark: '/logo-mark-rounded.png',
 } as const;
 
 /** Semantic colour palette — used as Tailwind classes */
