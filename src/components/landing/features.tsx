@@ -7,7 +7,7 @@ import { usePlanner } from '@/components/planner/planner-provider';
 const BENEFITS = [
   { icon: Wallet, title: 'A budget with breathing room.', description: 'Thoughtful allocations, clear estimates, and a little set aside for the unexpected.' },
   { icon: CalendarDays, title: 'Every to-do, a little less daunting.', description: 'A practical checklist and a home for every vendor, so the details stay together.' },
-  { icon: SlidersHorizontal, title: 'Your plans can change. That’s okay.', description: 'Revisit your details, adjust your priorities, and make the plan feel more like you.' },
+  { icon: SlidersHorizontal, title: 'Your priorities lead the way.', description: 'Choose what matters most, then return to your saved plan as your day gets closer.' },
 ];
 
 export function Features() {
@@ -20,9 +20,9 @@ export function Features() {
 
 const QUESTIONS = [
   { question: 'What can I plan with Eventura?', answer: 'Start with a wedding, birthday, or community gathering. Add your date, location, guest count, and budget, then choose a style and priorities to create a starter plan.' },
-  { question: 'Do I need an account to get started?', answer: 'No account is needed. Your latest event brief is saved in this browser on this device when storage is available. Use “Your plan” in the navigation to return to it, or download a text copy. Checklist and vendor-status changes last only for the current session.' },
-  { question: 'Are these real vendor prices or AI-generated plans?', answer: 'This project currently uses interactive, template-based demo plans. Budget amounts are suggested estimates, not live vendor quotes. Live AI generation and vendor bookings are not connected.' },
-  { question: 'Can I change my budget or event details later?', answer: 'Yes. Open your plan, choose “Edit my details”, and update your event information. Creating the plan again recalculates the suggested budget based on your occasion and selected priorities. It also resets your session checklist.' },
+  { question: 'Do I need an account to get started?', answer: 'No account is needed. Your events and task progress are saved in this browser on this device when storage is available. Use “My events” in the navigation to return to your plans. The sample preview is separate and its changes last only for that preview.' },
+  { question: 'Are these real vendor prices or AI-generated plans?', answer: 'Your starter plan uses transparent rules and estimated budgets. In your event dashboard, request Gemini ideas, contextual answers and budget proposals. Live AI requires provider configuration; otherwise clearly labelled rule-based guidance is available. Vendor quotes and bookings are not connected.' },
+  { question: 'Can I change my budget or event details later?', answer: 'You can edit every section before creating your event. Afterwards, use Optimize My Budget in your dashboard to protect important allocations, preview a new budget, and save it only after confirming. Your task progress stays with your plan. To change other event details, create a new event.' },
 ];
 
 export function QuestionsAndCTA() {

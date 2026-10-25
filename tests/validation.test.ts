@@ -1,0 +1,35 @@
+import { describe,expect,it } from "vitest";
+import { categories } from "@/lib/config";
+import { briefSchema,creationSchema,recordSchema,parseIntegerInput } from "@/lib/validation/schemas";
+import { addDays,daysBetween,formatDate,isCalendarDate,todayLocal } from "@/lib/dates";
+import { fixture,record,reference } from "./fixtures";
+describe("event validation",()=>{
+  for(const category of categories)it(`accepts a valid ${category}`,()=>expect(creationSchema(reference).safeParse(fixture(category)).success).toBe(true));
+  it.each(["2027-02-30","2026-02-29","2026-13-01","2026-00-10","2026-10-00","2026-1-01","not-a-date"])( "rejects impossible or malformed date %s",date=>expect(creationSchema(reference).safeParse(fixture("wedding",{date})).success).toBe(false));
+  it("rejects past dates at creation",()=>expect(creationSchema(reference).safeParse(fixture("wedding",{date:"2026-10-22"})).success).toBe(false));
+  it("accepts today",()=>expect(creationSchema(reference).safeParse(fixture("wedding",{date:reference})).success).toBe(true));
+  it("keeps historical persisted events readable",()=>expect(briefSchema.safeParse(fixture("wedding",{date:"2020-01-01"})).success).toBe(true));
+  it.each([0,-5,1.2,Infinity,NaN,100001])("rejects guest count %s",guests=>expect(creationSchema(reference).safeParse(fixture("wedding",{guests})).success).toBe(false));
+  it.each([0,-1,999,1000.5,Infinity,NaN,100000001])("rejects invalid budget %s",budget=>expect(creationSchema(reference).safeParse(fixture("wedding",{budget})).success).toBe(false));
+  it.each(["₹1,000","1,000","1e3","1.5","-1000","Infinity","NaN"," 1000","", "9007199254740992"])("rejects malformed numeric input %s",input=>expect(Number.isNaN(parseIntegerInput(input))).toBe(true));
+  it("accepts whole unformatted numeric input",()=>expect(parseIntegerInput("15001")).toBe(15001));
+  it.each([[],["Venue","Photography","Food quality","Decoration"],["Venue","Venue"],["Educational value"]].map(priorities=>({priorities})))("rejects invalid priorities $priorities",({priorities})=>expect(creationSchema(reference).safeParse(fixture("wedding",{priorities})).success).toBe(false));
+  it("rejects incompatible category details",()=>expect(briefSchema.safeParse({...fixture(),details:fixture("birthday").details}).success).toBe(false));
+  it("rejects invalid category-specific enum values",()=>expect(briefSchema.safeParse({...fixture(),details:{...fixture().details,ceremonyStyle:"unknown"}}).success).toBe(false));
+  it.each([{name:"x".repeat(81)},{location:"x".repeat(121)},{notes:"x".repeat(1001)},{dietary:"x".repeat(501)},{accessibility:"x".repeat(501)}])("rejects excessively long fields %j",change=>expect(briefSchema.safeParse(fixture("wedding",change)).success).toBe(false));
+  it("rejects an overlong theme",()=>expect(briefSchema.safeParse({...fixture(),details:{category:"wedding",ceremonyStyle:"modern",theme:"x".repeat(161)}}).success).toBe(false));
+  it("requires names, locations and themes",()=>{for(const field of ["name","location"])expect(briefSchema.safeParse({...fixture(),[field]:"   "}).success).toBe(false);});
+  it("rejects forged persisted financial totals",()=>{const r=record();r.plan.budget[0].amount++;expect(recordSchema.safeParse(r).success).toBe(false);});
+  it("rejects duplicate plan task IDs",()=>{const r=record();r.plan.timeline[1].id=r.plan.timeline[0].id;expect(recordSchema.safeParse(r).success).toBe(false);});
+  it("rejects inconsistent timeline urgency",()=>{const r=record();r.plan.timeline[0].urgent=!r.plan.timeline[0].urgent;expect(recordSchema.safeParse(r).success).toBe(false);});
+});
+describe("date-only utilities",()=>{
+  it.each([['2028-02-28','2028-03-01',2],['2027-03-01','2027-02-28',-1],['2027-03-14','2027-03-15',1],['2027-01-01','2027-01-01',0]] as const)("counts whole calendar days from %s to %s",(start,end,days)=>expect(daysBetween(start,end)).toBe(days));
+  it("rejects invalid dates and fractional offsets before date arithmetic",()=>{expect(()=>addDays("2027-02-30",1)).toThrow();expect(()=>addDays("2027-02-28",0.5)).toThrow();});
+  it("enforces supported calendar-year boundaries",()=>{expect(isCalendarDate("0999-12-31")).toBe(false);expect(isCalendarDate("1000-01-01")).toBe(true);expect(isCalendarDate("9999-12-31")).toBe(true);});
+
+  it("handles leap years",()=>{expect(isCalendarDate("2028-02-29")).toBe(true);expect(isCalendarDate("2027-02-29")).toBe(false);});
+  it("crosses calendar boundaries without shifting the date",()=>{expect(addDays("2027-03-01",-1)).toBe("2027-02-28");expect(addDays("2028-03-01",-1)).toBe("2028-02-29");expect(addDays("2027-01-01",-1)).toBe("2026-12-31");});
+  it("formats date-only input without a local timezone shift",()=>expect(formatDate("2027-02-14")).toContain("14"));
+  it("uses the local calendar day",()=>expect(todayLocal(new Date(2026,9,23,0,1))).toBe(reference));
+});

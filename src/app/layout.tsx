@@ -14,31 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://eventura.ai'),
-  title: `${BRAND.name} — Beautifully planned.`,
+  metadataBase: new URL('https://eventura-ai.vercel.app'),
+  title: { default: `${BRAND.name} — Beautifully planned.`, template: "%s | Eventura AI" },
+  icons: { icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/eventura-mark.svg', type: 'image/svg+xml' }], apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }] },
   description: BRAND.description,
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/eventura-mark.svg', type: 'image/svg+xml' },
-      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
-    ],
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-  openGraph: {
-    title: `${BRAND.name} — Beautifully planned.`,
-    description: BRAND.description,
-    images: [
-      {
-        url: '/logo.png',
-        width: 1024,
-        height: 765,
-        alt: 'Eventura AI Logo',
-      },
-    ],
-  },
+  openGraph: { title: `${BRAND.name} — Beautifully planned.`, description: BRAND.description, images: [{ url: BRAND.logo, width: 1024, height: 765, alt: 'Eventura AI Logo' }] },
   keywords: ['event planning', 'AI', 'wedding planner', 'birthday planner', 'event management'],
 };
 

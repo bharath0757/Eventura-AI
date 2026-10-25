@@ -8,9 +8,9 @@ export function Hero() {
   const { startPlanning, viewSample } = usePlanner();
   return <section className="hero container" aria-labelledby="hero-title">
     <div className="hero-copy">
-      <div className="eyebrow hero-eyebrow"><span className="status-dot" /> YOUR OCCASION. A LITTLE EXTRAORDINARY.</div>
+      <div className="eyebrow hero-eyebrow"><span className="status-dot" /> GENAI EVENT PLANNING. MADE PERSONAL.</div>
       <h1 id="hero-title">Big moments.<br />Little details.<br /><em>Beautifully planned.</em></h1>
-      <p className="hero-description">Less juggling. More joy. Bring your wedding, birthday, or community gathering to life with a thoughtful plan that fits your vision and your budget.</p>
+      <p className="hero-description">Plan weddings, birthdays, and community events with budgets, timelines, vendor checklists and personalized ideas. Start with a clear plan, then request Gemini guidance tailored to your occasion.</p>
       <div className="hero-actions"><button className="button button-coral" onClick={() => startPlanning()}>Start planning your event <ArrowUpRight size={18} /></button><button className="sample-link" onClick={viewSample}><CirclePlay size={20} strokeWidth={1.5} /> Explore a sample plan</button></div>
       <div className="hero-reassurance"><span><Check size={14} /> No sign-up needed</span><span><Check size={14} /> Your budget, your rules</span></div>
     </div>

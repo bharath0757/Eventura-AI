@@ -1,149 +1,157 @@
 # Eventura AI
+**Your Vision. Your Budget. Your Perfect Event.**
 
-> **Your Vision. Your Budget. Your Perfect Event.**
+A verified competition prototype for weddings, birthdays and community events. Generate a transparent, rule-based starter plan with an exact INR budget, date-driven milestones, vendor checklist, personalized ideas and practical contingencies.
 
-Eventura AI is a GenAI-powered event-planning assistant that helps you plan weddings, birthdays, and community events with personalised plans, smart budgets, and adaptive recommendations.
+Event planning spreads budgets, deadlines and supplier details across too many places. Eventura AI brings them into an **Adaptive Event Plan**: a deterministic starting plan with contextual recommendations, saved task progress and budget changes you can preview before approving. Gemini provides advisory guidance when configured; the application calculates and validates every monetary amount.
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)
-![License](https://img.shields.io/badge/License-MIT-green)
+Public repository access was verified without authentication on 25 October 2026: [Eventura AI on GitHub](https://github.com/bharath0757/Eventura-AI). Use [codex/eventura-ui-redesign](https://github.com/bharath0757/Eventura-AI/tree/codex/eventura-ui-redesign) for the complete planner and assistant. It preserves Phase 3 history and integrates the latest official branding from `main` without changing the shared checkout. The deployed application code is `bdc4c63`. See [the current release report](GEMINI38_REPORT.md) and [the historical Phase 4 audit](PHASE4_REPORT.md).
 
----
+**Verified app:** [Eventura AI](https://eventura-ai.vercel.app). **Demonstration:** [115-second captioned walkthrough](https://drive.google.com/file/d/1eZxlgrBhcgzOtKNx_o6jMM_4rRk9JKAr/view). The video uses actual deployed-app captures and synthetic records, with rule-based fallback clearly identified. It is a silent captured-screen walkthrough, not a continuous screen recording or verified live-Gemini demonstration. The [demo plan](DEMO_PLAN.md) includes narration guidance.
 
-## Current website experience
-
-The redesigned interface uses warm ivory, forest green, coral accents, and event photography. It includes responsive occasion selection, an interactive plan preview, a two-step event brief, and a downloadable starter plan.
-
-The planner is a **template-based demo**. Budget allocations respond to the occasion and selected priorities; they are estimates, not vendor quotes. Live AI generation and vendor booking are not connected. The latest event brief is saved in browser storage when available. Checklist and vendor-status changes are kept for the current session and included in the text download.
-
-Event photographs are bundled locally in `public/images/` from Unsplash: [wedding](https://images.unsplash.com/photo-1519225421980-715cb0215aed), [birthday](https://images.unsplash.com/photo-1530103862676-de8c9debad1d), and [community gathering](https://images.unsplash.com/photo-1511795409834-ef04bbd61622).
-
-## Product direction
-
-| Feature | Description |
-|---|---|
-| **Smart Budget Breakdown** | AI-generated budget allocations with real-time tracking — every cost clearly labelled as an estimate. |
-| **Planning Timeline** | Deadline-driven task lists from first booking to final check. |
-| **Vendor Checklist** | Organised vendor categories with status tracking (research → contact → book → confirm). |
-| **Personalised Ideas** | Theme suggestions, activity ideas, and creative inspiration tailored to your style. |
-| **Risk & Contingency** | Proactive risk assessment with mitigation strategies. |
-| **Adaptive Planning** | Change your budget, guest count, or priorities and watch the plan update instantly. |
-
-## Getting Started
-
-### Prerequisites
-
-- **Node.js** ≥ 18
-- **npm** ≥ 9
-
-### Installation
-
-```bash
-git clone https://github.com/bharath0757/Eventura-AI.git
-cd Eventura-AI
-npm install
-```
-
-### Environment Variables
-
-Copy the example file and add your API key:
-
-```bash
-cp .env.example .env.local
-```
-
-| Variable | Required | Description |
-|---|---|---|
-| `GEMINI_API_KEY` | No | Reserved for future server-side AI integration; the current UI does not call Gemini. |
-
-The current starter-plan demo works without an API key.
-
-### Development
-
-```bash
+## Run locally
+Use Node.js 24 LTS for the complete development and test toolchain (verified with Node 24.19.0). Next.js declares a 20.9 runtime minimum, while the installed test tooling has newer engine requirements.
+```powershell
+npm ci
 npm run dev
 ```
+Open http://localhost:3000. If that port is in use: `npm run dev -- --port 3038`.
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build
-
-```bash
+Production:
+```powershell
 npm run build
 npm start
 ```
 
-### Lint
-
-```bash
+Verification:
+```powershell
+npm test
 npm run lint
+npm run typecheck
+npm run build
 ```
 
-## Tech Stack
+## Testing and evaluation
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 |
-| Styling | Tailwind CSS 4 |
-| Icons | Lucide React |
-| Validation | Zod |
-| AI Provider | Google Gemini API (server-side only) |
-| Persistence | localStorage (client-side) |
-| Deployment | Vercel-ready |
+The evaluated default-main demo did not contain the complete planner, Gemini service or tests. The exact verified branch discrepancy is documented in [the testing audit](docs/testing-audit.md); the complete implementation preserves that main history. [The remediation report](docs/remediation-report.md) records the current publication and CI state rather than assuming a local pass proves the evaluated branch is fixed.
+
+Use [the reproducible testing guide](docs/testing.md) for credential-free unit, API, component, coverage and desktop/mobile browser checks. `npm run test:coverage` enforces measured critical-logic regression gates. After `npm run build`, install Chromium with `npx playwright install --with-deps --only-shell chromium` and run `npm run test:e2e`. Ordinary validation never invokes the separate live Gemini smoke runner. The [requirements-to-evidence matrix](docs/problem-alignment.md) maps every challenge requirement to real screens, implementation and tests. GitHub Actions runs the same checks without production secrets.
+
+## User journey
+- Choose an occasion on the landing page; its category is prefilled at `/events/new?category=wedding|birthday|community`.
+- Complete essentials, category-specific preferences, budget and priorities.
+- Review or edit each section, then create the event.
+- Open `/events/[eventId]` to review its plan and update timeline/vendor statuses.
+- Revisit `/events` to reopen events or delete one after confirmation.
 
 ## Architecture
+- `src/types/index.ts`: canonical TypeScript types inferred from the runtime schemas.
+- `src/lib/validation/schemas.ts`: Zod validation for briefs, category-specific discriminated unions, plans and stored records. Creation requires today or a future date; historical saved events remain valid.
+- `src/lib/dates.ts`: date-only calendar validation and arithmetic. Dates stay YYYY-MM-DD. UTC is used only for arithmetic and display of date-only values; the creation reference day comes from the user's local calendar.
+- `src/lib/planner/profiles.ts`: category allocation profiles, milestone offsets and vendor templates. Change planning defaults here. Each profile totals 100%, including a 10% contingency.
+- `src/lib/planner/index.ts`: React-independent deterministic planner. Integer products and largest fractional remainders allocate every rupee exactly; profile order resolves ties. Past recommended deadlines are retained but actionable deadlines move to the reference date.
+- `src/lib/storage/events.ts`: injectable, validated localStorage persistence. Missing storage, malformed JSON, unsupported versions and write failures produce explicit errors. Invalid individual records are hidden with a warning and retained in the raw collection during valid writes.
+- `src/components/`: reusable controls, four-step wizard, saved event cards, task controls and dashboard.
+- `tests/`: validation, exact accounting, calendar arithmetic, planning and persistence regression tests.
 
+## Limits and transparency
+- Budget: integer INR from ₹1,000 to ₹10,00,00,000 (100,000,000). This cap keeps input practical and all allocation products safely within integer precision.
+- Guests: 1–1,00,000; volunteers: 0–1,00,000, whole numbers only.
+- Event name: 80 characters; location: 120; theme/style: 160; birthday activities: 300.
+- Priorities: 1–3 distinct, category-appropriate choices.
+- Dietary and accessibility requirements: 500 characters each; special instructions: 1,000.
+- Amounts are planning estimates, not real vendor quotes or verified prices. The contingency reserve is part of the total, not additional money.
+- Storage key: `eventura-ai:v1:events`; envelope and records have explicit version 1. Events remain only in this browser/origin. They do not sync across devices. Clearing site data removes them.
+- The wizard preserves values while navigating its steps. Unsubmitted drafts are not saved across refreshes.
+- There is no authentication or external database. Gemini requests are optional and initiated by the user from the selected event. People using the same browser profile can access its locally saved events.
+
+## Repository baseline
+The supplied GitHub repository contained only its MIT license at commit `227841e2b65db2efe155cc5c5050abd9b1e1aaeb`. The Next.js foundation described in the brief was absent, so this implementation adds it without replacing application code. Original Git history and license are preserved. Before publication, newer Phase 1 commits through abf249d were merged. Their reusable landing, layout and UI components, brand constants, utilities, environment example and agent guidance are retained. The active Phase 2 routes use the verified canonical data model and PostCSS build configuration.
+
+Runtime: Next.js 16.4.3, React 19.3.1, TypeScript, Tailwind CSS 4, Lucide React, Zod 4 and Vitest 4.1.12. Exact resolved dependencies are recorded in package-lock.json.
+
+Do not include node_modules, .next, logs, coverage or environment files in the competition source submission. See IMPLEMENTATION_REPORT.md for verification results and scope.
+
+## Redesigned landing page
+The landing page adds event photography, responsive occasion cards, FAQs, and an interactive illustrative sample. Its primary actions open the full Phase 2 wizard at `/events/new?category=...`; My events opens the existing saved-events collection at `/events`.
+
+Landing styles are scoped to `.landing-site`, while the verified event application styles are scoped to `.event-app`. The `/events` layout retains the application header and footer. The canonical data model, exact budget calculations, dated milestones, persistence, and tests from Phase 2 are preserved. The sample preview uses separate session state and never writes to the saved-events collection.
+
+Photographs are bundled in `public/images/` from Unsplash: [wedding](https://images.unsplash.com/photo-1519225421980-715cb0215aed), [birthday](https://images.unsplash.com/photo-1530103862676-de8c9debad1d), and [community gathering](https://images.unsplash.com/photo-1511795409834-ef04bbd61622).
+
+## Phase 3: contextual assistance
+Open a saved event and choose **AI assistant** in its section navigation. Get Personalized Ideas provides separate recommendations, risks and next actions. Keep this idea saves a validated idea with its source label; repeated saves are deduplicated and each event may retain 30 ideas. Ask Eventura AI accepts a question of at most 1,000 characters. Neither action changes the budget.
+
+Optimize My Budget lets you enter a target, protect existing category amounts and explain priorities. Review every current/proposed amount, signed difference, reserve, rationale, alternative, trade-off and assumption. Check the acknowledgement and select **Confirm and save budget** to persist it. **Reject proposal** discards it. Changes to the budget or preferences invalidate an older proposal. Acceptance reads the latest saved event, preserving task progress, preferences, identifiers and timestamps of creation; it updates the modification timestamp and vendor planning allowances. Failed saves report failure and keep the stored record unchanged.
+
+### Configure Gemini
+1. Obtain a key through [Google AI Studio](https://aistudio.google.com/apikey) and review Google's data-use and billing terms for your account.
+2. If `.env.local` does not exist, copy `.env.example` to it; otherwise preserve the existing file and edit only the required variables. Set `GEMINI_API_KEY` locally. Never commit it or use a `NEXT_PUBLIC_` prefix.
+3. `GEMINI_MODEL` is an optional override. The centralized default is `gemini-3.8-flash`, selected as requested and verified in the [official model documentation](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) on 2026-10-24. It supports structured output. Recheck availability before deployment; models can change.
+4. Restart the server after environment changes. For deployment, enter the same server-side variables in the host's environment settings for the intended environment and redeploy. Do not embed values in source or build arguments that expose them to browsers.
+
+Without a key, every ordinary planner interaction still works. Assistant requests return clearly labelled **Rule-based fallback** ideas, topic-based answers and deterministic proposals. Configuration, authentication, quota, network, timeout and invalid-output failures also fall back without retry loops. Successful validated Gemini responses display **AI-generated · Live Gemini**. Users may deliberately retry. Model availability, request quotas, free-tier eligibility and billing depend on the provider and account; no free quota is guaranteed.
+
+### Data and provider boundary
+Only a user-initiated assistant request sends the selected event's brief (including name, location, date, preferences and notes), current plan and relevant instruction/target/protected selections to the server and, if configured, Google Gemini. Nothing is sent on opening a dashboard. No unrelated events, storage envelope, saved AI history, credentials or record timestamps/UUID are sent. The UI discloses this before the request. Avoid entering unnecessary personal information in event notes. The application does not retain raw prompts or responses server-side or log event records. Provider-side retention is governed by your Google terms.
+
+The official `@google/genai` SDK is imported only in `src/lib/ai/client.ts`, marked `server-only`. Configuration, prompts, validated services and API handling are separate from the React UI and financial engine. Structured JSON output is requested through `responseJsonSchema` and validated again with Zod, including actual category references. Responses with invalid fields, actions, categories, truncation or empty content are rejected. No provider tools, live vendor data, bookings, payments or external vendor calls are used. Obtain real quotations yourself before committing money.
+
+### Deterministic optimization policy
+All amounts are integer INR. Protected categories keep their current amounts exactly. The proposed reserve is at least `ceil(targetBudget / 10)` (10%), including when protected. This minimum is enforced for new proposals; legacy Phase 2 records remain readable even where rounding placed their original 10% allocation one rupee below that ceiling. An insufficient protected reserve or total is rejected, never silently changed.
+
+After fixed protected amounts and the reserve are deducted, flexible non-reserve weights start from the existing event category's canonical profile percentages. Validated guidance applies integer multipliers: reduce=75, maintain=100, increase=125, review=100. Missing guidance uses 100. Divide the remaining total proportionally using exact BigInt products and Hamilton largest remainders; original plan order breaks ties. Percentage labels are separately apportioned to exactly 100. Financial results always sum to the target exactly. If the reserve is the only unlocked category, it absorbs any additional remainder. If every category is protected, there must be no remainder. Advice to reduce a protected category cannot override its lock. The preview explains advisory actions; actual amounts follow these deterministic constraints.
+
+Before acceptance, the browser independently recomputes and validates the proposal against the latest saved brief and budget. The storage layer revalidates the full updated record before writing. Only optional `savedIdeas` metadata extends the version-1 record; old records without that field continue to load. Accepted proposals are not stored as pending plans, and rejected proposals never write to storage.
+
+### Limits and production considerations
+`POST /api/ai/plan` accepts JSON only: 64 KiB body limit checked during streaming, 5-second body-read timeout, 1,000-character instruction limit, bounded arrays/fields, 24,000-character provider output limit and 5,000 output tokens. Provider calls have a 60-second timeout and SDK cancellation, with one attempt. Browser and smoke requests time out at 70 seconds; the server route allows 75 seconds. Cancellation stops local handling; Google may still charge for provider work already started.
+
+HTTP errors use structured codes: 400 invalid request/JSON, 403 cross-origin, 408 slow request, 413 oversized body, 415 content type, 422 infeasible budget, 429 request limit, 503 unexpected service failure. Provider failures normally return a successful, explicitly labelled fallback response. API responses are `no-store` and never include raw provider errors or prompts.
+
+The in-memory 30-requests/minute cap is shared by an individual server instance, protecting against forwarded-IP spoofing without retaining identifying data. It is best-effort only: serverless instances/restarts each have separate counters, users share the local cap, and this is not global or enterprise-grade abuse prevention. Production should add an authenticated boundary, a distributed rate limit and provider spending controls. Browser-local storage is not transactional across simultaneous tabs/devices, backed up or encrypted; source context checks prevent stale budget approval within normal sequential usage, but simultaneous storage writes remain a prototype limitation.
+
+### Verification
+`npm test` runs the original planner/storage tests plus AI request/output, mocked official SDK, API, optimizer and React interaction tests. They never require credentials or make real provider calls. `npm run typecheck`, `npm run lint` and `npm run build` check the full application. See `PHASE3_REPORT.md` for actual final results and browser/live-provider verification boundaries. The existing `IMPLEMENTATION_REPORT.md` describes the earlier Phase 2 baseline.
+
+## Repeatable API smoke checks
+
+The smoke runner is separate from ordinary unit tests and builds. It uses five synthetic scenarios through the actual `/api/ai/plan` endpoint: wedding, birthday and community recommendations, a contextual question, and a protected budget proposal. It validates the response schema, honest source label, recommendation context clues, exact financial invariants and unchanged synthetic input. It never reads or writes browser-local saved events. Context-clue checks are a relevance signal, not a substitute for reviewing real generated advice.
+
+Start a local production build in one terminal:
+```powershell
+npm run build
+npm run start -- --port 3044
 ```
-src/
-├── app/                  # Next.js App Router pages & layouts
-│   ├── globals.css       # Global styles & design tokens
-│   ├── layout.tsx        # Root layout with fonts & metadata
-│   └── page.tsx          # Landing page
-├── components/
-│   ├── ui/               # Reusable UI primitives (Button, Card, …)
-│   ├── layout/           # Navbar, Footer
-│   └── landing/          # Landing page sections
-├── lib/
-│   ├── constants.ts      # Brand, colour tokens, event categories
-│   └── utils.ts          # Shared utility helpers
-└── types/
-    └── index.ts          # Core TypeScript type definitions
+
+In another terminal, with a valid server-side `GEMINI_API_KEY` configured in `.env.local`:
+```powershell
+npm run ai:smoke
 ```
 
-### Design Principles
+The runner loads production environment files with Next.js's environment loader, including `.env.local`; it never prints the key. Without a local key it reports **five blocked/skipped live scenarios and makes no API requests**. A green exit with skipped tests is not successful live verification. Restart the app after configuring the key. Do not paste credentials into chat, commit them or pass them in URLs. Model/account availability and quota must be checked with a real successful run; they were not established by the mocked tests.
 
-- **UI components are separated from business logic.**
-- **Deterministic code handles arithmetic and state** — AI provides contextual recommendations only.
-- **API keys are server-side only** — never exposed to the client.
-- **Demo fallback is fully interactive** and clearly identified; it is never presented as a live AI response.
-- **Estimated costs are always labelled as estimates.**
+To verify fallback against a server intentionally running without a key:
+```powershell
+$env:AI_SMOKE_MODE = 'fallback'
+npm run ai:smoke
+Remove-Item Env:AI_SMOKE_MODE
+```
 
-### Visual Direction
+Set `AI_SMOKE_URL` for another port. Requests run sequentially with a 70-second timeout and no retries; after the first failure, remaining scenarios are skipped to avoid repeated failed provider calls. Output contains scenario names, source labels and counts rather than prompts, complete event records, credentials or raw provider errors.
 
-| Token | Colour | Usage |
-|---|---|---|
-| Primary | `#1e2a4a` (Midnight blue) | Navigation, headings |
-| Ivory | `#faf7f2` (Warm ivory) | Backgrounds |
-| Coral | `#e8735a` (Coral) | Primary actions, CTAs |
-| Emerald | `#2d9f6f` (Emerald green) | Completed tasks, positive budget |
-| Lavender | `#b8a9d4` (Soft lavender) | AI insights |
+Remote testing requires an explicit `AI_SMOKE_URL` and `AI_SMOKE_ALLOW_REMOTE=1`; use it only for an authorized deployment. The remote server holds its own credential, so no local key is required in this explicit mode. Never put credentials in the URL. Deployment-protected endpoints need an appropriate access flow before testing; this script does not bypass protection.
 
-## Deployment
+## Deployment and competition status
 
-This project is configured for one-click deployment on **Vercel**:
+The complete release is committed and pushed to `codex/eventura-ui-redesign`. Vercel production deployment [bdc4c63](https://eventura-elzk1uzwl-bharath0757s-projects.vercel.app) reached READY with Node 24 and the existing lockfile. The [stable app address](https://eventura-ai.vercel.app) serves that deployment. Local production is available at `http://localhost:3044` while its server runs, intentionally without a key for fallback use.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bharath0757/Eventura-AI)
+**Live Gemini is partially verified.** The production-only `GEMINI_API_KEY` Secret is configured and was never decrypted or copied. The requested `gemini-3.8-flash` default uses the installed Google SDK's Interactions API with `store: false`, low thinking, structured JSON and no retries. A real contextual-question smoke request passed in 25.555 seconds with validated `live-ai` output. A subsequent wedding-recommendation request timed out after 60.705 seconds and returned honestly labelled fallback; the runner skipped its remaining selected scenarios. Live recommendation and optimization operations remain unverified. Earlier HTTP 503/timeouts are retained as historical evidence. Ordinary tests and browser mocks do not consume provider quota or establish live inference. See [the remediation report](docs/remediation-report.md) for the exact tested deployment and outcomes.
 
-1. Connect your GitHub repository on Vercel.
-2. Set the `GEMINI_API_KEY` environment variable in the Vercel dashboard (optional).
-3. Deploy.
+The remediation checks passed: **258 tests in 10 files**, lint, type checking and production build; scoped critical-logic coverage is **99.32% lines / 91.20% branches**. **12 automated desktop/mobile Chromium workflows** passed against the actual local production build with mocked AI and real no-key fallback. They cover all three category wizards, persisted ideas/progress, contextual requests, protected budget previews, rejection, acknowledged acceptance and recovery. The earlier Phase 4 manual walkthrough is historical; a new manual final visual review was skipped at the user's request. Clean-clone, hosted CI and default-branch publication evidence is recorded in the remediation report.
 
-## License
+Production is currently deployed from the complete feature branch. The default `main` branch contains parallel branding work and is not the complete submission branch. A later automatic deployment from `main` can replace the stable alias; use the immutable release URL above when reviewing this version. The shared checkout and its background work were preserved.
 
-This project is built for demonstration and competition purposes.
+To enable live assistance, configure `GEMINI_API_KEY` as a server-side secret in the project's [environment settings](https://vercel.com/docs/environment-variables/managing-environment-variables), scope it to the intended deployment environment and redeploy. Set `GEMINI_MODEL` only when overriding the supported default. No `NEXT_PUBLIC_` prefix is used. Then run the five live smoke scenarios against that actual deployment. Browser-local plans belong to an origin: localhost records, the immutable deployment and the stable alias do not share localStorage automatically.
 
----
-
-Built with ❤ by the Eventura AI team.
+The public repository's tracked source, Git object storage, historical blobs and all-refs pack estimate were measured against the 10 MB competition limit; supporting measurements are in `PHASE4_REPORT.md`. Dependencies, build output, environment secrets, screenshots and videos remain excluded from the submitted source. The reviewed demonstration is hosted outside Git on Drive with anyone-with-link Viewer access; anonymous viewer and MP4 access were verified.
