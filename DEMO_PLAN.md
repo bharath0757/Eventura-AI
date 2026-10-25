@@ -1,6 +1,6 @@
 # Eventura AI — 110-second demonstration
 
-The [actual deployed app](https://eventura-mp2ge4fjy-bharath0757s-projects.vercel.app) was verified on 24 October 2026. The local production app is also available on `http://localhost:3044` while its server is running. The demonstration uses **rule-based fallback**, because live Gemini verification is blocked by a missing key. Never call this run a live AI demonstration.
+The delivered demonstration captures the [24 October audited deployment](https://eventura-mp2ge4fjy-bharath0757s-projects.vercel.app), which used **rule-based fallback** with no key. The [current 25 October release](https://eventura-elzk1uzwl-bharath0757s-projects.vercel.app) includes the official branding and Gemini 3.8 Flash integration. Its production Secret is configured, but live inference is still unverified because actual requests returned HTTP 503 or timed out. The local production app at `http://localhost:3044` intentionally uses fallback. Never describe the existing video as a live Gemini demonstration. See [the current verification report](GEMINI38_REPORT.md).
 
 Prepare a clean synthetic occasion. Use a future event date, Hyderabad, 120 guests, a sunflower garden wedding, ₹2,40,001, Food quality and Photography priorities, vegetarian catering and step-free entry. Keep existing personal plans and credentials out of the recording. Have one birthday and one community workshop already created for the final comparison. Leave the settings, terminal environment and browser developer tools closed.
 
