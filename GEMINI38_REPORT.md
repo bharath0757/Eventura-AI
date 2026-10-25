@@ -1,4 +1,6 @@
-# Eventura AI — Gemini 3.8 and final release verification
+# Eventura AI — earlier Gemini 3.8 release verification
+
+Historical snapshot from earlier on **25 October 2026**. The [current remediation report](docs/remediation-report.md) supersedes its live status: a later contextual-question request succeeded, while recommendations still timed out. The current testing and publication evidence is also in that report.
 
 Verified **25 October 2026**. The release is published and usable with rule-based assistance. **Successful live Gemini inference remains blocked:** the latest actual provider request returned HTTP 503. A configured Secret, passing mocked tests and usable fallback do not establish live AI success.
 
