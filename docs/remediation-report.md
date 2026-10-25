@@ -1,10 +1,10 @@
 # Evaluation remediation report
 
-Status: 25 October 2026. Verification below distinguishes the public evaluated branch, the complete baseline, and the current remediation candidate.
+Verified 25 October 2026. The evaluated default-branch mismatch is corrected: PR #1 merged the complete planner, tests and CI into main at `90ad1f1a2d7669efdf50d22e6fb4fddb1db37d30`, preserving existing history. This final documentation/test-guard commit follows that integration. The evidence below separates the original evaluated demo, clean-checkout validation, hosted CI, actual fallback and genuine Gemini requests.
 
 ## A. Root cause
 
-The user confirmed evaluation of the public repository's default **main** branch. Anonymous GitHub inspection verified [bharath0757/Eventura-AI](https://github.com/bharath0757/Eventura-AI), with current main at `8bff9947b826ae8512724ea46d561640ef7504b7`. That tree contains **no test files, test script, test dependencies or CI workflow**. It also lacks the saved-event wizard/dashboard routes and server-side Gemini service found on `codex/eventura-ui-redesign`.
+The user confirmed evaluation of the public repository's default **main** branch. Anonymous GitHub inspection verified [bharath0757/Eventura-AI](https://github.com/bharath0757/Eventura-AI), with main at `8bff9947b826ae8512724ea46d561640ef7504b7` at the start of the audit. That historical tree contains **no test files, test script, test dependencies or CI workflow**. It also lacks the saved-event wizard/dashboard routes and server-side Gemini service found on `codex/eventura-ui-redesign`.
 
 The complete branch at `754d73992422cae08693d29cdef995a5fe7f4fc0` had 250 passing tests in ten files, locked test dependencies and working standard commands. A fresh anonymous public clone passed installation, lint, type checking, all 250 tests, build and diff checks without environment files. The earlier 222-test report described a different version from current main. Publishing the correct complete application is therefore the primary repair; adding tests only to an unevaluated branch cannot correct Testing 0.
 
@@ -42,7 +42,7 @@ Reproduce with Node 24: `npm ci`, `npm run lint`, `npm run typecheck`, `npm test
 
 The candidate adds `.github/workflows/ci.yml` for pushes to main/the complete branch, pull requests to main and manual dispatch. It runs Node 24 installation, locked dependencies, lint, typecheck, coverage tests, production build, desktop/mobile browser tests and diff checks. Official actions are pinned to commit hashes; permissions are read-only, timeout is 15 minutes, retries are zero, production secrets are absent and failures are not concealed with `continue-on-error`. Ignored synthetic diagnostics are retained as hosted artifacts for three days.
 
-**Hosted CI result and public workflow publication: pending.** A locally passing equivalent is not a successful GitHub Actions run. Current evaluated main has no workflow. Final evidence must identify the actual public commit and hosted run.
+**Hosted CI passed and the workflow is public on main.** Both [feature push run 40168073342](https://github.com/bharath0757/Eventura-AI/actions/runs/40168073342) and [PR run 40168097625](https://github.com/bharath0757/Eventura-AI/actions/runs/40168097625) completed successfully. The push tested exact head `7cec5cd95f3cc2be855735226a390b4d80d14406`; PR checkout tested synthetic merge `91fa35aa9d13a26b3c97528dad53d824c249a882` combining that head with audited main `8bff994`. Logs confirm 258 tests, all coverage gates, build, all 12 browser tests and diff/artifact steps passed. Raw GitHub status was mergeable/clean before the normal merge. [PR #1](https://github.com/bharath0757/Eventura-AI/pull/1) then merged as `90ad1f1`. Final main-head CI is checked separately after the documentation/test-guard publication; the linked completed runs are exact-commit evidence, not an assumption about future commits.
 
 ## D. Problem alignment
 
@@ -70,6 +70,8 @@ Three forms of evidence must remain separate:
 - **Rule-based fallback:** The browser suite calls the actual local API with explicit empty Gemini credentials and verifies the fallback label and usable planning. Simulated transport failure leaves saved data unchanged and task controls usable.
 - **Genuine provider requests:** Existing production code `bdc4c63` is deployed at [the stable app](https://eventura-ai.vercel.app) and [the immutable release](https://eventura-elzk1uzwl-bharath0757s-projects.vercel.app). A production-only server-side Secret is configured for Gemini 3.8. Earlier requests failed with provider HTTP 503 or timed out. **A new genuine contextual-question smoke scenario D passed against that immutable production deployment in 25,555 ms: source `live-ai`, schema valid, four context clues and no record modification.** The name-filtered run reported one passed and four excluded scenarios; it was not a five-scenario live pass. The subsequent filtered A/C/E run failed on A wedding recommendations after 60,705 ms with honestly labelled timeout fallback. Stop-after-first-failure skipped C and E; B and D were excluded by that filter. Thus genuine contextual questions are verified, while live category recommendations and optimization remain unverified. Fresh Vercel metadata confirms the existing sensitive production-only Secret; its value was not retrieved.
 
+The remediation preview `7cec5cd` at `https://eventura-6n9u8km8w-bharath0757s-projects.vercel.app` also passed all five actual no-key API smoke scenarios: A/B/C each had four context clues; D/E each had three. Protected optimization was checked without persisting an event. These are hosted fallback results, not real Gemini successes. The current main production deployment is `90ad1f1`, READY at `https://eventura-9wqlul5le-bharath0757s-projects.vercel.app`; its provider boundary is byte-for-byte unchanged from the actual live-tested `bdc4c63` build.
+
 The bounded `npm run ai:smoke` remains separate, uses synthetic events, verifies genuine source/contracts/accounting, stops after the first failure and never persists browser events. The successful D request establishes actual inference for that scenario on existing production, not all category or optimization outputs and not a new remediation deployment. Four of the six additional requests authorized across this work were used: earlier D timeout and A 503, then D success and A timeout; two remain unused. No further live requests are planned for this remediation. A green skipped smoke run does not count as live success.
 
 ## F. Regression audit
@@ -87,21 +89,21 @@ The existing Security 100, Efficiency 100 and Accessibility 96 scores are regres
 | Repository | Public anonymous access verified: `https://github.com/bharath0757/Eventura-AI.git` |
 | Working/submission branch | `codex/eventura-ui-redesign` |
 | Complete public baseline | `754d73992422cae08693d29cdef995a5fe7f4fc0` |
-| Evaluated default main | `8bff9947b826ae8512724ea46d561640ef7504b7`; still missing the complete implementation/tests at audit time |
-| Deployed application code | `bdc4c63`; remediation deployment not established |
-| Local remediation code commit | `0d86ff5dcf36b21d3abdfa48d09a4800cba4ac4c`; not pushed at this snapshot |
-| Final documentation/publication commit / public main integration | Pending publication and verification |
+| Original evaluated default main | `8bff9947b826ae8512724ea46d561640ef7504b7`; missing the complete implementation/tests at audit time |
+| Remediation production deployment | `90ad1f1`; Vercel READY, [immutable build](https://eventura-9wqlul5le-bharath0757s-projects.vercel.app), [stable app](https://eventura-ai.vercel.app) |
+| Clean-verified remediation code | `0d86ff5dcf36b21d3abdfa48d09a4800cba4ac4c`, published through `7cec5cd` and merged into main |
+| Public main integration | [PR #1](https://github.com/bharath0757/Eventura-AI/pull/1), normal merge `90ad1f1a2d7669efdf50d22e6fb4fddb1db37d30`; final small test-guard/documentation commit follows |
 | Code candidate `0d86ff5` tracked source | **110 files; 4,483,891 bytes** (4.48 MB decimal) |
 | Code candidate Git storage | **3,126,980 bytes** all-refs pack estimate; **4,232 KiB** loose-object storage |
-| Final documentation-inclusive measurements | Remeasure after the final documentation/publication commit |
+| Documentation-inclusive published snapshot `7cec5cd` | **111 tracked files; 4,500,224 bytes**; no browser/build artifacts included |
 
-The candidate includes ten unit/API/component test files, fixtures/setup, two browser-test source files, test configurations, lockfile, Node-version declaration, CI and these evidence documents. Dependencies, build output, secrets, coverage, browser installations, traces and reports are excluded. No generated browser video or binary installation is submitted. The measured code candidate's tracked source and Git object/pack sizes are below the strict 10 MB limit. Recheck after the final documentation commit rather than attributing the candidate's exact count to a later commit.
+The candidate includes ten unit/API/component test files, fixtures/setup, two browser-test source files, test configurations, lockfile, Node-version declaration, CI and these evidence documents. Dependencies, build output, secrets, coverage, browser installations, traces and reports are excluded. No generated browser video or binary installation is submitted. The measured code candidate's tracked source and Git object/pack sizes are below the strict 10 MB limit. The final documentation/test-guard commit adds no assets or runtime dependencies; exact final source and all-refs pack measurements are retained outside Git with the release evidence, rather than attributing a previous commit's exact count to a later one.
 
 Existing valid commits and parallel main branding history are preserved. No reset, history rewrite, force-push or discard of shared uncommitted work is required to integrate the complete application. The publication repair is a normal reviewed integration of the verified complete branch into the branch the evaluator actually uses.
 
 ## H. Remaining limitations
 
-1. Main integration, final public commit, final documentation-inclusive size measurement and an actual hosted CI pass are still pending at this snapshot. Until main contains the complete verified version, the original evaluation mismatch remains.
+1. The evaluated main mismatch is fixed and both hosted premerge CI runs passed. Submit the exact final main commit after its final CI check; the shared local D checkout intentionally remains unchanged and can be updated deliberately after its background work is finished.
 2. Genuine Gemini scenario D passed. A wedding recommendations timed out to fallback; C/E were skipped after that failure and B was excluded. Live category recommendations and optimization therefore remain unverified. One contextual-question success does not establish complete live coverage or availability.
 3. Final clean-candidate checks passed against exact `0d86ff5`, including locked installation, all 258 tests, coverage gates, build and 12 browser tests; no runtime environment files existed and final Git status was clean. Hosted CI and evaluated-branch publication still require separate evidence.
 4. Browser coverage is desktop/mobile Chromium, not every browser, assistive technology or visual layout. Manual final visual review was intentionally omitted.
@@ -110,6 +112,6 @@ Existing valid commits and parallel main branding history are preserved. No rese
 
 ## I. Final recommendation
 
-Request reevaluation only after the complete verified implementation, tests, lockfile, CI and evidence documents are publicly present on the actual evaluated branch; a final clean checkout passes every documented command and browser suite; the hosted CI run is green; and final source/Git sizes are confirmed under 10 MB. Record the exact commit and immutable deployment submitted.
+Request reevaluation using the complete **main** branch and its exact verified commit, with the CI run and requirements matrix attached. The branch now includes the implementation, tests, lockfile, CI and evidence documents. Clean checkout and hosted merge CI passed all documented checks. Record the final publication SHA and immutable deployment rather than submitting the old demo or relying on a local report.
 
 The genuine D success supports the contextual-question claim on existing production. Disclose the A timeout and unverified live category/optimization scenarios before reevaluation; do not present these partial results as a complete live workflow pass. Demonstrate the clearly labelled fallback separately. Reevaluate the software and its reproducible evidence, without predicting the evaluator's score.

@@ -12,7 +12,9 @@ describe("exact budget accounting",()=>{
       expect(items.reduce((s,i)=>s+i.amount,0)).toBe(total);
       expect(items.reduce((s,i)=>s+i.percentage,0)).toBe(100);
       expect(items.every(i=>Number.isSafeInteger(i.amount)&&i.amount>=0)).toBe(true);
-      expect(items.find(i=>i.contingency)?.amount).toBeGreaterThan(0);
+      const reserve=items.find(i=>i.contingency)!;
+      expect(reserve.percentage).toBe(10);expect(items.filter(i=>i.contingency)).toHaveLength(1);
+      expect(reserve.amount).toBeGreaterThanOrEqual(Math.floor(total/10));expect(reserve.amount).toBeLessThanOrEqual(Math.ceil(total/10));
       expect(allocateBudget(category,total)).toEqual(items);
       expect(items.map(i=>i.category)).toEqual(budgetProfiles[category].map(i=>i.key));
     });
@@ -30,6 +32,7 @@ describe("complete deterministic plans",()=>{
       expect(generatePlan(b,reference)).toEqual(plan);
       for(const t of plan.timeline){expect(isCalendarDate(t.dueDate)).toBe(true);expect(t.dueDate>=reference).toBe(true);expect(t.dueDate<=b.date).toBe(true);}
       expect(plan.timeline[0].originalDueDate).toBe(addDays(b.date,-milestones[category][0].daysBefore));
+      for(const dates of [plan.timeline.map(t=>t.dueDate),plan.timeline.map(t=>t.originalDueDate)])expect(dates).toEqual([...dates].sort());
     });
     it(`${category}: soon-upcoming events receive urgent actionable tasks`,()=>{
       const plan=generatePlan(fixture(category,{date:reference}),reference);
