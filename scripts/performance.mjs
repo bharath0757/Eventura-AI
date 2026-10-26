@@ -194,7 +194,12 @@ try {
   // and numeric audit summaries are retained; no image/trace files are saved.
   const chrome = await launch({
     chromePath: arg("chrome-path", process.env.CHROME_PATH || chromium.executablePath()),
-    chromeFlags: ["--headless", "--disable-gpu", "--no-first-run"],
+    chromeFlags: [
+      "--headless",
+      "--disable-gpu",
+      "--no-first-run",
+      ...(process.env.CI === "true" ? ["--no-sandbox", "--disable-dev-shm-usage"] : []),
+    ],
     logLevel: "silent",
   });
   try {
