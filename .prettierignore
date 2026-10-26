@@ -1,0 +1,12 @@
+node_modules
+.next
+coverage
+playwright-report
+test-results
+blob-report
+.vercel
+public
+package-lock.json
+next-env.d.ts
+*.tsbuildinfo
+.env*

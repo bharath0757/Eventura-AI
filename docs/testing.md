@@ -4,6 +4,7 @@ Use **Node 24** (`.nvmrc`) and the committed npm lockfile. No Google account, en
 
 ```sh
 npm ci
+npm run format:check
 npm run lint
 npm run typecheck
 npm test
@@ -18,16 +19,18 @@ On Windows, `npx playwright install --only-shell chromium` installs the one requ
 
 ## What the layers prove
 
-| Command / files | Evidence |
-| --- | --- |
-| `npm test`, `tests/planner.test.ts`, `validation.test.ts` | Category profiles, budgets from minimum to maximum, rounding, exact totals, date/guest validation, urgent tasks, distinct ideas/vendors/risks |
-| `tests/optimizer.test.ts` | Reducing/increasing targets, protected catering/multiple/all categories, reserve, infeasibility, tampering/staleness, exact integers and progress preservation |
-| `tests/ai-contracts.test.ts`, `ai-provider.test.ts`, `ai-api.test.ts` | Mocked SDK success/failures, strict contracts, byte/input/output limits, authentication/quota/timeouts/cancellation, origin checks, throttling and honest fallback |
-| `tests/storage.test.ts`, optimizer persistence cases | CRUD, statuses, ideas/deduplication, older version-1 records, corrupt/denied/full storage and no false success after failure |
-| `tests/ai-ui.test.ts`, `dashboard-recovery.test.ts` | Actual component actions, cancellation, acknowledgement, reject/accept, failed saves, malformed responses and usable recovery |
-| `npm run test:e2e`, `e2e/planning.spec.ts` | Six complete UI workflows in desktop and mobile Chromium: all categories, contextual ideas/questions, locked comparison, reject/accept, reload/reopen persistence, real no-key fallback, simulated network failure and keyboard/error focus |
+| Command / files                                                       | Evidence                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm test`, `tests/planner.test.ts`, `validation.test.ts`             | Category profiles, budgets from minimum to maximum, rounding, exact totals, date/guest validation, urgent tasks, distinct ideas/vendors/risks                                                                                               |
+| `tests/optimizer.test.ts`                                             | Reducing/increasing targets, protected catering/multiple/all categories, reserve, infeasibility, tampering/staleness, exact integers and progress preservation                                                                              |
+| `tests/ai-contracts.test.ts`, `ai-provider.test.ts`, `ai-api.test.ts` | Mocked SDK success/failures, strict contracts, byte/input/output limits, authentication/quota/timeouts/cancellation, origin checks, throttling and honest fallback                                                                          |
+| `tests/storage.test.ts`, optimizer persistence cases                  | CRUD, statuses, ideas/deduplication, older version-1 records, corrupt/denied/full storage and no false success after failure                                                                                                                |
+| `tests/ai-ui.test.ts`, `dashboard-recovery.test.ts`                   | Actual component actions, cancellation, acknowledgement, reject/accept, failed saves, malformed responses and usable recovery                                                                                                               |
+| `npm run test:e2e`, `e2e/planning.spec.ts`                            | Six complete UI workflows in desktop and mobile Chromium: all categories, contextual ideas/questions, locked comparison, reject/accept, reload/reopen persistence, real no-key fallback, simulated network failure and keyboard/error focus |
 
 The browser AI boundary is explicitly mocked using schema-valid synthetic context for deterministic tests; those responses are not real Gemini output. The missing-key browser case calls the real local Eventura API. Its server has explicit empty Gemini environment values. Unit setup also empties credentials and rejects unmocked `fetch` calls, making accidental external requests fail visibly. Live smoke files are excluded from ordinary Vitest discovery.
+
+The accessibility browser cases also check all wizard steps and error hints, saved events, dashboard, all three assistant results and sample tabs with axe WCAG 2 A/AA and 2.1 AA rules. They verify keyboard tab navigation, modal focus restoration, temporary sample progress and downloaded plan contents. These automated checks do not establish complete WCAG conformance. The newer component regressions invalidate advice after task progress changes and verify that successful mutations use returned records without a second storage read.
 
 ## Coverage
 
@@ -37,7 +40,7 @@ Measured regression gates: critical-logic totals require 90% statements, 85% bra
 
 ## CI and failures
 
-`.github/workflows/ci.yml` runs on pushes to main/the complete feature branch, pull requests to main and manual dispatch. It installs Node 24 and dependencies, runs lint, type checking, coverage tests, production build and both browser projects. It uses read-only repository permissions, pinned official actions, a 15-minute timeout, concurrency cancellation and no production secrets. No failing step uses `continue-on-error`. Browser retries are zero. Synthetic reports/traces are retained as CI artifacts for three days; none are committed.
+`.github/workflows/ci.yml` runs on pushes to main, pull requests to main and manual dispatch. It installs Node 24 and dependencies, runs formatting, lint, type checking, coverage tests, production build and both browser projects. A separate 25-minute performance job builds the same revision, measures all four routes and enforces the recorded CSS/JavaScript and mobile Lighthouse budgets. It uses read-only repository permissions, pinned official actions, a 15-minute timeout, concurrency cancellation and no production secrets. No failing step uses `continue-on-error`. Browser retries are zero. Synthetic reports/traces are retained as CI artifacts for three days; none are committed.
 
 For a browser failure, inspect the failing locator/output, `playwright-report/` or the retained trace. Do not weaken assertions or skip a broken workflow. For a coverage failure, inspect the reported uncovered branch and add a meaningful regression case when needed. A clean command exit, not the presence of a report, establishes success.
 
