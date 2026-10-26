@@ -19,7 +19,7 @@ html:has(.landing-site) {
   margin: 0;
   background: var(--background);
   color: var(--ink);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 .landing-site button,

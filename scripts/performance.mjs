@@ -227,6 +227,7 @@ try {
           name,
           run,
           lighthouseVersion: lhr.lighthouseVersion,
+          benchmarkIndex: lhr.environment?.benchmarkIndex,
           score: lhr.categories.performance.score * 100,
           lcpMs: metric("largest-contentful-paint"),
           cls: metric("cumulative-layout-shift"),

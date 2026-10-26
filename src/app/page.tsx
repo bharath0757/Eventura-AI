@@ -1,4 +1,3 @@
-import { Geist } from "next/font/google";
 import { createSamplePlan } from "@/lib/sample-plan";
 import "./design.css";
 import "./responsive.css";
@@ -11,12 +10,10 @@ import { HowItWorks } from "@/components/landing/how-it-works";
 import { PlannerProvider } from "@/components/planner/planner-provider";
 import { CalendarCheck, HeartHandshake, Leaf, Wallet } from "lucide-react";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "optional" });
-
 export default function HomePage() {
   const sample = createSamplePlan();
   return (
-    <div className={`landing-site ${geistSans.variable}`}>
+    <div className="landing-site">
       <PlannerProvider sample={sample}>
         <a href="#main-content" className="skip-link">
           Skip to content
