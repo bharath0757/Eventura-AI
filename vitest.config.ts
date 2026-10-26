@@ -24,6 +24,7 @@ export default defineConfig({
         lines: 95,
         "src/lib/ai/optimizer.ts": { statements: 95, branches: 90, functions: 100, lines: 100 },
         "src/lib/storage/events.ts": { statements: 95, branches: 90, functions: 100, lines: 100 },
+        "src/lib/storage/records.ts": { statements: 95, branches: 90, functions: 100, lines: 100 },
       },
     },
   },

@@ -15,6 +15,7 @@ if (!["localhost", "127.0.0.1", "[::1]"].includes(base.hostname)) {
 }
 const out = path.resolve(arg("out", "test-results/performance"));
 const label = arg("label", "candidate");
+const chromePath = arg("chrome-path", process.env.CHROME_PATH || chromium.executablePath());
 const runs = Number(arg("runs", "3"));
 if (!Number.isInteger(runs) || runs < 1 || runs > 5) throw new Error("Use 1–5 runs.");
 const storageKey = "eventura-ai:v1:events";
@@ -178,6 +179,7 @@ try {
     label,
     referenceCommit: process.env.GITHUB_SHA || arg("revision", undefined),
     browserVersion: browser.version(),
+    lighthouseExecutable: path.basename(chromePath),
     nodeVersion: process.version,
     platform: process.platform,
     compressionMethod:
@@ -196,7 +198,7 @@ try {
   // Lighthouse uses a separate temporary Chrome profile. Only synthetic storage
   // and numeric audit summaries are retained; no image/trace files are saved.
   const chrome = await launch({
-    chromePath: arg("chrome-path", process.env.CHROME_PATH || chromium.executablePath()),
+    chromePath,
     chromeFlags: [
       "--headless",
       "--disable-gpu",

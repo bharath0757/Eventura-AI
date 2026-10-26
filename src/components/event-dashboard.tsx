@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { categoryLabels } from "@/lib/config";
 import { money, formatDate, formatUpdatedAt } from "@/lib/dates";
-import { eventStore } from "@/lib/storage/events";
+import { recordStore } from "@/lib/storage/records";
 import { statusSchema } from "@/lib/validation/schemas";
 import { useEvents } from "./use-events";
 import { Button, EmptyState, Notice } from "./controls";
@@ -38,7 +38,7 @@ export function EventDashboard({ eventId }: { eventId: string }) {
     const result = statusSchema.safeParse(value);
     if (!result.success) return;
     try {
-      const savedEvent = eventStore().setTaskStatus(eventId, section, taskId, result.data);
+      const savedEvent = recordStore().setTaskStatus(eventId, section, taskId, result.data);
       replaceSaved(savedEvent);
       setSaveError("");
       setAnnouncement("Task status saved.");

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useSyncExternalStore } from "react";
 import type { EventRecord } from "@/types";
-import { eventStore, STORAGE_KEY, type EventSnapshot } from "@/lib/storage/events";
+import { recordStore, STORAGE_KEY, type EventSnapshot } from "@/lib/storage/records";
 
 interface EventsView {
   snapshot: EventSnapshot | null;
@@ -21,7 +21,7 @@ function createEventsAdapter() {
     if (invalidated) {
       invalidated = false;
       try {
-        view = { snapshot: eventStore().list(), error: "" };
+        view = { snapshot: recordStore().list(), error: "" };
       } catch (error) {
         view = {
           snapshot: view.snapshot,

@@ -12,7 +12,7 @@ import {
 } from "@/lib/validation/schemas";
 import { todayLocal } from "@/lib/dates";
 import { createRecord } from "@/lib/planner";
-import { eventStore } from "@/lib/storage/events";
+import { recordStore } from "@/lib/storage/records";
 
 function defaults(category: Category): CategoryDetails {
   if (category === "wedding") return { category, ceremonyStyle: "traditional", theme: "" };
@@ -119,7 +119,7 @@ export function useWizard(initialCategory?: Category) {
     setFailure("");
     try {
       const record = createRecord(result.data);
-      eventStore().save(record);
+      recordStore().save(record);
       router.push(`/events/${record.id}`);
     } catch (e) {
       setFailure(

@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { categoryLabels } from "@/lib/config";
 import { money, formatDate } from "@/lib/dates";
-import { eventStore } from "@/lib/storage/events";
+import { recordStore } from "@/lib/storage/records";
 import { useEvents } from "./use-events";
 import { ActionLink, Button, EmptyState, Notice, PageHeading } from "./controls";
 export function SavedEvents() {
@@ -25,7 +25,7 @@ export function SavedEvents() {
   function remove() {
     if (!selected) return;
     try {
-      eventStore().remove(selected.id);
+      recordStore().remove(selected.id);
       removeSaved(selected.id);
       dialog.current?.close();
       setSelected(null);
