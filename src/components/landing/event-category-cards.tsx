@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, CakeSlice, Heart, Users } from "lucide-react";
 import { PlanningAction } from "./planning-action";
+import { DeferredPhoto } from "./deferred-photo";
 
 // Match the container widths and three-column gaps in responsive.css.
 const CARD_IMAGE_SIZES = [
@@ -70,13 +71,15 @@ export function EventCategoryCards() {
               aria-label={`Start planning: ${label}`}
             >
               <div className={`occasion-image occasion-image-${key}`}>
-                <Image
-                  src={`/images/${image}.jpg`}
-                  alt={alt}
-                  fill
-                  sizes={CARD_IMAGE_SIZES}
-                  fetchPriority="low"
-                />
+                <DeferredPhoto>
+                  <Image
+                    src={`/images/${image}.jpg`}
+                    alt={alt}
+                    fill
+                    sizes={CARD_IMAGE_SIZES}
+                    fetchPriority="low"
+                  />
+                </DeferredPhoto>
                 <span className="occasion-type">
                   <Icon size={15} /> {label}
                 </span>
