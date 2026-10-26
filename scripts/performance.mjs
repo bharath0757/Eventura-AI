@@ -92,6 +92,7 @@ try {
       const resources = await page.evaluate(() =>
         performance.getEntriesByType("resource").map((r) => ({
           path: new URL(r.name).pathname,
+          request: new URL(r.name).pathname + new URL(r.name).search,
           transfer: r.transferSize,
           decoded: r.decodedBodySize,
           initiator: r.initiatorType,
@@ -126,6 +127,7 @@ try {
         jsGzip: sum(/\.js$/, "gzip"),
         cssGzip: sum(/\.css$/, "gzip"),
         fontsTransferred: sum(/\.woff2?$/, "transfer"),
+        imagesTransferred: sum(/^\/_next\/image$|\.(png|jpe?g|webp|avif|svg|ico)$/i, "transfer"),
         cssUsed: coverage.reduce(
           (n, c) => n + c.ranges.reduce((s, r) => s + r.end - r.start, 0),
           0,
@@ -174,6 +176,7 @@ try {
   }
   const summary = {
     label,
+    referenceCommit: process.env.GITHUB_SHA || arg("revision", undefined),
     browserVersion: browser.version(),
     nodeVersion: process.version,
     platform: process.platform,
@@ -244,6 +247,14 @@ try {
               .filter((id) => lhr.audits[id])
               .map((id) => [id, { score: lhr.audits[id].score, details: lhr.audits[id].details }]),
           ),
+          imageRequests: (lhr.audits["network-requests"]?.details?.items ?? [])
+            .filter((row) => row.resourceType === "Image" && row.url.startsWith(base.origin))
+            .map((row) => ({
+              request: new URL(row.url).pathname + new URL(row.url).search,
+              bytes: row.resourceSize,
+              transferred: row.transferSize,
+              priority: row.priority,
+            })),
           settings: {
             formFactor: lhr.configSettings.formFactor,
             throttlingMethod: lhr.configSettings.throttlingMethod,

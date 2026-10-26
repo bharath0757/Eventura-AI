@@ -2,6 +2,16 @@ import Image from "next/image";
 import { ArrowUpRight, CakeSlice, Heart, Users } from "lucide-react";
 import { PlanningAction } from "./planning-action";
 
+// Match the container widths and three-column gaps in responsive.css.
+const CARD_IMAGE_SIZES = [
+  "(max-width: 390px) calc(100vw - 36px)",
+  "(max-width: 760px) calc(100vw - 48px)",
+  "(max-width: 900px) calc((100vw - 82px) / 3)",
+  "(max-width: 1150px) calc((100vw - 128px) / 3)",
+  "(max-width: 1352px) calc((100vw - 160px) / 3)",
+  "398px",
+].join(", ");
+
 const OCCASIONS = [
   {
     key: "wedding",
@@ -64,7 +74,8 @@ export function EventCategoryCards() {
                   src={`/images/${image}.jpg`}
                   alt={alt}
                   fill
-                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                  sizes={CARD_IMAGE_SIZES}
+                  fetchPriority="low"
                 />
                 <span className="occasion-type">
                   <Icon size={15} /> {label}
