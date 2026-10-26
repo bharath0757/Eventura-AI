@@ -1605,6 +1605,12 @@ html:has(.event-app) {
 .event-app .wide-section {
   margin-top: 30px;
 }
+/* Keep later planning sections searchable and focusable while the browser
+   skips their offscreen layout/paint work. The size is replaced after render. */
+.event-app .dashboard .wide-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
 .event-app .vendor-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

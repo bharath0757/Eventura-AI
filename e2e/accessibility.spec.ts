@@ -105,6 +105,12 @@ test("saved dashboard and assistant results meet automated accessibility checks"
   await mockAssistant(page);
   await createEvent(page, "wedding");
   await accessible(page);
+  for (const id of ["vendors", "ideas", "risks", "brief"]) {
+    const section = page.locator(`#${id}`);
+    await section.scrollIntoViewIfNeeded();
+    await expect(section.getByRole("heading", { level: 2 })).toBeVisible();
+    await accessible(page);
+  }
   await page.getByRole("link", { name: "AI assistant", exact: true }).click();
   await page.getByRole("button", { name: "Generate personalized ideas", exact: true }).click();
   await expect(page.locator(".ai-result")).toBeVisible();

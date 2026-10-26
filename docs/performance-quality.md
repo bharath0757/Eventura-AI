@@ -38,7 +38,7 @@ The check fails if any route/viewport lacks its measurement, has browser errors,
 
 The landing page renders static sections on the server and loads its interactive sample dialog on demand. Saved-event routes load their own styles and use system fonts. Home links in the planner defer landing-page prefetch so its font and styles are not downloaded during initial planning. The LCP photograph has responsive sizes and high fetch priority. Both surfaces use system sans-serif fonts with Georgia for display headings, eliminating font downloads and late font swaps.
 
-The dashboard reserves loading geometry and defers the optional assistant until its section is reached. Task changes use the validated record returned by persistence, with cross-tab reload behavior retained. Full plan, request, output and financial checks remain in place.
+The dashboard reserves loading geometry and defers the optional assistant until its section is reached. Later panels use [native content visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content-visibility) with reserved size to avoid offscreen layout and paint work while retaining find-in-page and keyboard access. Accessibility checks scroll each later panel into view before analyzing it. Task changes use the validated record returned by persistence, with cross-tab reload behavior retained. Full plan, request, output and financial checks remain in place.
 
 ## Candidate result
 
