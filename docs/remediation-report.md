@@ -16,23 +16,23 @@ Existing planner, validation, optimizer, storage, AI contract/provider/API and R
 
 The candidate adds calendar boundary and all-protected-budget regression cases, explicit credential removal and denial of unmocked network calls in ordinary tests. Vitest and its matching V8 coverage provider are pinned to 4.1.12; Playwright 1.64.1 adds six complete workflows in desktop and mobile Chromium. Browser tests exercise real navigation, wizard forms, all five plan deliverables, contextual requests, idea deduplication, comparison/rejection/confirmed acceptance, task reload/reopening, actual no-key API fallback, simulated request failure and input/error focus.
 
-| Verification | Observed result |
-| --- | --- |
-| Fresh public baseline: `npm ci`, lint, typecheck, `npm test`, build, diff check | Passed; 250 tests, zero failures; no environment files |
-| Candidate unit/integration/component suite and coverage | **258 passed in ten files; zero failures** |
-| Candidate lint, typecheck, unit suite and production build | Passed again after correcting text encoding |
-| Candidate desktop/mobile browser suite | **12 passed; zero failures** in the final post-edit run |
-| Candidate dependency audit | **Zero reported vulnerabilities** after the Vitest patch update |
+| Verification                                                                                                      | Observed result                                                                                  |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Fresh public baseline: `npm ci`, lint, typecheck, `npm test`, build, diff check                                   | Passed; 250 tests, zero failures; no environment files                                           |
+| Candidate unit/integration/component suite and coverage                                                           | **258 passed in ten files; zero failures**                                                       |
+| Candidate lint, typecheck, unit suite and production build                                                        | Passed again after correcting text encoding                                                      |
+| Candidate desktop/mobile browser suite                                                                            | **12 passed; zero failures** in the final post-edit run                                          |
+| Candidate dependency audit                                                                                        | **Zero reported vulnerabilities** after the Vitest patch update                                  |
 | Fresh candidate checkout at `0d86ff5`: install, lint, typecheck, test, coverage, build, browser tests, diff check | **All passed**; 258 unit tests, 12 browser tests, clean Git status, no runtime environment files |
 
 Coverage includes every file in planner, validation, storage, AI and date modules, including uncovered files. It is not whole-application/UI coverage.
 
 | Scoped coverage | Result | Gate |
-| --- | ---: | ---: |
-| Statements | 96.00% | 90% |
-| Branches | 91.20% | 85% |
-| Functions | 98.59% | 90% |
-| Lines | 99.32% | 95% |
+| --------------- | -----: | ---: |
+| Statements      | 96.00% |  90% |
+| Branches        | 91.20% |  85% |
+| Functions       | 98.59% |  90% |
+| Lines           | 99.32% |  95% |
 
 Optimizer and storage each have 100% line/function coverage, with separate statement/branch/line/function gates. Financial invariants and browser interactions remain independent checks; coverage alone does not establish correctness.
 
@@ -48,17 +48,17 @@ The candidate adds `.github/workflows/ci.yml` for pushes to main/the complete br
 
 The complete implementation already supplies functional category-specific plans; remediation verifies that behavior and improves discovery without redesigning working screens. Three copy clarifications name the exact deliverables on the first screen, identify the dashboard assistant and explain where AI assistance follows starter-plan creation. Primary and category actions lead directly to the appropriate wizard.
 
-| Challenge requirement | Implementation and verification |
-| --- | --- |
+| Challenge requirement    | Implementation and verification                                                                                                                                                                                                                                                                 |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GenAI planning assistant | `/api/ai/plan`, `src/lib/ai/` and `ai-assistant.tsx`; contextual structured prompts, server-only SDK, contract/provider/API/component tests. Genuine contextual-question smoke scenario D passed; live recommendations/optimization remain unverified after the wedding recommendation timeout. |
-| Weddings | `/events/new?category=wedding`; ceremony/theme inputs and distinct profiles; planner/validation tests and desktop/mobile wedding creation workflows |
-| Birthdays | Birthday wizard, age/style/activity inputs and distinct plans; category tests and desktop/mobile creation/idea/reopening workflows |
-| Community events | Community wizard, purpose/format/volunteer inputs and distinct coordination milestones; category and desktop/mobile workflows |
-| Budgets | Exact dashboard allocations and protected optimization; optimizer invariants plus browser comparison, rejection and confirmed persistent acceptance |
-| Timelines | Date-based milestones, urgency and persistent statuses; date/planner tests and reload/reopening browser checks |
-| Vendor checklists | Category-specific supplier/helper tasks and statuses; planner/storage tests and preserved vendor progress after budget acceptance |
-| Personalized ideas | Context-sensitive starter ideas, requested source-labelled assistant ideas and saved deduplicated suggestions; category, contract, component and browser tests |
-| Connected journey | Landing → wizard → dashboard → ideas/question → protected budget preview → accept/reject → saved events; six browser workflows on two viewport configurations |
+| Weddings                 | `/events/new?category=wedding`; ceremony/theme inputs and distinct profiles; planner/validation tests and desktop/mobile wedding creation workflows                                                                                                                                             |
+| Birthdays                | Birthday wizard, age/style/activity inputs and distinct plans; category tests and desktop/mobile creation/idea/reopening workflows                                                                                                                                                              |
+| Community events         | Community wizard, purpose/format/volunteer inputs and distinct coordination milestones; category and desktop/mobile workflows                                                                                                                                                                   |
+| Budgets                  | Exact dashboard allocations and protected optimization; optimizer invariants plus browser comparison, rejection and confirmed persistent acceptance                                                                                                                                             |
+| Timelines                | Date-based milestones, urgency and persistent statuses; date/planner tests and reload/reopening browser checks                                                                                                                                                                                  |
+| Vendor checklists        | Category-specific supplier/helper tasks and statuses; planner/storage tests and preserved vendor progress after budget acceptance                                                                                                                                                               |
+| Personalized ideas       | Context-sensitive starter ideas, requested source-labelled assistant ideas and saved deduplicated suggestions; category, contract, component and browser tests                                                                                                                                  |
+| Connected journey        | Landing → wizard → dashboard → ideas/question → protected budget preview → accept/reject → saved events; six browser workflows on two viewport configurations                                                                                                                                   |
 
 [problem-alignment.md](problem-alignment.md) gives exact routes, files and test references, including contingencies. The prompt uses the selected event's category, budget, guests, date, style, priorities, dietary/access needs and category details. Deterministic starter content and fallback are explicitly labelled; no live vendor availability or quotations are invented.
 
@@ -84,18 +84,18 @@ The existing Security 100, Efficiency 100 and Accessibility 96 scores are regres
 
 ## G. Repository and submission readiness
 
-| Item | Current evidence |
-| --- | --- |
-| Repository | Public anonymous access verified: `https://github.com/bharath0757/Eventura-AI.git` |
-| Working/submission branch | `codex/eventura-ui-redesign` |
-| Complete public baseline | `754d73992422cae08693d29cdef995a5fe7f4fc0` |
-| Original evaluated default main | `8bff9947b826ae8512724ea46d561640ef7504b7`; missing the complete implementation/tests at audit time |
-| Remediation production deployment | `90ad1f1`; Vercel READY, [immutable build](https://eventura-9wqlul5le-bharath0757s-projects.vercel.app), [stable app](https://eventura-ai.vercel.app) |
-| Clean-verified remediation code | `0d86ff5dcf36b21d3abdfa48d09a4800cba4ac4c`, published through `7cec5cd` and merged into main |
-| Public main integration | [PR #1](https://github.com/bharath0757/Eventura-AI/pull/1), normal merge `90ad1f1a2d7669efdf50d22e6fb4fddb1db37d30`; final small test-guard/documentation commit follows |
-| Code candidate `0d86ff5` tracked source | **110 files; 4,483,891 bytes** (4.48 MB decimal) |
-| Code candidate Git storage | **3,126,980 bytes** all-refs pack estimate; **4,232 KiB** loose-object storage |
-| Documentation-inclusive published snapshot `7cec5cd` | **111 tracked files; 4,500,224 bytes**; no browser/build artifacts included |
+| Item                                                 | Current evidence                                                                                                                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Repository                                           | Public anonymous access verified: `https://github.com/bharath0757/Eventura-AI.git`                                                                                       |
+| Working/submission branch                            | `codex/eventura-ui-redesign`                                                                                                                                             |
+| Complete public baseline                             | `754d73992422cae08693d29cdef995a5fe7f4fc0`                                                                                                                               |
+| Original evaluated default main                      | `8bff9947b826ae8512724ea46d561640ef7504b7`; missing the complete implementation/tests at audit time                                                                      |
+| Remediation production deployment                    | `90ad1f1`; Vercel READY, [immutable build](https://eventura-9wqlul5le-bharath0757s-projects.vercel.app), [stable app](https://eventura-ai.vercel.app)                    |
+| Clean-verified remediation code                      | `0d86ff5dcf36b21d3abdfa48d09a4800cba4ac4c`, published through `7cec5cd` and merged into main                                                                             |
+| Public main integration                              | [PR #1](https://github.com/bharath0757/Eventura-AI/pull/1), normal merge `90ad1f1a2d7669efdf50d22e6fb4fddb1db37d30`; final small test-guard/documentation commit follows |
+| Code candidate `0d86ff5` tracked source              | **110 files; 4,483,891 bytes** (4.48 MB decimal)                                                                                                                         |
+| Code candidate Git storage                           | **3,126,980 bytes** all-refs pack estimate; **4,232 KiB** loose-object storage                                                                                           |
+| Documentation-inclusive published snapshot `7cec5cd` | **111 tracked files; 4,500,224 bytes**; no browser/build artifacts included                                                                                              |
 
 The candidate includes ten unit/API/component test files, fixtures/setup, two browser-test source files, test configurations, lockfile, Node-version declaration, CI and these evidence documents. Dependencies, build output, secrets, coverage, browser installations, traces and reports are excluded. No generated browser video or binary installation is submitted. The measured code candidate's tracked source and Git object/pack sizes are below the strict 10 MB limit. The final documentation/test-guard commit adds no assets or runtime dependencies; exact final source and all-refs pack measurements are retained outside Git with the release evidence, rather than attributing a previous commit's exact count to a later one.
 

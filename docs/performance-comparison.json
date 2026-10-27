@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "baseline": "baseline",
+  "candidate": "candidate",
+  "recordedAt": "2026-10-27T03:01:33.177Z",
+  "resources": [
+    {
+      "name": "landing",
+      "viewport": "desktop",
+      "cssBefore": 99365,
+      "cssAfter": 52088,
+      "cssReductionPercent": 47.57912745936698,
+      "jsGzipBefore": 159237,
+      "jsGzipAfter": 145239,
+      "fontTransferBefore": 69836,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "wizard",
+      "viewport": "desktop",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 219801,
+      "jsGzipAfter": 194943,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "saved",
+      "viewport": "desktop",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 213297,
+      "jsGzipAfter": 183563,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "dashboard",
+      "viewport": "desktop",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 223168,
+      "jsGzipAfter": 191100,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "landing",
+      "viewport": "mobile",
+      "cssBefore": 99365,
+      "cssAfter": 52088,
+      "cssReductionPercent": 47.57912745936698,
+      "jsGzipBefore": 159237,
+      "jsGzipAfter": 145239,
+      "fontTransferBefore": 69836,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "wizard",
+      "viewport": "mobile",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 219801,
+      "jsGzipAfter": 194943,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "saved",
+      "viewport": "mobile",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 213297,
+      "jsGzipAfter": 183563,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    },
+    {
+      "name": "dashboard",
+      "viewport": "mobile",
+      "cssBefore": 99365,
+      "cssAfter": 58182,
+      "cssReductionPercent": 41.446183263724656,
+      "jsGzipBefore": 223168,
+      "jsGzipAfter": 191100,
+      "fontTransferBefore": 52996,
+      "fontTransferAfter": 0
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "landing",
+      "scoreBefore": 95,
+      "score": 98,
+      "lcpBefore": 2901.24,
+      "lcpMs": 2366.2575,
+      "clsBefore": 0,
+      "cls": 0.00001843423755563454
+    },
+    {
+      "name": "wizard",
+      "scoreBefore": 96,
+      "score": 99,
+      "lcpBefore": 2736.9900000000007,
+      "lcpMs": 2110.4244,
+      "clsBefore": 0,
+      "cls": 0
+    },
+    {
+      "name": "saved",
+      "scoreBefore": 96,
+      "score": 99,
+      "lcpBefore": 2651.8159,
+      "lcpMs": 1962.1367999999998,
+      "clsBefore": 0.05953965871828905,
+      "cls": 0
+    },
+    {
+      "name": "dashboard",
+      "scoreBefore": 88,
+      "score": 98,
+      "lcpBefore": 2806.4098999999997,
+      "lcpMs": 2348.8780000000006,
+      "clsBefore": 0.1773997569866343,
+      "cls": 0
+    }
+  ],
+  "interactions": [
+    {
+      "count": 1,
+      "beforeMs": 33.299999999813735,
+      "afterMs": 33.30000000000291
+    },
+    {
+      "count": 25,
+      "beforeMs": 32.5,
+      "afterMs": 33.30000000000291
+    },
+    {
+      "count": 100,
+      "beforeMs": 33.09999999962747,
+      "afterMs": 33.30000000000291
+    }
+  ],
+  "failures": []
+}

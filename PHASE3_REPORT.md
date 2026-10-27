@@ -16,18 +16,18 @@ Live responses are labelled AI-generated · Live Gemini. Missing configuration, 
 
 ## B. Important files changed
 
-| Area | Files |
-| --- | --- |
-| Provider | `src/lib/ai/config.ts`, `client.ts`, `prompts.ts` |
-| Contracts and validation | `src/lib/ai/contracts.ts`, `schemas.ts`, `result.ts`, `limits.ts` |
-| Service and fallback | `src/lib/ai/service.ts`, `fallback.ts` |
-| Financial logic | `src/lib/ai/optimizer.ts` |
-| HTTP safeguards | `src/lib/ai/http.ts`, `src/app/api/ai/plan/route.ts` |
-| Dashboard UI | `src/components/ai-assistant.tsx`, `ai-results.tsx`, `event-dashboard.tsx`, `src/app/assistant.css`, `globals.css` |
-| Persistence | `src/lib/storage/events.ts`, `src/lib/validation/schemas.ts` |
-| Accurate product copy | Landing FAQ, sample planner, wizard and application footer |
-| Setup | `.env.example`, `package.json`, `package-lock.json`, `README.md` |
-| Regression tests | `tests/ai-contracts.test.ts`, `ai-provider.test.ts`, `ai-api.test.ts`, `ai-ui.test.ts`, `optimizer.test.ts` |
+| Area                     | Files                                                                                                              |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Provider                 | `src/lib/ai/config.ts`, `client.ts`, `prompts.ts`                                                                  |
+| Contracts and validation | `src/lib/ai/contracts.ts`, `schemas.ts`, `result.ts`, `limits.ts`                                                  |
+| Service and fallback     | `src/lib/ai/service.ts`, `fallback.ts`                                                                             |
+| Financial logic          | `src/lib/ai/optimizer.ts`                                                                                          |
+| HTTP safeguards          | `src/lib/ai/http.ts`, `src/app/api/ai/plan/route.ts`                                                               |
+| Dashboard UI             | `src/components/ai-assistant.tsx`, `ai-results.tsx`, `event-dashboard.tsx`, `src/app/assistant.css`, `globals.css` |
+| Persistence              | `src/lib/storage/events.ts`, `src/lib/validation/schemas.ts`                                                       |
+| Accurate product copy    | Landing FAQ, sample planner, wizard and application footer                                                         |
+| Setup                    | `.env.example`, `package.json`, `package-lock.json`, `README.md`                                                   |
+| Regression tests         | `tests/ai-contracts.test.ts`, `ai-provider.test.ts`, `ai-api.test.ts`, `ai-ui.test.ts`, `optimizer.test.ts`        |
 
 Existing components, planner profiles, original tests, routes, saved-event handling and landing design were preserved.
 
@@ -64,14 +64,14 @@ Persistence and React tests cover retaining ideas without duplicates, opening wi
 
 ## F. Required check results
 
-| Command | Actual result |
-| --- | --- |
-| `npm test` | Passed: 222/222, 8 files |
-| `npm run typecheck` | Passed: `tsc --noEmit` |
-| `npm run lint` | Passed: ESLint |
-| `npm run build` | Passed: Next.js 16.4.3 production compilation, TypeScript and route generation |
-| `git diff --check` | Passed; Git only reports expected Windows line-ending notices |
-| `npm audit --omit=dev --json` | Passed: zero production dependency vulnerabilities |
+| Command                       | Actual result                                                                  |
+| ----------------------------- | ------------------------------------------------------------------------------ |
+| `npm test`                    | Passed: 222/222, 8 files                                                       |
+| `npm run typecheck`           | Passed: `tsc --noEmit`                                                         |
+| `npm run lint`                | Passed: ESLint                                                                 |
+| `npm run build`               | Passed: Next.js 16.4.3 production compilation, TypeScript and route generation |
+| `git diff --check`            | Passed; Git only reports expected Windows line-ending notices                  |
+| `npm audit --omit=dev --json` | Passed: zero production dependency vulnerabilities                             |
 
 Production routes include `/`, `/events`, `/events/new`, `/events/[eventId]` and the dynamic `/api/ai/plan` endpoint. The DOM-test dependency was selected to preserve the existing runtime compatibility rather than impose a newer Node requirement solely for component tests. Node 24.19.0 was the runtime actually used for verification.
 
@@ -113,13 +113,13 @@ First configure a server-side key and perform a credentialed smoke test for each
 
 ## Acceptance audit
 
-| Specification criteria | Evidence and boundary |
-| --- | --- |
+| Specification criteria                                                                          | Evidence and boundary                                                                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | A–F: Gemini API, privacy, personalized category/context support, bounded questions and guidance | Server-only provider/config/prompts; validated operation service and API; all-category contract/fallback tests; mocked provider and React tests. Real account/model round trip remains unverified as disclosed above. |
-| G–H: validated boundaries and deterministic finances | Strict Zod request/output schemas, body limits, actual-category checks, independently tested BigInt optimizer and recomputation before approval. |
-| I–L: preview, exact locked amounts, exact total and reserve | Optimizer regression tests and actual production comparison with protected ₹4,501 catering, ₹12,001 total and ₹1,201 reserve. |
-| M–O: explicit approval, rejection and preserved statuses | React/storage tests plus production acceptance/rejection and reopening the saved event. |
-| P–R: honest fallback, service failure resilience and safe errors | Provider error/malformed/timeout tests, API tests, actual missing-key browser responses and unchanged local dashboard. |
-| S: backwards-compatible saved events and existing features | Original 104 tests retained and passing, optional metadata extension, original storage format preserved, full wizard/dashboard browser flow. |
-| T–W: tests, lint, types and build | Actual successful commands recorded above. |
-| X: evidence-based claims | Automated, browser and live-provider verification explicitly separated; unavailable credentialed verification is not represented as completed. |
+| G–H: validated boundaries and deterministic finances                                            | Strict Zod request/output schemas, body limits, actual-category checks, independently tested BigInt optimizer and recomputation before approval.                                                                      |
+| I–L: preview, exact locked amounts, exact total and reserve                                     | Optimizer regression tests and actual production comparison with protected ₹4,501 catering, ₹12,001 total and ₹1,201 reserve.                                                                                         |
+| M–O: explicit approval, rejection and preserved statuses                                        | React/storage tests plus production acceptance/rejection and reopening the saved event.                                                                                                                               |
+| P–R: honest fallback, service failure resilience and safe errors                                | Provider error/malformed/timeout tests, API tests, actual missing-key browser responses and unchanged local dashboard.                                                                                                |
+| S: backwards-compatible saved events and existing features                                      | Original 104 tests retained and passing, optional metadata extension, original storage format preserved, full wizard/dashboard browser flow.                                                                          |
+| T–W: tests, lint, types and build                                                               | Actual successful commands recorded above.                                                                                                                                                                            |
+| X: evidence-based claims                                                                        | Automated, browser and live-provider verification explicitly separated; unavailable credentialed verification is not represented as completed.                                                                        |

@@ -14,14 +14,14 @@ The initial worktree had only a generated `next-env.d.ts` development-type path 
 
 ## 2. Actual automated results
 
-| Check | Baseline | Final result |
-| --- | --- | --- |
-| `npm test` | 222 passed, 8 files | **235 passed, 10 files** |
-| `npm run lint` | Passed | Passed |
-| `npm run typecheck` | Passed | Passed |
-| `npm run build` | Passed | Passed, including API and event route generation |
-| `git diff --check` | Passed | Passed; expected Windows line-ending notices only |
-| `npm audit --omit=dev --json` | Inspected | **0 production vulnerabilities** |
+| Check                         | Baseline            | Final result                                      |
+| ----------------------------- | ------------------- | ------------------------------------------------- |
+| `npm test`                    | 222 passed, 8 files | **235 passed, 10 files**                          |
+| `npm run lint`                | Passed              | Passed                                            |
+| `npm run typecheck`           | Passed              | Passed                                            |
+| `npm run build`               | Passed              | Passed, including API and event route generation  |
+| `git diff --check`            | Passed              | Passed; expected Windows line-ending notices only |
+| `npm audit --omit=dev --json` | Inspected           | **0 production vulnerabilities**                  |
 
 The final full suite includes every original Phase 3 test. The 13 added cases cover smoke-fixture validation, source honesty, exact protected proposals, recommendation context clues, missing/corrupt dashboard state, assistant failure without losing ordinary task controls, and rejected stream cancellation during body timeout. Ordinary tests and builds make no live provider requests.
 
@@ -37,12 +37,12 @@ The final full suite includes every original Phase 3 test. The 13 added cases co
 
 Added `npm run ai:smoke`, using the existing Vitest tooling in a separate configuration. The command is not included in unit tests or builds. It sends synthetic requests through the actual Eventura API, validates the returned contracts and source, checks recommendation context clues, independently checks budget amounts/locks/reserve and validates the proposal without invoking persistence. It never loads browser-local user events.
 
-| Scenario | Real Gemini result | Actual local fallback API result |
-| --- | --- | --- |
-| A: Wedding recommendations | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues |
-| B: Birthday recommendations | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues |
-| C: Community recommendations | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues |
-| D: Contextual question | **Blocked — missing key** | Passed; source `rule-based`, 3 context clues |
+| Scenario                         | Real Gemini result        | Actual local fallback API result                                    |
+| -------------------------------- | ------------------------- | ------------------------------------------------------------------- |
+| A: Wedding recommendations       | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues                        |
+| B: Birthday recommendations      | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues                        |
+| C: Community recommendations     | **Blocked — missing key** | Passed; source `rule-based`, 4 context clues                        |
+| D: Contextual question           | **Blocked — missing key** | Passed; source `rule-based`, 3 context clues                        |
 | E: Protected budget optimization | **Blocked — missing key** | Passed; exact ₹1,80,001 proposal, protected food and reserve checks |
 
 The actual final commands were `npm run ai:smoke` (five skipped/blocked, zero live requests) and `AI_SMOKE_MODE=fallback` with `npm run ai:smoke` (five passed against the running production API). A zero process exit with skipped cases is explicitly **not** a successful live result. Mocked SDK success is also not presented as live verification.
@@ -63,25 +63,25 @@ Authentication, quota, provider network, timeout, empty/malformed/truncated outp
 
 A browser-driven walkthrough exercised the **actual production build**, on a separate origin from the user's port-3000 session. All events below are synthetic and dated 1 January 2027, which was in the future on the audit date.
 
-| Journey | Observed evidence |
-| --- | --- |
-| Landing | Loaded at desktop and mobile sizes; occasion actions opened the wizard |
-| Wedding creation | Four steps completed; fusion garden ceremony, 120 guests, ₹2,40,001, Food quality/Photography, dietary/access requirements |
-| Birthday creation | Four steps completed; children, dinosaur crafts and activities, 30 guests, ₹45,001 |
-| Community creation | Full wizard completed on mobile; repair workshop, 12 volunteers, 80 guests, ₹60,001 |
-| Generated plans | Expected budgets, timelines, vendors, ideas and risk sections present; birthday had 6 timeline tasks/4 vendors/6 ideas/3 risks; community had 6/6/9/4 |
-| Exact budget totals | Rendered allocations independently summed to ₹2,40,001, ₹45,001 and ₹60,001; proposed wedding allocations summed to ₹1,80,001 |
-| Task progress | Wedding timeline task completed and catering task marked in progress; both survived reload |
-| Ideas | Generated for all categories; a wedding idea retained; regenerating kept one retained idea and disabled its duplicate save action |
-| Contextual question | Returned the next unfinished wedding milestone with its due date, reflecting current progress |
-| Protected comparison | Wedding target ₹1,80,001 retained catering at ₹72,001; reserve ₹18,001; integer amounts and signed differences displayed |
-| Rejection | Saved wedding total stayed ₹2,40,001 after rejection |
-| Explicit acceptance | Save button was disabled until acknowledgement; acceptance saved ₹1,80,001; reopened event retained statuses and the saved idea |
-| Mobile comparison | Community target ₹50,001 retained equipment ₹12,000 and reserve ₹5,001; rejected proposal left the saved ₹60,001 intact |
-| Saved navigation | All three occasions appeared in My events with correct amounts and progress |
-| Recovery | Missing UUID and malformed event ID showed Create an event / Return to my events; an incomplete wizard showed field errors and focused the missing name |
-| Layout | Desktop content/scroll widths 1265/1265; mobile 375/375 within the requested 390-pixel viewport; checked landing, community wizard, dashboard and assistant comparison |
-| Browser errors | Error log empty during the walkthrough; temporary viewport override reset |
+| Journey              | Observed evidence                                                                                                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Landing              | Loaded at desktop and mobile sizes; occasion actions opened the wizard                                                                                                 |
+| Wedding creation     | Four steps completed; fusion garden ceremony, 120 guests, ₹2,40,001, Food quality/Photography, dietary/access requirements                                             |
+| Birthday creation    | Four steps completed; children, dinosaur crafts and activities, 30 guests, ₹45,001                                                                                     |
+| Community creation   | Full wizard completed on mobile; repair workshop, 12 volunteers, 80 guests, ₹60,001                                                                                    |
+| Generated plans      | Expected budgets, timelines, vendors, ideas and risk sections present; birthday had 6 timeline tasks/4 vendors/6 ideas/3 risks; community had 6/6/9/4                  |
+| Exact budget totals  | Rendered allocations independently summed to ₹2,40,001, ₹45,001 and ₹60,001; proposed wedding allocations summed to ₹1,80,001                                          |
+| Task progress        | Wedding timeline task completed and catering task marked in progress; both survived reload                                                                             |
+| Ideas                | Generated for all categories; a wedding idea retained; regenerating kept one retained idea and disabled its duplicate save action                                      |
+| Contextual question  | Returned the next unfinished wedding milestone with its due date, reflecting current progress                                                                          |
+| Protected comparison | Wedding target ₹1,80,001 retained catering at ₹72,001; reserve ₹18,001; integer amounts and signed differences displayed                                               |
+| Rejection            | Saved wedding total stayed ₹2,40,001 after rejection                                                                                                                   |
+| Explicit acceptance  | Save button was disabled until acknowledgement; acceptance saved ₹1,80,001; reopened event retained statuses and the saved idea                                        |
+| Mobile comparison    | Community target ₹50,001 retained equipment ₹12,000 and reserve ₹5,001; rejected proposal left the saved ₹60,001 intact                                                |
+| Saved navigation     | All three occasions appeared in My events with correct amounts and progress                                                                                            |
+| Recovery             | Missing UUID and malformed event ID showed Create an event / Return to my events; an incomplete wizard showed field errors and focused the missing name                |
+| Layout               | Desktop content/scroll widths 1265/1265; mobile 375/375 within the requested 390-pixel viewport; checked landing, community wizard, dashboard and assistant comparison |
+| Browser errors       | Error log empty during the walkthrough; temporary viewport override reset                                                                                              |
 
 Corrupt localStorage recovery and provider failure were verified with component/unit tests rather than mutating the user's browser storage. The production browser walkthrough and automated tests are separate evidence. Screenshots are stored outside the repository, including `saved-events-desktop.png` and `community-mobile.png` in the Phase 4 verification artifacts folder.
 
@@ -101,13 +101,13 @@ The deployed origin was then independently exercised through its actual UI. A ne
 
 The competition threshold is **10 MB**. Measurements included all local refs and reachable history rather than just the current source folder.
 
-| Measurement | Actual result |
-| --- | --- |
-| Initially tracked working files | 85 files, **998,655 bytes** at the initial measured state |
-| All-ref reachable Git objects | **233 objects, 2,504,041 uncompressed bytes** |
-| `git count-objects -vH` | 245 loose objects; **1023.03 KiB** loose storage; 0 packs; 0 bytes packed |
-| Read-only all-ref pack estimate | **559,310 bytes**, `git pack-objects --all --stdout`, no history/storage rewrite |
-| GitHub API reported repository size | **494 KB**, unauthenticated public metadata |
+| Measurement                         | Actual result                                                                    |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| Initially tracked working files     | 85 files, **998,655 bytes** at the initial measured state                        |
+| All-ref reachable Git objects       | **233 objects, 2,504,041 uncompressed bytes**                                    |
+| `git count-objects -vH`             | 245 loose objects; **1023.03 KiB** loose storage; 0 packs; 0 bytes packed        |
+| Read-only all-ref pack estimate     | **559,310 bytes**, `git pack-objects --all --stdout`, no history/storage rewrite |
+| GitHub API reported repository size | **494 KB**, unauthenticated public metadata                                      |
 
 The largest tracked files were the lockfile (~319 KB in the working copy), wedding photo (188,580 bytes), community photo (80,149 bytes), birthday photo (65,005 bytes), and CSS. Historical large blobs were primarily earlier lockfiles; none approached the threshold. Git noted a pre-existing zero-byte worktree-metadata warning; it was preserved rather than deleting a worktree or rewriting history.
 
@@ -133,13 +133,13 @@ The five hosted fallback API scenarios and three-category hosted browser journey
 
 ## 10. Remaining blockers and deliverables
 
-| Item | State / next concrete step |
-| --- | --- |
-| Live provider verification | Blocked by missing key; configure locally/securely, restart and run `npm run ai:smoke` |
-| Public application | Deployed and publicly verified; exact code-release commit and URLs recorded above |
-| Phase 4 publication | Authorized, committed and pushed normally to the complete feature branch |
-| Competition branch | Complete Phase 3 is public on the feature branch; default main is older |
-| Demonstration | Reviewed 115-second captioned actual-app walkthrough uploaded and shared on Drive after explicit authorization; anonymous viewer/media access verified |
+| Item                       | State / next concrete step                                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Live provider verification | Blocked by missing key; configure locally/securely, restart and run `npm run ai:smoke`                                                                 |
+| Public application         | Deployed and publicly verified; exact code-release commit and URLs recorded above                                                                      |
+| Phase 4 publication        | Authorized, committed and pushed normally to the complete feature branch                                                                               |
+| Competition branch         | Complete Phase 3 is public on the feature branch; default main is older                                                                                |
+| Demonstration              | Reviewed 115-second captioned actual-app walkthrough uploaded and shared on Drive after explicit authorization; anonymous viewer/media access verified |
 
 README now documents the problem, tagline, three categories, Adaptive Event Plan, deterministic accounting, protected optimization, privacy/local storage, safe setup, smoke commands, actual public branch, verified deployed app and live-provider limitation. The [hosted demonstration](https://drive.google.com/file/d/1eZxlgrBhcgzOtKNx_o6jMM_4rRk9JKAr/view) is a silent captioned walkthrough assembled from unaltered actual deployed-app screenshots, not a continuous recording. Its decoded duration is 115.00 seconds, with H.264 video at 1280×900 and a file size of 1,465,656 bytes. Drive permission metadata confirms `anyone` / `reader` / discovery disabled; unauthenticated requests returned 200 for its viewer and 206 for `video/mp4` media with a valid MP4 signature. The demo plan includes narration guidance if a continuous narrated take is required. The video, screenshots and encoder remain outside Git.
 

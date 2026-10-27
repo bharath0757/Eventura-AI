@@ -1,0 +1,507 @@
+{
+  "label": "baseline",
+  "recordedAt": "2026-10-25T16:29:58.266Z",
+  "baseURL": "http://127.0.0.1:3044",
+  "collectionMethod": "Fresh browser context per route, cold browser cache, navigation plus framework prefetch until networkidle; transfer includes HTTP overhead. Interaction is event dispatch to two animation frames, not field INP.",
+  "measurements": [
+    {
+      "name": "landing",
+      "viewport": "desktop",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 523976,
+      "jsTransferred": 161979,
+      "fontsTransferred": 69836,
+      "cssUsed": 29698,
+      "errors": [],
+      "jsGzip": 159237,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "wizard",
+      "viewport": "desktop",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 717569,
+      "jsTransferred": 223855,
+      "fontsTransferred": 52996,
+      "cssUsed": 16797,
+      "errors": [],
+      "jsGzip": 219801,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "saved",
+      "viewport": "desktop",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 697834,
+      "jsTransferred": 217040,
+      "fontsTransferred": 52996,
+      "cssUsed": 15755,
+      "errors": [],
+      "jsGzip": 213297,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "dashboard",
+      "viewport": "desktop",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 730232,
+      "jsTransferred": 227239,
+      "fontsTransferred": 52996,
+      "cssUsed": 21962,
+      "errors": [],
+      "jsGzip": 223168,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "landing",
+      "viewport": "mobile",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 523976,
+      "jsTransferred": 161979,
+      "fontsTransferred": 69836,
+      "cssUsed": 40449,
+      "errors": [],
+      "jsGzip": 159237,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "wizard",
+      "viewport": "mobile",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 717569,
+      "jsTransferred": 223855,
+      "fontsTransferred": 52996,
+      "cssUsed": 17809,
+      "errors": [],
+      "jsGzip": 219801,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "saved",
+      "viewport": "mobile",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 697834,
+      "jsTransferred": 217040,
+      "fontsTransferred": 52996,
+      "cssUsed": 17006,
+      "errors": [],
+      "jsGzip": 213297,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    },
+    {
+      "name": "dashboard",
+      "viewport": "mobile",
+      "cssDecoded": 99365,
+      "cssTransferred": 19617,
+      "jsDecoded": 730232,
+      "jsTransferred": 227239,
+      "fontsTransferred": 52996,
+      "cssUsed": 25581,
+      "errors": [],
+      "jsGzip": 223168,
+      "cssGzip": 18922,
+      "inlineCssDecoded": 0,
+      "linkedCssDecoded": 99365
+    }
+  ],
+  "interactions": [
+    {
+      "count": 1,
+      "eventToTwoAnimationFramesMs": [
+        15.300000000745058, 33.90000000037253, 32.89999999944121, 33.299999999813735,
+        33.80000000074506
+      ],
+      "persistedStatus": "completed"
+    },
+    {
+      "count": 25,
+      "eventToTwoAnimationFramesMs": [
+        16.59999999962747, 20.100000000558794, 33.799999999813735, 34.299999999813735, 32.5
+      ],
+      "persistedStatus": "completed"
+    },
+    {
+      "count": 100,
+      "eventToTwoAnimationFramesMs": [
+        32.09999999962747, 26.300000000745058, 34.799999999813735, 33.09999999962747,
+        37.10000000055879
+      ],
+      "persistedStatus": "completed"
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "landing",
+      "run": 1,
+      "score": 96,
+      "lcpMs": 2689.875,
+      "cls": 0,
+      "tbtMs": 39.5,
+      "fcpMs": 1089.45,
+      "speedIndexMs": 1089.45,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "landing",
+      "run": 2,
+      "score": 95,
+      "lcpMs": 2936.7575,
+      "cls": 0,
+      "tbtMs": 45.5,
+      "fcpMs": 1074.909,
+      "speedIndexMs": 1074.909,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "landing",
+      "run": 3,
+      "score": 95,
+      "lcpMs": 2901.24,
+      "cls": 0,
+      "tbtMs": 27,
+      "fcpMs": 1076.6879999999999,
+      "speedIndexMs": 1076.6879999999999,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 1,
+      "score": 97,
+      "lcpMs": 2570.9893,
+      "cls": 0,
+      "tbtMs": 66,
+      "fcpMs": 920.9893,
+      "speedIndexMs": 920.9893,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 2,
+      "score": 96,
+      "lcpMs": 2739.2509999999993,
+      "cls": 0,
+      "tbtMs": 54.50000000000023,
+      "fcpMs": 914.251,
+      "speedIndexMs": 914.251,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 3,
+      "score": 96,
+      "lcpMs": 2736.9900000000007,
+      "cls": 0,
+      "tbtMs": 50.999999999999545,
+      "fcpMs": 915.99,
+      "speedIndexMs": 915.99,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 1,
+      "score": 97,
+      "lcpMs": 2420.6653,
+      "cls": 0.05953965871828905,
+      "tbtMs": 29.5,
+      "fcpMs": 920.6653000000001,
+      "speedIndexMs": 920.6653000000001,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 2,
+      "score": 96,
+      "lcpMs": 2670.0093,
+      "cls": 0.05953965871828905,
+      "tbtMs": 24,
+      "fcpMs": 924.0092999999999,
+      "speedIndexMs": 924.0092999999999,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 3,
+      "score": 96,
+      "lcpMs": 2651.8159,
+      "cls": 0.05953965871828905,
+      "tbtMs": 26,
+      "fcpMs": 906.8159,
+      "speedIndexMs": 906.8159,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 1,
+      "score": 88,
+      "lcpMs": 2806.4098999999997,
+      "cls": 0.1773997569866343,
+      "tbtMs": 52,
+      "fcpMs": 907.4099000000001,
+      "speedIndexMs": 907.4099000000001,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 2,
+      "score": 88,
+      "lcpMs": 2808.5473,
+      "cls": 0.1773997569866343,
+      "tbtMs": 54.50000000000023,
+      "fcpMs": 906.5473,
+      "speedIndexMs": 906.5473,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 3,
+      "score": 88,
+      "lcpMs": 2804.0791999999997,
+      "cls": 0.1773997569866343,
+      "tbtMs": 50,
+      "fcpMs": 907.0791999999999,
+      "speedIndexMs": 907.0791999999999,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    }
+  ],
+  "referenceCommit": "df5477351af034a1321098ca35e930107803279b",
+  "compressionMethod": "Each recorded JS/CSS resource body independently gzip level9; duplicate resource entries count as separate requests. Baseline bodies reread from preserved df54773 build and decoded lengths matched recorded navigation assets.",
+  "gzipRecordedAt": "2026-10-26T07:41:39.189Z",
+  "inlineCssVerification": "Baseline immutable deployment df54773 checked: no style element bodies on all four routes."
+}

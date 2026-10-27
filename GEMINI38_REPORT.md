@@ -17,15 +17,15 @@ Verified **25 October 2026**. The release is published and usable with rule-base
 
 Node **24.19.0**, Next.js **16.4.3**, React **19.3.1**, Google GenAI SDK **2.31.0**, installed lockfile and existing architecture retained.
 
-| Executed command | Result |
-| --- | --- |
-| `npm test` | **250 passed, 10 files**; no provider requests |
-| `npm run lint` | Passed |
-| `npm run typecheck` | Passed |
-| `npm run build` | Passed; landing, saved events, wizard, event dashboard and AI route generated |
-| `git diff --check` | Passed after runtime edits; repeated for final documentation |
-| `AI_SMOKE_MODE=fallback npm run ai:smoke` | **5 passed** against actual local production API |
-| Authorized remote live smoke | **1 failed, 4 skipped**; honest fallback after provider 503 |
+| Executed command                          | Result                                                                        |
+| ----------------------------------------- | ----------------------------------------------------------------------------- |
+| `npm test`                                | **250 passed, 10 files**; no provider requests                                |
+| `npm run lint`                            | Passed                                                                        |
+| `npm run typecheck`                       | Passed                                                                        |
+| `npm run build`                           | Passed; landing, saved events, wizard, event dashboard and AI route generated |
+| `git diff --check`                        | Passed after runtime edits; repeated for final documentation                  |
+| `AI_SMOKE_MODE=fallback npm run ai:smoke` | **5 passed** against actual local production API                              |
+| Authorized remote live smoke              | **1 failed, 4 skipped**; honest fallback after provider 503                   |
 
 The new provider tests cover stateless Interactions requests, structured output, low thinking, output bounds, cancellation, no retries, all incomplete interaction statuses, safe provider failures, and explicit older-model overrides without automatic model switching. Browser interaction regressions verify the longer request deadline and cancellation without saving changes. Mocked successful SDK responses remain mocked evidence only.
 
@@ -47,13 +47,13 @@ Earlier legacy-endpoint attempts on 24 October failed after 20.007 seconds, then
 
 After switching to the current documented Interactions API, the exact production build `bdc4c63` was tested again:
 
-| Operation | Actual live result | Actual no-key local production result |
-| --- | --- | --- |
-| A: Wedding recommendations | **Failed in 3.696 s**; API returned labelled fallback; production runtime logged provider HTTP **503** | Passed; `rule-based`, 4 context clues |
-| B: Birthday recommendations | Skipped after A failed; live inference unverified | Passed; `rule-based`, 4 context clues |
-| C: Community recommendations | Skipped after A failed; live inference unverified | Passed; `rule-based`, 4 context clues |
-| D: Contextual question | Earlier request timed out; skipped in latest run | Passed; `rule-based`, 3 context clues |
-| E: Protected optimization | Skipped after A failed; live inference unverified | Passed; `rule-based`, 3 context clues; protected amounts/exact total/reserve verified |
+| Operation                    | Actual live result                                                                                     | Actual no-key local production result                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| A: Wedding recommendations   | **Failed in 3.696 s**; API returned labelled fallback; production runtime logged provider HTTP **503** | Passed; `rule-based`, 4 context clues                                                 |
+| B: Birthday recommendations  | Skipped after A failed; live inference unverified                                                      | Passed; `rule-based`, 4 context clues                                                 |
+| C: Community recommendations | Skipped after A failed; live inference unverified                                                      | Passed; `rule-based`, 4 context clues                                                 |
+| D: Contextual question       | Earlier request timed out; skipped in latest run                                                       | Passed; `rule-based`, 3 context clues                                                 |
+| E: Protected optimization    | Skipped after A failed; live inference unverified                                                      | Passed; `rule-based`, 3 context clues; protected amounts/exact total/reserve verified |
 
 The safe production warning contained only reason `unavailable`, status `503` and allowlisted/unknown error type. No provider message, prompt or credential was logged. This establishes failure of the tested request, not a global Gemini outage or a proven diagnosis of the account. Two of the six additionally authorized requests were used; the other four were not spent after the renewed 503. There are **zero verified successful live Gemini operations**.
 
@@ -81,13 +81,13 @@ The original [24 October browser audit](PHASE4_REPORT.md) records actual local a
 
 Measured at runtime commit `bdc4c63`, before the final small documentation changes:
 
-| Measurement | Observed value |
-| --- | --- |
-| Tracked source/assets | **100 files; 4,426,634 bytes** |
+| Measurement                                     | Observed value                   |
+| ----------------------------------------------- | -------------------------------- |
+| Tracked source/assets                           | **100 files; 4,426,634 bytes**   |
 | Unique historical blob contents, all local refs | **5,435,800 uncompressed bytes** |
-| Existing Git loose-object storage | **4,083 KiB**; no packs |
-| Fresh read-only all-refs pack estimate | **3,100,701 bytes** |
-| Unauthenticated GitHub API storage estimate | **3,112 KiB**; may lag pushes |
+| Existing Git loose-object storage               | **4,083 KiB**; no packs          |
+| Fresh read-only all-refs pack estimate          | **3,100,701 bytes**              |
+| Unauthenticated GitHub API storage estimate     | **3,112 KiB**; may lag pushes    |
 
 These are distinct measurements and all remain below the **10 MB** competition limit. Final documentation adds one small report and edits existing Markdown; the final source/object measurements are retained outside Git with the audit artifacts. The largest existing asset is `public/logo.png` at 984,593 bytes. The official branding assets were preserved, including the SVG with embedded image data. No history rewrite or destructive cleanup was needed. Git reported one zero-size worktree metadata garbage entry; no metadata was deleted.
 

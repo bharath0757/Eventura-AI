@@ -18,27 +18,27 @@ At the initial inspection, the remote repository contained only LICENSE. Its Git
 
 ## B. Files changed
 
-| File or directory | Responsibility |
-| --- | --- |
-| package.json / package-lock.json | Reproducible runtime, build and test dependencies |
-| tsconfig.json / next-env.d.ts | Strict TypeScript and Next.js types |
-| eslint.config.mjs / postcss.config.mjs / vitest.config.ts | Lint, Tailwind and test configuration |
-| src/types/index.ts | Canonical schema-derived domain types |
-| src/lib/config.ts | Categories, priorities and documented input limits |
-| src/lib/dates.ts | Calendar-safe date validation, arithmetic and formatting |
-| src/lib/validation/schemas.ts | Brief, plan and record validation; financial and timeline invariants |
-| src/lib/planner/profiles.ts | Category budget profiles, milestone offsets and vendor templates |
-| src/lib/planner/index.ts | Deterministic plan generation and event-record creation |
-| src/lib/storage/events.ts | Validated, versioned, injectable local persistence |
-| src/components/wizard.tsx | Event creation and review |
-| src/components/use-events.ts | Client hydration, reloads and cross-tab storage notifications |
-| src/components/saved-events.tsx | Saved-event cards and confirmation dialog |
-| src/components/event-dashboard.tsx | Budget, timeline, checklist, ideas, risks and original brief |
-| src/components/controls.tsx / shell.tsx | Shared accessible controls, navigation and footer |
-| src/app/ | App Router pages, shared layout, responsive styles, favicon and error states |
-| tests/ | Validation, planning, dates and persistence tests |
-| README.md | Setup, architecture, limits and data-location instructions |
-| .gitignore | Excludes dependencies, build output, logs and secrets |
+| File or directory                                         | Responsibility                                                               |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| package.json / package-lock.json                          | Reproducible runtime, build and test dependencies                            |
+| tsconfig.json / next-env.d.ts                             | Strict TypeScript and Next.js types                                          |
+| eslint.config.mjs / postcss.config.mjs / vitest.config.ts | Lint, Tailwind and test configuration                                        |
+| src/types/index.ts                                        | Canonical schema-derived domain types                                        |
+| src/lib/config.ts                                         | Categories, priorities and documented input limits                           |
+| src/lib/dates.ts                                          | Calendar-safe date validation, arithmetic and formatting                     |
+| src/lib/validation/schemas.ts                             | Brief, plan and record validation; financial and timeline invariants         |
+| src/lib/planner/profiles.ts                               | Category budget profiles, milestone offsets and vendor templates             |
+| src/lib/planner/index.ts                                  | Deterministic plan generation and event-record creation                      |
+| src/lib/storage/events.ts                                 | Validated, versioned, injectable local persistence                           |
+| src/components/wizard.tsx                                 | Event creation and review                                                    |
+| src/components/use-events.ts                              | Client hydration, reloads and cross-tab storage notifications                |
+| src/components/saved-events.tsx                           | Saved-event cards and confirmation dialog                                    |
+| src/components/event-dashboard.tsx                        | Budget, timeline, checklist, ideas, risks and original brief                 |
+| src/components/controls.tsx / shell.tsx                   | Shared accessible controls, navigation and footer                            |
+| src/app/                                                  | App Router pages, shared layout, responsive styles, favicon and error states |
+| tests/                                                    | Validation, planning, dates and persistence tests                            |
+| README.md                                                 | Setup, architecture, limits and data-location instructions                   |
+| .gitignore                                                | Excludes dependencies, build output, logs and secrets                        |
 
 ## C. Architecture
 
@@ -56,12 +56,12 @@ Saved-event hydration runs after mount, so SSR does not read localStorage. Dashb
 
 Final business-logic test run:
 
-| Command | Actual result |
-| --- | --- |
-| npm test | PASS — 104 tests in 3 files |
-| npm run lint | PASS — no errors or warnings |
-| npm run typecheck | PASS |
-| git diff --check | PASS |
+| Command           | Actual result                |
+| ----------------- | ---------------------------- |
+| npm test          | PASS — 104 tests in 3 files  |
+| npm run lint      | PASS — no errors or warnings |
+| npm run typecheck | PASS                         |
+| git diff --check  | PASS                         |
 
 The test files contain 57 validation/calendar tests, 28 planner tests and 19 persistence tests. Coverage includes all three categories; impossible, past and same-day dates; malformed numeric input; positive integer constraints; priority limits; long fields; exact budgets of ₹1,000, ₹15,001, ₹5,00,003 and ₹10,00,00,000; 300 additional budget values per category; reproducibility; short-notice timelines; personalization; storage CRUD; reload-compatible statuses; invalid records; malformed JSON; unsupported versions; and storage read/write failures.
 
@@ -79,25 +79,25 @@ The final narrow-screen CSS adjustment was followed by another successful produc
 
 Exercised in the Windows in-app Chromium browser against a production server:
 
-| Flow | Actual observation |
-| --- | --- |
-| Landing → Wedding | Category prefilled; no second category selection required |
-| Empty wizard submission | Inline field errors displayed; advancement blocked |
-| Wedding creation | Saved a complete ₹15,001 plan with ₹13,501 planned spending and ₹1,500 reserve |
-| Timeline/vendor status updates | Completed and in-progress states survived page reload |
-| Landing → Birthday | Birthday-specific age, style and activities questions displayed |
-| Review → edit → review | ₹1,000 budget and selected priority remained intact |
-| Next-day birthday | Complete plan created; four missed original milestones marked urgent |
-| Landing → Community | Community format, theme and volunteer questions displayed |
-| Priority cap | Three selected priorities disabled remaining unselected choices |
-| Community creation | ₹5,00,003 allocated exactly; six vendor tasks and tailored ideas displayed |
-| Saved events | All three categories appeared as distinct saved plans with progress |
-| Reopen saved event | Correct persisted dashboard loaded |
-| Delete dialog | Named event and irreversible-action explanation shown; cancel retained the event |
-| Missing event ID | Useful recovery state with create/return controls |
-| Mobile 390 × 844 | Saved events, dashboard and wizard inspected |
-| Mobile 320 × 780 | Header and decorative-art overflow identified, corrected and visually rechecked |
-| Desktop | Landing and dashboard visually inspected; viewport restored afterward |
+| Flow                           | Actual observation                                                               |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| Landing → Wedding              | Category prefilled; no second category selection required                        |
+| Empty wizard submission        | Inline field errors displayed; advancement blocked                               |
+| Wedding creation               | Saved a complete ₹15,001 plan with ₹13,501 planned spending and ₹1,500 reserve   |
+| Timeline/vendor status updates | Completed and in-progress states survived page reload                            |
+| Landing → Birthday             | Birthday-specific age, style and activities questions displayed                  |
+| Review → edit → review         | ₹1,000 budget and selected priority remained intact                              |
+| Next-day birthday              | Complete plan created; four missed original milestones marked urgent             |
+| Landing → Community            | Community format, theme and volunteer questions displayed                        |
+| Priority cap                   | Three selected priorities disabled remaining unselected choices                  |
+| Community creation             | ₹5,00,003 allocated exactly; six vendor tasks and tailored ideas displayed       |
+| Saved events                   | All three categories appeared as distinct saved plans with progress              |
+| Reopen saved event             | Correct persisted dashboard loaded                                               |
+| Delete dialog                  | Named event and irreversible-action explanation shown; cancel retained the event |
+| Missing event ID               | Useful recovery state with create/return controls                                |
+| Mobile 390 × 844               | Saved events, dashboard and wizard inspected                                     |
+| Mobile 320 × 780               | Header and decorative-art overflow identified, corrected and visually rechecked  |
+| Desktop                        | Landing and dashboard visually inspected; viewport restored afterward            |
 
 Actual final deletion was verified through persistence tests; the browser dialog was opened and cancelled. Corrupt-data and storage-denial scenarios were exercised with injected storage doubles, not by changing browser permissions.
 

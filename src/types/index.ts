@@ -1,7 +1,13 @@
 import type { z } from "zod";
-import type { briefSchema, planSchema, recordSchema, statusSchema, categoryDetailsSchema } from "@/lib/validation/schemas";
+import type {
+  briefSchema,
+  planSchema,
+  recordSchema,
+  statusSchema,
+  categoryDetailsSchema,
+} from "@/lib/validation/schemas";
 import type { categories } from "@/lib/config";
-export type Category = typeof categories[number];
+export type Category = (typeof categories)[number];
 export type CategoryDetails = z.infer<typeof categoryDetailsSchema>;
 export type EventBrief = z.infer<typeof briefSchema>;
 export type EventPlan = z.infer<typeof planSchema>;

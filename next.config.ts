@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
-// Phase 2 uses request-rendered wizard params and browser-local event records.
-// Tailwind runs through postcss.config.mjs; avoid a second Turbopack CSS loader.
-const nextConfig: NextConfig = {};
+// Route layouts own their styles; keep normal stylesheet caching and delivery.
+const nextConfig: NextConfig = {
+  images: {
+    // Keep detailed photos available while reducing the hero's critical transfer.
+    qualities: [50, 75],
+  },
+};
 
 export default nextConfig;

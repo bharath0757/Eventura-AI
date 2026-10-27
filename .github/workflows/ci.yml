@@ -1,7 +1,7 @@
 name: Application checks
 on:
   push:
-    branches: [main, codex/eventura-ui-redesign]
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -22,9 +22,10 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: '24'
+          node-version: "24"
           cache: npm
       - run: npm ci
+      - run: npm run format:check
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:coverage
@@ -43,4 +44,48 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 3
+          if-no-files-found: warn
+
+  performance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GEMINI_API_KEY: ""
+      GEMINI_MODEL: ""
+      NEXT_TELEMETRY_DISABLED: "1"
+      PLAYWRIGHT_BROWSERS_PATH: /tmp/eventura-browsers
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps --only-shell chromium
+      - name: Measure isolated production routes and enforce budgets
+        shell: bash
+        run: |
+          mkdir -p test-results/performance
+          npm run start -- --hostname 127.0.0.1 --port 3044 > test-results/performance/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3044/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3044/ > /dev/null
+          # Use the pinned shell already required by the browser harness.
+          chrome_shells=("$PLAYWRIGHT_BROWSERS_PATH"/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell)
+          test "${#chrome_shells[@]}" -eq 1
+          test -x "${chrome_shells[0]}"
+          node scripts/performance.mjs --url http://127.0.0.1:3044 --label candidate --runs 3 --chrome-path "${chrome_shells[0]}"
+          node scripts/performance-check.mjs --candidate test-results/performance/candidate.json
+      - name: Keep numeric performance evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: performance-diagnostics
+          path: test-results/performance/
+          retention-days: 7
           if-no-files-found: warn

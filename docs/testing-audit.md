@@ -6,16 +6,16 @@ Audit started 25 October 2026, before remediation edits.
 
 The user confirmed that the evaluation used the default **main** branch. Unauthenticated GitHub API/tree requests identified current main as `8bff9947b826ae8512724ea46d561640ef7504b7`; no evaluation timestamp or separate historical commit was supplied, so this is the verified current submitted branch state, not proof of the evaluator's exact historical checkout.
 
-| Item | Public main at 8bff994 | Complete branch at 754d739 |
-| --- | --- | --- |
-| Tracked test suites | None | 10 Vitest test files plus fixtures |
-| Standard test command | Missing | npm test: vitest run |
-| Type check command | Missing | npm run typecheck |
-| Test dependencies | Missing | Vitest, jsdom, Testing Library in manifest and lockfile |
-| CI workflow | None | None before this remediation |
-| Saved-event wizard/dashboard | Missing | /events/new, /events/[eventId], /events |
-| Server-side Gemini integration | Missing | /api/ai/plan and src/lib/ai |
-| Durable task progress / protected optimization | Demo session only / missing | Implemented and tested |
+| Item                                           | Public main at 8bff994      | Complete branch at 754d739                              |
+| ---------------------------------------------- | --------------------------- | ------------------------------------------------------- |
+| Tracked test suites                            | None                        | 10 Vitest test files plus fixtures                      |
+| Standard test command                          | Missing                     | npm test: vitest run                                    |
+| Type check command                             | Missing                     | npm run typecheck                                       |
+| Test dependencies                              | Missing                     | Vitest, jsdom, Testing Library in manifest and lockfile |
+| CI workflow                                    | None                        | None before this remediation                            |
+| Saved-event wizard/dashboard                   | Missing                     | /events/new, /events/[eventId], /events                 |
+| Server-side Gemini integration                 | Missing                     | /api/ai/plan and src/lib/ai                             |
+| Durable task progress / protected optimization | Demo session only / missing | Implemented and tested                                  |
 
 This is the strongest confirmed explanation for Testing 0/100 and incomplete challenge alignment: the evaluator was directed at a different application than the one described by the earlier 222-test report. The exact proprietary scoring rubric and evaluation commit are unavailable; a particular score increase cannot be guaranteed.
 
