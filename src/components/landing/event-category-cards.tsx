@@ -77,6 +77,7 @@ export function EventCategoryCards() {
                     alt={alt}
                     fill
                     sizes={CARD_IMAGE_SIZES}
+                    quality={key === "wedding" ? 50 : 75}
                     fetchPriority="low"
                   />
                 </DeferredPhoto>

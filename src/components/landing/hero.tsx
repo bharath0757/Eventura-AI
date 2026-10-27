@@ -54,6 +54,7 @@ export function Hero() {
             alt="A sunlit wedding table with garden flowers, delicate glassware, and carefully arranged place settings"
             fill
             sizes="(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px"
+            quality={50}
             loading="eager"
             fetchPriority="high"
             className="hero-image"
