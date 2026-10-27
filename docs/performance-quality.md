@@ -10,7 +10,7 @@ Each resource measurement uses a fresh browser context and cold browser cache. I
 
 The task update timing dispatches a change and waits for two animation frames, then verifies that the final status was persisted. Five samples are collected per collection size. Frame scheduling contributes to the result; it is not a field INP measurement or an isolated storage benchmark.
 
-Mobile Lighthouse uses default simulated throttling and identical settings in baseline and candidate. Scores, LCP and CLS are reported as medians of three audits per route. The baseline dashboard had a median performance score of 88 and CLS of about 0.177. This identifies a loading-layout problem that a smaller bundle alone would not address.
+Mobile Lighthouse uses default simulated throttling and identical settings in baseline and candidate. The baseline was captured on the local Windows machine; release candidates are also measured on GitHub's Ubuntu runner. Byte budgets compare recorded assets directly, while Lighthouse and interaction timings remain laboratory observations affected by host hardware and scheduling, rather than an isolated cross-platform causal benchmark. Scores, LCP and CLS are reported as medians of three audits per route. The baseline dashboard had a median performance score of 88 and CLS of about 0.177. This identifies a loading-layout problem that a smaller bundle alone would not address.
 
 ## Reproduce
 
@@ -36,13 +36,28 @@ The check fails if any route/viewport lacks its measurement, has browser errors,
 
 ## Delivery choices
 
-The landing page renders static sections on the server and loads its interactive sample dialog on demand. Saved-event routes load their own styles and use system fonts. Home links in the planner defer landing-page prefetch so its font and styles are not downloaded during initial planning. The LCP photograph has responsive sizes and high fetch priority. Both surfaces use system sans-serif fonts with Georgia for display headings, eliminating font downloads and late font swaps.
+The landing page renders static sections on the server and loads its interactive sample dialog on demand. Saved-event routes load their own styles and use system fonts. Home links in the planner defer landing-page prefetch so its styles are not downloaded during initial planning. The LCP photograph has responsive sizes, high fetch priority and quality 50 encoding (19,074 bytes at the audited 640 px WebP size). Static landing images use server-side `getImageProps`, retaining image optimization without a client image component or hydration. Both surfaces use system sans-serif fonts with Georgia for display headings, eliminating font downloads and late font swaps. Occasion photographs load when their reserved frames are within 250 px of the viewport, with a no-JavaScript image fallback; they no longer compete with the hero photograph during initial loading.
 
 The dashboard reserves loading geometry and defers the optional assistant until its section is reached. Later panels use [native content visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content-visibility) with reserved size to avoid offscreen layout and paint work while retaining find-in-page and keyboard access. Accessibility checks scroll each later panel into view before analyzing it. Task changes use the validated record returned by persistence, with cross-tab reload behavior retained. Basic record access is isolated from the assistant-aware persistence facade, so optional optimization code is downloaded only with the assistant. Full plan, request, output and financial checks remain in place.
 
 ## Candidate result
 
-Candidate capture and final checks are pending. This section must be updated with the generated comparison, verification results and exact published revision before claiming completion. Baseline results are evidence of the old build only.
+The release implementation is commit `d9360c744558b9b0ca1222aeea21e827fe5e3419`. [GitHub Actions run 14](https://github.com/bharath0757/Eventura-AI/actions/runs/40441575406) measured its PR merge checkout `aaae0f136c491df4113280beae4374711e8c0b0b` on Ubuntu, Node v24.21.0, Chromium 156.0.8078.4 and Lighthouse 13.5.0. All original byte and mobile performance gates passed. [The complete comparison](performance-comparison.md), [candidate measurements](performance-candidate.json) and [machine-readable comparison](performance-comparison.json) preserve all eight route/viewport results, twelve audits and collection-size benchmarks.
+
+| Mobile route | Performance median | LCP median | CLS median |
+| ------------ | -----------------: | ---------: | ---------: |
+| landing      |                 98 |    2366 ms |   0.000018 |
+| wizard       |                 99 |    2110 ms |   0.000000 |
+| saved        |                 99 |    1962 ms |   0.000000 |
+| dashboard    |                 98 |    2349 ms |   0.000000 |
+
+Initial CSS fell from 99,365 bytes to 52,088 on the landing page (47.58%) and 58,182 on event routes (41.45%), in both viewports. Initial gzip JavaScript also fell on every route: landing 159,237 → 145,239 bytes; wizard 219,801 → 194,943; saved events 213,297 → 183,563; dashboard 223,168 → 191,100. Font transfer is zero. CSS remains externally cacheable; linked and inline accounting is still enforced.
+
+The 1/25/100-event mutation checks all persisted the final completed status, with medians of about 33.3 ms to two animation frames. These frame-limited observations show no measured interaction speedup; the separate regression proves the redundant storage read was removed. Dashboard CLS fell from the recorded baseline 0.1774 to zero. Hardware differences and synthetic fixtures limit causal timing comparisons.
+
+Verification at this implementation: 286 unit tests in 14 files, all 22 desktop/mobile browser cases, formatting, lint, types and production build passed. Scoped critical-logic coverage is 96.69% statements, 93.03% branches, 98.64% functions and 97.53% lines; strict optimizer and both storage gates pass. Original twelve browser workflows remain included, alongside accessibility and photo-loading regressions. Ordinary tests and performance benchmarks make no Gemini calls.
+
+The tracked source is about 2.8 MB, below the 10 MB submission budget and the 4.49 MB baseline; dependencies, builds, credentials and generated browser diagnostics are excluded. The reviewed release is tracked by [PR 2](https://github.com/bharath0757/Eventura-AI/pull/2); its final merge and deployment checks identify the published main revision. The retained candidate report describes the measured implementation above, rather than claiming a new competition result.
 
 ## Bounded live Gemini comparison
 
