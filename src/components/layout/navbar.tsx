@@ -1,22 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { BRAND } from "@/lib/constants";
 import { usePlanner } from "@/components/planner/planner-provider";
 
-export function Navbar() {
+export function Navbar({ brandMark }: { brandMark: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { startPlanning, openSavedPlan } = usePlanner();
   return (
     <header className="site-header">
       <div className="container nav-inner">
         <Link href="/" className="brand" aria-label="Eventura AI home">
-          <span className="brand-mark">
-            <Image src={BRAND.logoMark} alt="" width={38} height={38} className="brand-logo-img" />
-          </span>
+          <span className="brand-mark">{brandMark}</span>
           <span className="brand-text">
             eventura<span className="brand-ai">AI</span>
           </span>

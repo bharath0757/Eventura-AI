@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { OptimizedImage } from "@/components/layout/optimized-image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -49,7 +49,7 @@ export function Hero() {
       </div>
       <div className="hero-visual">
         <div className="hero-image-wrap">
-          <Image
+          <OptimizedImage
             src="/images/wedding.jpg"
             alt="A sunlit wedding table with garden flowers, delicate glassware, and carefully arranged place settings"
             fill

@@ -2,6 +2,8 @@ import { createSamplePlan } from "@/lib/sample-plan";
 import "./design.css";
 import "./responsive.css";
 import { Navbar } from "@/components/layout/navbar";
+import { OptimizedImage } from "@/components/layout/optimized-image";
+import { BRAND } from "@/lib/constants";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/landing/hero";
 import { EventCategoryCards } from "@/components/landing/event-category-cards";
@@ -18,7 +20,17 @@ export default function HomePage() {
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <Navbar />
+        <Navbar
+          brandMark={
+            <OptimizedImage
+              src={BRAND.logoMark}
+              alt=""
+              width={38}
+              height={38}
+              className="brand-logo-img"
+            />
+          }
+        />
         <main id="main-content">
           <Hero />
           <div className="promise-strip">

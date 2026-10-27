@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { OptimizedImage } from "./optimized-image";
 import { Heart } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
@@ -9,7 +9,13 @@ export function Footer() {
       <div className="footer-top">
         <Link href="/" className="brand" aria-label="Eventura AI home">
           <span className="brand-mark">
-            <Image src={BRAND.logoMark} alt="" width={32} height={32} className="brand-logo-img" />
+            <OptimizedImage
+              src={BRAND.logoMark}
+              alt=""
+              width={32}
+              height={32}
+              className="brand-logo-img"
+            />
           </span>
           <span className="brand-text">
             eventura<span className="brand-ai">AI</span>

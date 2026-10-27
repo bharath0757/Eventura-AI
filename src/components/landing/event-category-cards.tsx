@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { OptimizedImage } from "@/components/layout/optimized-image";
 import { ArrowUpRight, CakeSlice, Heart, Users } from "lucide-react";
 import { PlanningAction } from "./planning-action";
 import { DeferredPhoto } from "./deferred-photo";
@@ -72,7 +72,7 @@ export function EventCategoryCards() {
             >
               <div className={`occasion-image occasion-image-${key}`}>
                 <DeferredPhoto>
-                  <Image
+                  <OptimizedImage
                     src={`/images/${image}.jpg`}
                     alt={alt}
                     fill
