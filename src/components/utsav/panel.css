@@ -1,0 +1,488 @@
+.utsav-sheet {
+  --utsav-height: min(740px, calc(100dvh - 24px));
+  --utsav-bottom: 20px;
+  position: fixed;
+  inset: auto 22px var(--utsav-bottom) auto;
+  margin: 0;
+  width: min(440px, calc(100vw - 32px));
+  height: var(--utsav-height);
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 1px solid #bd965a;
+  border-radius: 25px;
+  background: #fffbf4;
+  color: #183e3a;
+  box-shadow: 0 24px 100px #0b30294d;
+  font:
+    14px/1.55 "Segoe UI",
+    Arial,
+    sans-serif;
+  overflow: hidden;
+}
+.utsav-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+.utsav-sheet::backdrop {
+  background: #102c271c;
+}
+.utsav-sheet * {
+  box-sizing: border-box;
+}
+.utsav-sheet button,
+.utsav-sheet input,
+.utsav-sheet textarea,
+.utsav-sheet select {
+  font: inherit;
+}
+.utsav-sheet button {
+  cursor: pointer;
+}
+.utsav-sheet button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.utsav-sheet :is(button, a, textarea, select):focus-visible {
+  outline: 3px solid #b65032;
+  outline-offset: 3px;
+}
+.utsav-header {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 20px;
+  color: #fff6df;
+  background: linear-gradient(115deg, #064944, #12615a);
+  border-bottom: 2px solid #b98b44;
+}
+.utsav-header:after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 5px;
+  border-bottom: 1px solid #d3b47066;
+  pointer-events: none;
+}
+.utsav-header-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dbc28a;
+  border-radius: 50%;
+  color: #edc572;
+  font-size: 30px;
+  overflow: hidden;
+}
+.utsav-header h2 {
+  font:
+    32px/1 Georgia,
+    serif;
+  letter-spacing: -1px;
+  margin: 0 0 5px;
+}
+.utsav-header h2:focus {
+  outline: none;
+}
+.utsav-header p {
+  margin: 0;
+  font-size: 12px;
+  color: #f5e5bf;
+}
+.utsav-close {
+  margin-left: auto;
+  align-self: flex-start;
+  border: 1px solid #e0ca9955;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 26px !important;
+  color: white;
+  background: transparent;
+  line-height: 1 !important;
+}
+.utsav-context {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #ebdfc8;
+  background: #f6efdf;
+  flex-shrink: 0;
+}
+.utsav-context label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  max-width: 90px;
+}
+.utsav-context select {
+  min-width: 0;
+  flex: 1;
+  padding: 8px 26px 8px 8px;
+  border: 1px solid #c9bea8;
+  border-radius: 9px;
+  color: #174b45;
+  background: #fffdf8;
+  min-height: 40px;
+}
+.utsav-toolbar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px 14px 8px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #ebdfc8;
+}
+.utsav-toolbar button,
+.utsav-inline-actions button {
+  border: 1px solid #cbbfa7;
+  background: #fffbf4;
+  color: #28514b;
+  border-radius: 18px;
+  padding: 7px 10px;
+  font-size: 11px;
+  min-height: 36px;
+}
+.utsav-toolbar button[aria-pressed="true"] {
+  background: #12564f;
+  color: white;
+  border-color: #12564f;
+}
+.utsav-toolbar button:last-child {
+  margin-left: auto;
+}
+.utsav-scroll {
+  min-height: 0;
+  overflow: auto;
+  flex: 1;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 14px 18px 20px;
+}
+.utsav-welcome {
+  text-align: center;
+  padding: 2px 7px 12px;
+}
+.utsav-mascot {
+  display: block;
+  width: 190px;
+  height: 164px;
+  object-fit: contain;
+  margin: 0 auto 2px;
+  filter: drop-shadow(0 7px 8px #9f76351c);
+}
+.utsav-kicker {
+  font-size: 9px !important;
+  letter-spacing: 1.8px;
+  color: #8b592d;
+  font-weight: 700;
+  margin: 2px 0 12px !important;
+}
+.utsav-welcome h3 {
+  font:
+    30px/1.15 Georgia,
+    serif;
+  letter-spacing: -0.7px;
+  margin: 0 0 12px;
+  color: #104e47;
+}
+.utsav-welcome h3 em {
+  font-weight: 400;
+  color: #9b5136;
+}
+.utsav-welcome > p {
+  font-size: 13px;
+  margin: 10px 0;
+  color: #4b6057;
+}
+.utsav-quick {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.utsav-quick :is(a, button) {
+  padding: 10px 13px;
+  border: 1px solid #ddc9a9;
+  background: #fbf0df;
+  color: #61452b;
+  border-radius: 12px;
+  font-size: 12px;
+  text-decoration: none;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.utsav-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.utsav-bubble {
+  max-width: 94%;
+  padding: 13px 15px;
+  border: 1px solid #e8dcc4;
+  border-radius: 16px 16px 16px 4px;
+  background: white;
+  overflow-wrap: anywhere;
+  color: #253f38;
+  animation: utsav-reply 0.2s ease-out;
+}
+.utsav-bubble strong {
+  font-size: 11px;
+  color: #786448;
+}
+.utsav-bubble p {
+  margin: 5px 0 10px;
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.utsav-bubble small {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #47664d;
+  border: 1px solid #dce5d8;
+  border-radius: 12px;
+  padding: 2px 7px;
+  background: #f3f7ee;
+}
+.utsav-bubble-user {
+  align-self: flex-end;
+  background: #e9f2ed;
+  border-color: #c7dcd1;
+  border-radius: 16px 16px 4px 16px;
+}
+.utsav-source-note {
+  display: block;
+  font-size: 10px;
+  line-height: 1.5;
+  margin-top: 6px;
+  color: #5d675c;
+}
+.utsav-thinking {
+  padding: 14px;
+  color: #4e675b;
+  font-size: 13px;
+}
+.utsav-thinking span {
+  display: inline-block;
+  animation: utsav-think 1.3s ease-in-out infinite;
+}
+.utsav-composer-wrap {
+  flex-shrink: 0;
+  border-top: 1px solid #e8dcc4;
+  padding: 10px 14px 12px;
+  background: #fffaf0;
+}
+.utsav-composer {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  border: 1px solid #c9baa0;
+  background: white;
+  border-radius: 16px;
+  padding: 8px;
+}
+.utsav-composer textarea {
+  resize: none;
+  min-height: 44px;
+  max-height: 110px;
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  line-height: 1.5;
+  color: #183e3a;
+  font-size: 14px;
+}
+.utsav-composer textarea::placeholder {
+  color: #6c746c;
+}
+.utsav-composer button {
+  background: #07534f;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  font-size: 25px;
+  font-weight: 600;
+}
+.utsav-composer button[aria-label="Stop response"] {
+  font-size: 11px;
+}
+.utsav-privacy {
+  font-size: 10px;
+  line-height: 1.5;
+  color: #5d675c;
+  margin: 8px 4px 0;
+}
+.utsav-inline-actions {
+  display: flex;
+  gap: 7px;
+  padding-bottom: 8px;
+}
+.utsav-warning,
+.utsav-notice {
+  font-size: 12px;
+  padding: 9px 14px;
+  margin: 0;
+  background: #f9ecd7;
+  color: #664521;
+  flex-shrink: 0;
+}
+.utsav-notice {
+  background: #eaf2e6;
+  color: #285038;
+}
+.utsav-confirm {
+  padding: 10px 14px;
+  background: #f8ebd9;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.utsav-confirm p {
+  margin: 0 0 6px;
+}
+.utsav-confirm button,
+.utsav-unavailable button,
+.utsav-invitation button {
+  padding: 8px 12px;
+  margin-right: 6px;
+  border: 1px solid #9b7850;
+  border-radius: 8px;
+  background: white;
+  color: #4d412f;
+  min-height: 40px;
+}
+.utsav-unavailable {
+  padding: 24px;
+}
+.utsav-tools.event-app {
+  min-height: 0;
+  font-size: 13px;
+}
+.utsav-tools .ai-panel {
+  margin: 0;
+  padding: 14px !important;
+  overflow-x: auto;
+}
+.utsav-tools .ai-heading h2 {
+  font-size: 23px !important;
+}
+.utsav-tools .ai-privacy {
+  font-size: 11px !important;
+}
+.utsav-tools .ai-actions {
+  grid-template-columns: 1fr 1fr !important;
+}
+.utsav-tools .ai-actions button {
+  font-size: 11px;
+  padding: 10px !important;
+}
+.utsav-tools .ai-budget-inputs {
+  grid-template-columns: 1fr !important;
+}
+.utsav-tools .ai-comparison-rows {
+  min-width: 0;
+}
+.utsav-tools .ai-heading {
+  gap: 8px;
+}
+.utsav-tools .field :is(input, textarea) {
+  max-width: 100%;
+}
+.utsav-invitation label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.utsav-invitation textarea {
+  display: block;
+  width: 100%;
+  min-height: 170px;
+  border: 1px solid #bfb59f;
+  border-radius: 9px;
+  padding: 10px;
+  resize: vertical;
+  margin: 6px 0 10px;
+  color: #253f38;
+  background: #fffdf7;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.utsav-invitation span {
+  display: block;
+  font-size: 11px;
+  margin-top: 6px;
+}
+.utsav-birthday .utsav-header {
+  background: linear-gradient(110deg, #813e3e, #ad6252);
+}
+.utsav-birthday .utsav-welcome h3 {
+  color: #813e3e;
+}
+.utsav-community .utsav-header {
+  background: linear-gradient(110deg, #164f43, #28745b);
+}
+@keyframes utsav-think {
+  50% {
+    opacity: 0.4;
+    transform: translateY(-2px);
+  }
+}
+@keyframes utsav-reply {
+  from {
+    transform: translateY(4px);
+  }
+  to {
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .utsav-sheet {
+    inset: auto 8px var(--utsav-bottom) 8px;
+    width: calc(100vw - 16px);
+    max-width: none;
+    border-radius: 23px;
+  }
+  .utsav-header {
+    padding: 14px 16px;
+  }
+  .utsav-scroll {
+    padding: 12px 14px 16px;
+  }
+  .utsav-toolbar {
+    padding: 8px 10px;
+  }
+  .utsav-mascot {
+    width: 160px;
+    height: 138px;
+  }
+  .utsav-welcome h3 {
+    font-size: 28px;
+  }
+  .utsav-composer textarea {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .utsav-sheet * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.utsav-header-mark img {
+  object-fit: contain;
+}

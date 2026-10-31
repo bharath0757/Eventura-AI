@@ -59,6 +59,7 @@ function createEventsAdapter() {
         window.removeEventListener("storage", changed);
         // A later subscription must observe changes made while disconnected.
         invalidated = true;
+        view = SERVER_VIEW;
       }
     };
   }
@@ -94,9 +95,15 @@ function createEventsAdapter() {
   return { getSnapshot, subscribe, reload, replaceSaved, removeSaved };
 }
 
+let browserAdapter: ReturnType<typeof createEventsAdapter> | undefined;
+function sharedAdapter() {
+  if (typeof window === "undefined") return createEventsAdapter();
+  return (browserAdapter ??= createEventsAdapter());
+}
+
 /** Subscribe to browser-local records without deferring hydration to a transition. */
 export function useEvents() {
-  const [adapter] = useState(createEventsAdapter);
+  const [adapter] = useState(sharedAdapter);
   const view = useSyncExternalStore(adapter.subscribe, adapter.getSnapshot, getServerSnapshot);
   return {
     ...view,

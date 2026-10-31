@@ -2,11 +2,20 @@
 import { createElement } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { UtsavLauncher } from "@/components/utsav/launcher";
+vi.mock("next/navigation", () => ({ usePathname: () => "/events/" + record().id }));
 import { EventDashboard } from "@/components/event-dashboard";
 import { eventStore, STORAGE_KEY } from "@/lib/storage/events";
 import { record } from "./fixtures";
 beforeEach(() => {
   localStorage.clear();
+  vi.stubGlobal("matchMedia", () => ({ matches: true }));
+  HTMLDialogElement.prototype.showModal = function () {
+    this.setAttribute("open", "");
+  };
+  HTMLDialogElement.prototype.close = function () {
+    this.removeAttribute("open");
+  };
   vi.stubGlobal("IntersectionObserver", undefined);
 });
 afterEach(() => {
@@ -32,11 +41,20 @@ describe("dashboard release recovery", () => {
     const event = record();
     eventStore().save(event);
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("Service unavailable")));
-    render(createElement(EventDashboard, { eventId: event.id }));
+    render(
+      createElement(
+        "div",
+        null,
+        createElement(EventDashboard, { eventId: event.id }),
+        createElement(UtsavLauncher),
+      ),
+    );
     await screen.findByRole("heading", { name: event.brief.name });
     fireEvent.click(screen.getByRole("button", { name: "Open assistant" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Personalized ideas" }));
     fireEvent.click(await screen.findByRole("button", { name: "Generate personalized ideas" }));
     await screen.findByRole("alert");
+    fireEvent.click(screen.getByRole("button", { name: "Close Utsav" }));
     expect(screen.getByRole("heading", { name: "A budget with breathing room" })).toBeTruthy();
     fireEvent.change(screen.getByLabelText("Status: Align on the celebration"), {
       target: { value: "completed" },

@@ -16,8 +16,10 @@ const actions = [
 export function AIAssistant({
   event,
   onSaved,
+  initialMode,
+  embedded = false,
   focusOnLoad = false,
-}: AssistantProps & { focusOnLoad?: boolean }) {
+}: AssistantProps & { focusOnLoad?: boolean; embedded?: boolean }) {
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     if (focusOnLoad) heading.current?.focus({ preventScroll: true });
@@ -48,11 +50,11 @@ export function AIAssistant({
     retain,
     accept,
     cancel,
-  } = useAssistant({ event, onSaved });
+  } = useAssistant({ event, onSaved, initialMode });
   const saved = event.savedIdeas ?? [];
   return (
     <section
-      id="assistant"
+      id={embedded ? "utsav-tools" : "assistant"}
       className="panel dashboard-section wide-section ai-panel"
       aria-labelledby="assistant-title"
     >
@@ -74,18 +76,20 @@ export function AIAssistant({
         only when you choose to save it.
       </p>
       <div className="ai-actions" aria-label="Assistant actions">
-        {actions.map(({ key, label, icon: Icon }) => (
-          <button
-            key={key}
-            type="button"
-            aria-pressed={mode === key}
-            disabled={busy}
-            onClick={() => select(key)}
-          >
-            <Icon size={18} />
-            {label}
-          </button>
-        ))}
+        {actions
+          .filter((action) => !embedded || action.key !== "ask")
+          .map(({ key, label, icon: Icon }) => (
+            <button
+              key={key}
+              type="button"
+              aria-pressed={mode === key}
+              disabled={busy}
+              onClick={() => select(key)}
+            >
+              <Icon size={18} />
+              {label}
+            </button>
+          ))}
       </div>
       <form className="ai-form" onSubmit={request} aria-busy={busy}>
         <fieldset disabled={busy}>
@@ -107,7 +111,7 @@ export function AIAssistant({
                 aria-describedby="ai-question-hint"
               />
               <small id="ai-question-hint">
-                {question.length}/{AI_LIMITS.instruction} characters · Your current event provides
+                {question.length}/{AI_LIMITS.instruction} characters Â· Your current event provides
                 the context.
               </small>
             </div>

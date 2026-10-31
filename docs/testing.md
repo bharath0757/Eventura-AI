@@ -34,7 +34,7 @@ The accessibility browser cases also check all wizard steps and error hints, sav
 
 ## Coverage
 
-`npm run test:coverage` uses the matching Vitest V8 provider. It includes **all files** in the planner, validation, storage and AI modules, plus date utilities, including uncovered modules. It does not claim coverage of the entire UI or the real provider. Text, LCOV and JSON-summary reports are generated in ignored `coverage/`.
+`npm run test:coverage` uses the matching Vitest V8 provider. It includes **all files** in the planner, validation, storage, AI and Utsav history modules, plus date utilities, including uncovered modules. It does not claim coverage of the entire UI or the real provider. Text, LCOV and JSON-summary reports are generated in ignored `coverage/`.
 
 Measured regression gates: critical-logic totals require 90% statements, 85% branches, 90% functions and 95% lines. The optimizer requires 95/90/100/100, and both the basic record store and assistant-aware storage facade require 95/90/100/100 respectively. These gates were set after measuring the existing suite, with calendar and all-protected-budget boundary tests added for real uncovered behavior. They are not a substitute for the browser workflows or financial invariant assertions. See [remediation-report.md](remediation-report.md) for actual results.
 
@@ -47,3 +47,11 @@ For a browser failure, inspect the failing locator/output, `playwright-report/` 
 ## Separate genuine Gemini smoke
 
 Only explicitly authorized live verification uses `npm run ai:smoke` with a configured server-side key. Its defaults and remote opt-in are documented in README. It uses synthetic events, validates actual API source/contracts/financial invariants, never persists user events and stops after its first failure. It is never invoked by ordinary CI/build/test commands. Current live status must come from an actual provider run, not these mocks or coverage percentages.
+
+## Utsav companion regressions
+
+`tests/chat-api.test.ts` and `tests/chat-provider.test.ts` exercise general/event contracts, context consistency, bounded history, server-derived source labels, provider failure and cancellation. `tests/utsav-history.test.ts` verifies per-thread isolation, 50-message truncation, 1 MiB UTF-8 limits, denied/quota/corrupt storage and preservation of other threads and version-1 event records. `tests/event-snapshot.test.ts` also verifies shared consumers and reconnect behavior.
+
+`e2e/utsav.spec.ts` adds eight scenarios in both desktop and mobile Chromium. The complete suite has 38 browser cases; critical-logic tests total 375. Tests include invitation editing and a clipboard boundary stub that verifies the exact copied text, context switching, no request on opening, persistence/clearing, safe text rendering, fallback/network errors, focus restoration, reduced motion and compact viewport sizing. Successful mocked requests are never reported as verified live Gemini output.
+
+The additional initial-JavaScript gate runs `node scripts/utsav-performance-check.mjs test-results/performance/candidate.json` after the unchanged original performance gate. All eight route/viewport measurements are required. See [Utsav verification](utsav.md) for the separate bounded live-check outcome.

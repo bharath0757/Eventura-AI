@@ -31,6 +31,23 @@ export async function generate(
   signal?: AbortSignal,
   onUsage?: UsageObserver,
 ): Promise<string> {
+  return generateStructured(
+    {
+      prompt: buildPrompt(r),
+      instruction: systemInstruction,
+      schema: z.toJSONSchema(responseSchema(r.operation)),
+    },
+    signal,
+    onUsage,
+  );
+}
+
+/** One bounded provider request, shared without retaining conversations or adding tools. */
+export async function generateStructured(
+  input: { prompt: string; instruction: string; schema: Record<string, unknown> },
+  signal?: AbortSignal,
+  onUsage?: UsageObserver,
+): Promise<string> {
   const config = providerConfig();
   if (!config.available) throw new ProviderFailure(config.reason);
   const controller = new AbortController();
@@ -44,7 +61,6 @@ export async function generate(
       apiKey: config.apiKey,
       httpOptions: { timeout: AI_LIMITS.timeoutMs, retryOptions: { attempts: 1 } },
     });
-    const schema = z.toJSONSchema(responseSchema(r.operation));
     const pending = (async () => {
       if (
         ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"].includes(config.model)
@@ -52,15 +68,15 @@ export async function generate(
         const result = await ai.interactions.create(
           {
             model: config.model,
-            input: buildPrompt(r),
-            system_instruction: systemInstruction,
+            input: input.prompt,
+            system_instruction: input.instruction,
             store: false,
             stream: false,
             generation_config: {
               thinking_level: config.model === "gemini-3.5-flash-lite" ? "minimal" : "low",
               max_output_tokens: AI_LIMITS.outputTokens,
             },
-            response_format: { type: "text", mime_type: "application/json", schema },
+            response_format: { type: "text", mime_type: "application/json", schema: input.schema },
           },
           {
             timeout_ms: AI_LIMITS.timeoutMs,
@@ -80,11 +96,11 @@ export async function generate(
       // Preserve the explicit model override without automatic model switching or extra calls.
       const result = await ai.models.generateContent({
         model: config.model,
-        contents: buildPrompt(r),
+        contents: input.prompt,
         config: {
-          systemInstruction,
+          systemInstruction: input.instruction,
           responseMimeType: "application/json",
-          responseJsonSchema: schema,
+          responseJsonSchema: input.schema,
           maxOutputTokens: AI_LIMITS.outputTokens,
           abortSignal: controller.signal,
         },

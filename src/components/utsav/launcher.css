@@ -1,0 +1,66 @@
+.utsav-launcher {
+  position: fixed;
+  right: 22px;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 90;
+  width: 62px;
+  height: 62px;
+  border: 2px solid #b98b44;
+  border-radius: 50%;
+  background: #07534f;
+  color: #fff7e9;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 5px 24px #12342b30;
+}
+.utsav-launcher:hover {
+  background: #06413e;
+}
+.utsav-launcher:focus-visible {
+  outline: 3px solid #b95135;
+  outline-offset: 4px;
+}
+.utsav-launcher[aria-expanded="true"] {
+  visibility: hidden;
+}
+.utsav-launcher-label {
+  position: absolute;
+  right: 72px;
+  background: #fff9ed;
+  color: #174944;
+  border: 1px solid #d9cbae;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font:
+    600 12px/1.2 "Segoe UI",
+    Arial,
+    sans-serif;
+  box-shadow: 0 3px 12px #12342b12;
+}
+.utsav-opening {
+  position: fixed;
+  bottom: 100px;
+  right: 22px;
+  z-index: 91;
+  padding: 14px 20px;
+  background: #fff9ed;
+  border: 1px solid #d9cbae;
+  border-radius: 16px;
+  color: #174944;
+  font:
+    14px "Segoe UI",
+    Arial,
+    sans-serif;
+}
+@media (max-width: 760px) {
+  .utsav-launcher {
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+  }
+  .utsav-launcher-label {
+    display: none;
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BRAND } from "@/lib/constants";
 import "./globals.css";
+import { UtsavLauncher } from "@/components/utsav/launcher";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eventura-ai.vercel.app"),
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <UtsavLauncher />
+      </body>
     </html>
   );
 }

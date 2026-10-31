@@ -162,3 +162,26 @@ describe("saved event snapshots", () => {
     expect(result.current.snapshot?.events[0]).toEqual(saved);
   });
 });
+
+it("shares local mutations between dashboard and companion without rereading storage", () => {
+  const first = renderHook(useEvents);
+  const second = renderHook(useEvents);
+  const event = record();
+  const saved = eventStore().setTaskStatus(
+    event.id,
+    "timeline",
+    event.plan.timeline[0].id,
+    "completed",
+  );
+  const read = vi.spyOn(Storage.prototype, "getItem");
+  act(() => first.result.current.replaceSaved(saved));
+  expect(second.result.current.snapshot?.events[0]).toEqual(saved);
+  expect(read).not.toHaveBeenCalled();
+  first.unmount();
+  act(() => second.result.current.removeSaved(saved.id));
+  expect(second.result.current.snapshot?.events).toEqual([]);
+  second.unmount();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, events: [event] }));
+  const reconnected = renderHook(useEvents);
+  expect(reconnected.result.current.snapshot?.events[0]).toEqual(event);
+});

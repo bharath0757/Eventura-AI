@@ -26,6 +26,7 @@ for (const category of Object.keys(occasions) as Category[]) {
       await expect(page.locator("#timeline")).toContainText(/volunteer/i);
     }
     await page.getByRole("link", { name: "AI assistant", exact: true }).click();
+    await page.getByRole("button", { name: "Personalized ideas", exact: true }).click();
     await page.getByRole("button", { name: "Generate personalized ideas", exact: true }).click();
     await expect(
       page.getByText("Mocked Gemini response for deterministic browser testing."),
@@ -66,14 +67,15 @@ test("adaptive wedding: ask, protect catering, reject, accept and retain progres
   await expect(timeline).toHaveValue("completed");
   await expect(vendor).toHaveValue("in-progress");
   await page.getByRole("link", { name: "AI assistant", exact: true }).click();
-  await page.getByRole("button", { name: "Ask Eventura AI", exact: true }).click();
+  await page.getByRole("button", { name: "Personalized ideas", exact: true }).click();
+  await page.getByRole("button", { name: "Conversation", exact: true }).click();
   await page
-    .getByLabel("What would you like help with?", { exact: true })
+    .getByLabel("Message Utsav", { exact: true })
     .fill("How do I serve vegetarian food for my guests?");
-  await page.getByRole("button", { name: "Ask about my event", exact: true }).click();
-  await expect(page.locator(".ai-answer")).toContainText("120 guests");
-  await expect(page.locator(".ai-answer")).toContainText("Vegetarian");
-  await page.getByRole("button", { name: "Optimize My Budget", exact: true }).click();
+  await page.getByRole("button", { name: "Send message", exact: true }).click();
+  await expect(page.getByRole("log")).toContainText("120 guests");
+  await expect(page.getByRole("log")).toContainText("Vegetarian");
+  await page.getByRole("button", { name: "Review my budget", exact: true }).click();
   await page.getByLabel("Target budget (INR)", { exact: true }).fill("180001");
   await page.getByRole("checkbox", { name: /Catering/ }).check();
   const before = await savedBytes(page);
@@ -106,7 +108,8 @@ test("adaptive wedding: ask, protect catering, reject, accept and retain progres
   await expect(
     page.getByText("Budget saved. Your task progress and preferences have been preserved."),
   ).toBeVisible();
-  await page.reload();
+  await page.getByRole("button", { name: "Close Utsav" }).click();
+  await page.goto(page.url().split("#")[0]);
   const accepted = await savedEvent(page);
   expect(accepted.brief.budget).toBe(180001);
   expect(accepted.plan.budget.reduce((sum, item) => sum + item.amount, 0)).toBe(180001);
@@ -129,6 +132,7 @@ test("adaptive wedding: ask, protect catering, reject, accept and retain progres
 test("missing-key fallback and a failed assistant preserve usable planning", async ({ page }) => {
   const original = await createEvent(page, "birthday");
   await page.getByRole("link", { name: "AI assistant", exact: true }).click();
+  await page.getByRole("button", { name: "Personalized ideas", exact: true }).click();
   await page.getByRole("button", { name: "Generate personalized ideas", exact: true }).click();
   await expect(
     page.locator(".ai-result").getByText("Rule-based fallback", { exact: true }).first(),
@@ -143,10 +147,11 @@ test("missing-key fallback and a failed assistant preserve usable planning", asy
       .getByRole("alert"),
   ).toBeVisible();
   expect(await savedBytes(page)).toBe(before);
+  await page.getByRole("button", { name: "Close Utsav" }).click();
   await page
     .getByLabel(`Status: ${original.plan.timeline[0].title}`, { exact: true })
     .selectOption("completed");
-  await page.reload();
+  await page.goto(page.url().split("#")[0]);
   await expect(
     page.getByLabel(`Status: ${original.plan.timeline[0].title}`, { exact: true }),
   ).toHaveValue("completed");

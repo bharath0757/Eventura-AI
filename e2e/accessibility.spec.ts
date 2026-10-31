@@ -112,17 +112,16 @@ test("saved dashboard and assistant results meet automated accessibility checks"
     await accessible(page);
   }
   await page.getByRole("link", { name: "AI assistant", exact: true }).click();
+  await page.getByRole("button", { name: "Personalized ideas", exact: true }).click();
   await page.getByRole("button", { name: "Generate personalized ideas", exact: true }).click();
   await expect(page.locator(".ai-result")).toBeVisible();
   await accessible(page);
-  await page.getByRole("button", { name: "Ask Eventura AI", exact: true }).click();
-  await page
-    .getByLabel("What would you like help with?", { exact: true })
-    .fill("What should I finish first?");
-  await page.getByRole("button", { name: "Ask about my event", exact: true }).click();
-  await expect(page.locator(".ai-answer")).toBeVisible();
+  await page.getByRole("button", { name: "Conversation", exact: true }).click();
+  await page.getByLabel("Message Utsav", { exact: true }).fill("What should I finish first?");
+  await page.getByRole("button", { name: "Send message", exact: true }).click();
+  await expect(page.getByRole("log")).toBeVisible();
   await accessible(page);
-  await page.getByRole("button", { name: "Optimize My Budget", exact: true }).click();
+  await page.getByRole("button", { name: "Review my budget", exact: true }).click();
   await page.getByLabel("Target budget (INR)", { exact: true }).fill("180001");
   await page.getByRole("button", { name: "Preview budget proposal", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Review your proposed budget" })).toBeVisible();

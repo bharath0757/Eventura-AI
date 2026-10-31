@@ -3,6 +3,7 @@ import type { Category } from "../src/types";
 import { recordSchema } from "../src/lib/validation/schemas";
 import { requestSchema, type AIRequest } from "../src/lib/ai/schemas";
 import { localRecommendations, localAnswer, localOptimization } from "../src/lib/ai/fallback";
+import { chatRequestSchema } from "../src/lib/ai/chat-contracts";
 import { optimizeBudget } from "../src/lib/ai/optimizer";
 
 const storageKey = "eventura-ai:v1:events";
@@ -36,7 +37,11 @@ export const occasions = {
 export async function savedEvent(page: Page) {
   const value = await page.evaluate((key) => {
     const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw).events[0] : null;
+    return raw
+      ? (JSON.parse(raw).events.find((event: { id: string }) =>
+          location.pathname.endsWith(event.id),
+        ) ?? JSON.parse(raw).events[0])
+      : null;
   }, storageKey);
   return recordSchema.parse(value);
 }
@@ -116,6 +121,19 @@ export async function mockAssistant(page: Page) {
           }
         : { ...common, operation: request.operation, data };
     await route.fulfill({ status: 200, contentType: "application/json", json: body });
+  });
+  await page.route("**/api/ai/chat", async (route) => {
+    const request = chatRequestSchema.parse(route.request().postDataJSON());
+    const reply = request.context
+      ? `${request.context.brief.guests} guests. ${request.context.brief.dietary || "Vegetarian choices can be discussed."}`
+      : "Let us start with your occasion and budget.";
+    await route.fulfill({
+      json: {
+        reply,
+        source: "live-ai",
+        message: "Mocked Gemini response for deterministic browser testing.",
+      },
+    });
   });
   return calls;
 }
