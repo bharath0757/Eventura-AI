@@ -34,16 +34,24 @@ The accessibility browser cases also check all wizard steps and error hints, sav
 
 ## Coverage
 
-`npm run test:coverage` uses the matching Vitest V8 provider. It includes **all files** in the planner, validation, storage and AI modules, plus date utilities, including uncovered modules. It does not claim coverage of the entire UI or the real provider. Text, LCOV and JSON-summary reports are generated in ignored `coverage/`.
+`npm run test:coverage` uses the matching Vitest V8 provider. It includes **all files** in the planner, validation, storage, AI and Utsav history modules, plus date utilities, including uncovered modules. It does not claim coverage of the entire UI or the real provider. Text, LCOV and JSON-summary reports are generated in ignored `coverage/`.
 
 Measured regression gates: critical-logic totals require 90% statements, 85% branches, 90% functions and 95% lines. The optimizer requires 95/90/100/100, and both the basic record store and assistant-aware storage facade require 95/90/100/100 respectively. These gates were set after measuring the existing suite, with calendar and all-protected-budget boundary tests added for real uncovered behavior. They are not a substitute for the browser workflows or financial invariant assertions. See [remediation-report.md](remediation-report.md) for actual results.
 
 ## CI and failures
 
-`.github/workflows/ci.yml` runs on pushes to main, pull requests to main and manual dispatch. It installs Node 24 and dependencies, runs formatting, lint, type checking, coverage tests, production build and both browser projects. A separate 25-minute performance job builds the same revision, measures all four routes and enforces the recorded CSS/JavaScript and mobile Lighthouse budgets. It uses read-only repository permissions, pinned official actions, a 15-minute timeout, concurrency cancellation and no production secrets. No failing step uses `continue-on-error`. Browser retries are zero. Synthetic reports/traces are retained as CI artifacts for three days; none are committed.
+`.github/workflows/ci.yml` runs on pushes to main, pull requests to main and manual dispatch. It installs Node 24 and dependencies, runs formatting, lint, type checking, coverage tests, production build and both browser projects. An optional 25-minute performance job runs only on manual workflow dispatch, measures all four routes and checks the historical performance budgets. It is skipped for ordinary PR/main releases. It uses read-only repository permissions, pinned official actions, a 15-minute timeout, concurrency cancellation and no production secrets. No failing step uses `continue-on-error`. Browser retries are zero. Synthetic reports/traces are retained as CI artifacts for three days; none are committed.
 
 For a browser failure, inspect the failing locator/output, `playwright-report/` or the retained trace. Do not weaken assertions or skip a broken workflow. For a coverage failure, inspect the reported uncovered branch and add a meaningful regression case when needed. A clean command exit, not the presence of a report, establishes success.
 
 ## Separate genuine Gemini smoke
 
 Only explicitly authorized live verification uses `npm run ai:smoke` with a configured server-side key. Its defaults and remote opt-in are documented in README. It uses synthetic events, validates actual API source/contracts/financial invariants, never persists user events and stops after its first failure. It is never invoked by ordinary CI/build/test commands. Current live status must come from an actual provider run, not these mocks or coverage percentages.
+
+## Utsav companion regressions
+
+`tests/chat-api.test.ts` and `tests/chat-provider.test.ts` exercise general/event contracts, context consistency, bounded history, server-derived source labels, provider failure and cancellation. `tests/utsav-history.test.ts` verifies per-thread isolation, 50-message truncation, 1 MiB UTF-8 limits, denied/quota/corrupt storage and preservation of other threads and version-1 event records. `tests/event-snapshot.test.ts` also verifies shared consumers and reconnect behavior.
+
+`e2e/utsav.spec.ts` adds eight scenarios in both desktop and mobile Chromium. The complete suite has 38 browser cases; critical-logic tests total 375. Tests include invitation editing and a clipboard boundary stub that verifies the exact copied text, context switching, no request on opening, persistence/clearing, safe text rendering, fallback/network errors, focus restoration, reduced motion and compact viewport sizing. Successful mocked requests are never reported as verified live Gemini output.
+
+The user removed the added size cap and automatic score checks for this release. The original performance scripts remain available on manual workflow dispatch. See [Utsav verification](utsav.md) for the separate bounded live-check outcome.

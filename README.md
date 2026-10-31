@@ -52,17 +52,27 @@ The interactive sample uses the same canonical planner as saved events. Its prog
 | Dietary / accessibility needs | 500 characters each                            |
 | Notes / assistant question    | 1,000 characters each                          |
 
-Costs are planning estimates; confirm actual prices and arrangements with providers. Unsubmitted wizard and assistant drafts do not survive a refresh.
+Costs are planning estimates; confirm actual prices and arrangements with providers. Unsubmitted wizard and assistant drafts, including edits made to invitation text, do not survive a refresh. Submitted Utsav conversations do.
 
 ## Privacy and persistence
 
 Events use version-1 browser-local storage under `eventura-ai:v1:events`. They do not synchronize across devices or origins, and clearing site data removes them. Invalid individual records are hidden with a warning and preserved during valid writes. Denied, full or corrupt storage produces a recoverable error.
 
-Only an explicit assistant action sends the selected event's brief, current plan, preferences and relevant question or constraints to the server and, when configured, Google Gemini. Other saved events, the storage envelope and saved AI history are not sent. Opening a page or loading the assistant makes no provider request. The application does not log raw prompts, responses or credentials.
+Only an explicit assistant action sends the selected event's brief, current plan, preferences and relevant question or constraints to the server and, when configured, Google Gemini. Other saved events and the storage envelope are not sent. Utsav sends the current message and up to eight recent messages from only the selected conversation, plus its validated event context when selected. Opening a page or loading the assistant makes no provider request. The application does not log raw prompts, responses or credentials.
 
 The official Google SDK is server-only. Requests are stateless (`store: false`), bounded and use one attempt. Validated live output is labelled **AI-generated · Live Gemini**; missing configuration, provider failures and unusable output return clearly labelled **Rule-based fallback**. Neither mocked tests nor fallback responses establish successful live inference. The bounded model comparison stopped after two failures and did not justify switching the default; details are in the [quality report](docs/performance-quality.md).
 
 The API validates origin, content type, body size and contracts, with `no-store` responses and a best-effort per-instance request limit. This prototype has no authentication, external database or distributed rate limiter. Browser-local storage is not transactional across simultaneous tabs; people sharing a browser profile can access its local plans.
+
+## Utsav celebration companion
+
+Open the ivory-elephant launcher on any page for general planning or a selected saved event. Event dashboards automatically select their own conversation. Utsav supports follow-up questions, local next-three priorities, editable invitation drafts with a copy action, personalized ideas and the existing protected-budget review. Budget changes still require explicit confirmation. Free-form messages cannot modify plans or contact anyone.
+
+The welcome character uses wedding marigolds, birthday coral ribbons or community green leaves. The panel and its illustrations load only after opening. Keyboard users can close with Escape and return to the launcher; reduced-motion preferences disable animation.
+
+Histories live separately under `eventura-ai:utsav:v1:threads`, with the latest 50 messages per conversation and a 1 MiB total bound. Clear chat removes only the selected conversation. Storage errors leave the open conversation usable with a warning. Deleting an event does not delete its separate chat history; clearing site data removes all local event and chat data. Histories do not synchronize between devices. People sharing a browser profile can read them.
+
+See the [Utsav verification report](docs/utsav.md) for release checks, live-provider limitations and generated-asset provenance.
 
 ## Verification
 

@@ -1,0 +1,2975 @@
+{
+  "label": "utsav",
+  "browserVersion": "156.0.8078.4",
+  "lighthouseExecutable": "chrome-headless-shell.exe",
+  "nodeVersion": "v24.19.0",
+  "platform": "win32",
+  "compressionMethod": "Each recorded JS/CSS resource body independently gzip level9; duplicate resource entries count as separate requests.",
+  "recordedAt": "2026-10-31T15:56:30.176Z",
+  "baseURL": "http://127.0.0.1:3044",
+  "collectionMethod": "Fresh browser context per route, cold browser cache, navigation plus framework prefetch until networkidle; transfer includes HTTP overhead. Interaction is event dispatch to two animation frames, not field INP.",
+  "measurements": [
+    {
+      "name": "landing",
+      "viewport": "desktop",
+      "cssDecoded": 53131,
+      "linkedCssDecoded": 53131,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 91145,
+      "htmlTransferred": 18266,
+      "cssTransferred": 11762,
+      "jsDecoded": 486367,
+      "jsTransferred": 149025,
+      "jsGzip": 146154,
+      "cssGzip": 10953,
+      "fontsTransferred": 0,
+      "imagesTransferred": 21624,
+      "cssUsed": 29769,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Fimages%2Fwedding.jpg&w=640&q=50",
+          "transfer": 19374,
+          "decoded": 19074,
+          "initiator": "link"
+        },
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3w8-9b50g4jqq.css",
+          "request": "/_next/static/chunks/3w8-9b50g4jqq.css",
+          "transfer": 7830,
+          "decoded": 39818,
+          "initiator": "link",
+          "gzip": 7324
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/3ypgeai27vjim.js",
+          "request": "/_next/static/chunks/3ypgeai27vjim.js",
+          "transfer": 8800,
+          "decoded": 23037,
+          "initiator": "script",
+          "gzip": 8486
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=48&q=75",
+          "transfer": 1290,
+          "decoded": 990,
+          "initiator": "img"
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/",
+          "request": "/?_rsc=5CB68i4pnAekjehf",
+          "transfer": 681,
+          "decoded": 944,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/",
+          "request": "/?_rsc=8nTjltbQWvg6NcbE",
+          "transfer": 9800,
+          "decoded": 38806,
+          "initiator": "fetch"
+        }
+      ]
+    },
+    {
+      "name": "wizard",
+      "viewport": "desktop",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 21869,
+      "htmlTransferred": 6220,
+      "cssTransferred": 13178,
+      "jsDecoded": 654903,
+      "jsTransferred": 201876,
+      "jsGzip": 198022,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 17322,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/3n_6yc5s1hgb5.js",
+          "request": "/_next/static/chunks/3n_6yc5s1hgb5.js",
+          "transfer": 11681,
+          "decoded": 34625,
+          "initiator": "script",
+          "gzip": 11368
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=iv7JDWOnLbLYnHH-",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=hfZDmCgqKyX7lfqt",
+          "transfer": 1416,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=_6zVibMPgw7RSc9P",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        }
+      ]
+    },
+    {
+      "name": "saved",
+      "viewport": "desktop",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 18118,
+      "htmlTransferred": 4679,
+      "cssTransferred": 13178,
+      "jsDecoded": 620278,
+      "jsTransferred": 190195,
+      "jsGzip": 186654,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 16920,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 487,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002",
+          "request": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 540,
+          "decoded": 340,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=twuHd6TkuZq4oRz8",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=YOAhSj08-Y8dsjxP",
+          "transfer": 1417,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002",
+          "request": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002?_rsc=YOAhSj08-Y8dsjxP",
+          "transfer": 1462,
+          "decoded": 2994,
+          "initiator": "fetch"
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "viewport": "desktop",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 18111,
+      "htmlTransferred": 4962,
+      "cssTransferred": 13178,
+      "jsDecoded": 638824,
+      "jsTransferred": 196205,
+      "jsGzip": 192346,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 20571,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/2fsif07no_t0g.js",
+          "request": "/_next/static/chunks/2fsif07no_t0g.js",
+          "transfer": 6010,
+          "decoded": 18546,
+          "initiator": "script",
+          "gzip": 5692
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=0XBAaBnPWdjSf8y4",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=0XBAaBnPWdjSf8y4",
+          "transfer": 487,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=zeNGyEeGPdbDMPfU",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=b4gSIC5gPaKiy_YJ",
+          "transfer": 1415,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        }
+      ]
+    },
+    {
+      "name": "landing",
+      "viewport": "mobile",
+      "cssDecoded": 53131,
+      "linkedCssDecoded": 53131,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 91145,
+      "htmlTransferred": 18266,
+      "cssTransferred": 11762,
+      "jsDecoded": 486367,
+      "jsTransferred": 149025,
+      "jsGzip": 146154,
+      "cssGzip": 10953,
+      "fontsTransferred": 0,
+      "imagesTransferred": 11364,
+      "cssUsed": 40669,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Fimages%2Fwedding.jpg&w=384&q=50",
+          "transfer": 10074,
+          "decoded": 9774,
+          "initiator": "link"
+        },
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3w8-9b50g4jqq.css",
+          "request": "/_next/static/chunks/3w8-9b50g4jqq.css",
+          "transfer": 7830,
+          "decoded": 39818,
+          "initiator": "link",
+          "gzip": 7324
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/3ypgeai27vjim.js",
+          "request": "/_next/static/chunks/3ypgeai27vjim.js",
+          "transfer": 8800,
+          "decoded": 23037,
+          "initiator": "script",
+          "gzip": 8486
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=48&q=75",
+          "transfer": 1290,
+          "decoded": 990,
+          "initiator": "img"
+        },
+        {
+          "path": "/",
+          "request": "/?_rsc=5CB68i4pnAekjehf",
+          "transfer": 681,
+          "decoded": 944,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/",
+          "request": "/?_rsc=8nTjltbQWvg6NcbE",
+          "transfer": 9800,
+          "decoded": 38806,
+          "initiator": "fetch"
+        }
+      ]
+    },
+    {
+      "name": "wizard",
+      "viewport": "mobile",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 21869,
+      "htmlTransferred": 6220,
+      "cssTransferred": 13178,
+      "jsDecoded": 654903,
+      "jsTransferred": 201876,
+      "jsGzip": 198022,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 18483,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/3n_6yc5s1hgb5.js",
+          "request": "/_next/static/chunks/3n_6yc5s1hgb5.js",
+          "transfer": 11681,
+          "decoded": 34625,
+          "initiator": "script",
+          "gzip": 11368
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=iv7JDWOnLbLYnHH-",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=hfZDmCgqKyX7lfqt",
+          "transfer": 1416,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=_6zVibMPgw7RSc9P",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        }
+      ]
+    },
+    {
+      "name": "saved",
+      "viewport": "mobile",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 18118,
+      "htmlTransferred": 4679,
+      "cssTransferred": 13178,
+      "jsDecoded": 620278,
+      "jsTransferred": 190195,
+      "jsGzip": 186654,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 18375,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 487,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002",
+          "request": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002?_rsc=P-H0u8lsibt8NhEH",
+          "transfer": 540,
+          "decoded": 340,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=YOAhSj08-Y8dsjxP",
+          "transfer": 1415,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=twuHd6TkuZq4oRz8",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002",
+          "request": "/events/12a5f89a-e69a-48fd-9db7-15d6c9a59002?_rsc=YOAhSj08-Y8dsjxP",
+          "transfer": 1461,
+          "decoded": 2994,
+          "initiator": "fetch"
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "viewport": "mobile",
+      "cssDecoded": 59225,
+      "linkedCssDecoded": 59225,
+      "inlineCssDecoded": 0,
+      "htmlDecoded": 18111,
+      "htmlTransferred": 4962,
+      "cssTransferred": 13178,
+      "jsDecoded": 638824,
+      "jsTransferred": 196205,
+      "jsGzip": 192346,
+      "cssGzip": 12407,
+      "fontsTransferred": 0,
+      "imagesTransferred": 960,
+      "cssUsed": 23135,
+      "errors": [],
+      "resources": [
+        {
+          "path": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "request": "/_next/static/chunks/2yd_zwqcxece8.css",
+          "transfer": 3932,
+          "decoded": 13313,
+          "initiator": "link",
+          "gzip": 3629
+        },
+        {
+          "path": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "request": "/_next/static/chunks/3o8imbui8uf5_.css",
+          "transfer": 9246,
+          "decoded": 45912,
+          "initiator": "link",
+          "gzip": 8778
+        },
+        {
+          "path": "/_next/static/chunks/0om590q-tq0l9.js",
+          "request": "/_next/static/chunks/0om590q-tq0l9.js",
+          "transfer": 4041,
+          "decoded": 13492,
+          "initiator": "link",
+          "gzip": 3735
+        },
+        {
+          "path": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "request": "/_next/static/chunks/0s2cptn1mmf6r.js",
+          "transfer": 8614,
+          "decoded": 30549,
+          "initiator": "script",
+          "gzip": 8297
+        },
+        {
+          "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "request": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+          "transfer": 4240,
+          "decoded": 10030,
+          "initiator": "script",
+          "gzip": 3942
+        },
+        {
+          "path": "/_next/static/chunks/0v2azvilwavbo.js",
+          "request": "/_next/static/chunks/0v2azvilwavbo.js",
+          "transfer": 44371,
+          "decoded": 158637,
+          "initiator": "script",
+          "gzip": 43958
+        },
+        {
+          "path": "/_next/static/chunks/216iyidhmrh3u.js",
+          "request": "/_next/static/chunks/216iyidhmrh3u.js",
+          "transfer": 72199,
+          "decoded": 229597,
+          "initiator": "script",
+          "gzip": 71736
+        },
+        {
+          "path": "/_next/static/chunks/2i6or7szgt02n.js",
+          "request": "/_next/static/chunks/2i6or7szgt02n.js",
+          "transfer": 5967,
+          "decoded": 20532,
+          "initiator": "script",
+          "gzip": 5662
+        },
+        {
+          "path": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "request": "/_next/static/chunks/0r_eglmp5bz75.js",
+          "transfer": 793,
+          "decoded": 493,
+          "initiator": "script",
+          "gzip": 338
+        },
+        {
+          "path": "/_next/static/chunks/2fsif07no_t0g.js",
+          "request": "/_next/static/chunks/2fsif07no_t0g.js",
+          "transfer": 6010,
+          "decoded": 18546,
+          "initiator": "script",
+          "gzip": 5692
+        },
+        {
+          "path": "/_next/static/chunks/3twslzk-su_v6.js",
+          "request": "/_next/static/chunks/3twslzk-su_v6.js",
+          "transfer": 9559,
+          "decoded": 24909,
+          "initiator": "script",
+          "gzip": 9249
+        },
+        {
+          "path": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "request": "/_next/static/chunks/1_x99pmjq3cj-.js",
+          "transfer": 36549,
+          "decoded": 122838,
+          "initiator": "script",
+          "gzip": 36177
+        },
+        {
+          "path": "/_next/image",
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=32&q=75",
+          "transfer": 960,
+          "decoded": 660,
+          "initiator": "img"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=0XBAaBnPWdjSf8y4",
+          "transfer": 497,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=0XBAaBnPWdjSf8y4",
+          "transfer": 487,
+          "decoded": 267,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events",
+          "request": "/events?_rsc=zeNGyEeGPdbDMPfU",
+          "transfer": 2421,
+          "decoded": 6941,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/events/new",
+          "request": "/events/new?_rsc=b4gSIC5gPaKiy_YJ",
+          "transfer": 1417,
+          "decoded": 2923,
+          "initiator": "fetch"
+        },
+        {
+          "path": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "request": "/_next/static/chunks/2xlph5iapcvtx.js",
+          "transfer": 3862,
+          "decoded": 9201,
+          "initiator": "script",
+          "gzip": 3560
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "count": 1,
+      "eventToTwoAnimationFramesMs": [
+        7.099999999627471, 32.5, 32.200000000186265, 34, 32.89999999944121
+      ],
+      "persistedStatus": "completed"
+    },
+    {
+      "count": 25,
+      "eventToTwoAnimationFramesMs": [
+        12.600000000558794, 29.799999999813735, 34.09999999962747, 33.10000000055879, 34
+      ],
+      "persistedStatus": "completed"
+    },
+    {
+      "count": 100,
+      "eventToTwoAnimationFramesMs": [17, 23, 31.200000000186265, 33.90000000037253, 34],
+      "persistedStatus": "completed"
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "landing",
+      "run": 1,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3264.5,
+      "score": 98,
+      "lcpMs": 2360.3671,
+      "cls": 1.843423755563454e-5,
+      "tbtMs": 24.5,
+      "fcpMs": 1061.3671,
+      "speedIndexMs": 1061.3671,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 7.021
+                  },
+                  {
+                    "subpart": "resourceLoadDelay",
+                    "label": "Resource load delay",
+                    "duration": 8.648
+                  },
+                  {
+                    "subpart": "resourceLoadDuration",
+                    "label": "Resource load duration",
+                    "duration": 11.244
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 107.118
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "checklist",
+                "items": {
+                  "priorityHinted": {
+                    "label": "fetchpriority=high applied",
+                    "value": true
+                  },
+                  "requestDiscoverable": {
+                    "label": "Request is discoverable in initial document",
+                    "value": true
+                  },
+                  "eagerlyLoaded": {
+                    "label": "LCP resources should not use loading=lazy",
+                    "value": true
+                  }
+                }
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3w8-9b50g4jqq.css",
+                "totalBytes": 7913,
+                "wastedMs": 306
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 156
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Fimages%2Fwedding.jpg&w=640&q=50",
+          "bytes": 19074,
+          "transferred": 19497,
+          "priority": "High"
+        },
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=96&q=75",
+          "bytes": 2172,
+          "transferred": 2604,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "landing",
+      "run": 2,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3009.5,
+      "score": 98,
+      "lcpMs": 2365.824,
+      "cls": 1.843423755563454e-5,
+      "tbtMs": 28.5,
+      "fcpMs": 1058.824,
+      "speedIndexMs": 1058.824,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 5.268
+                  },
+                  {
+                    "subpart": "resourceLoadDelay",
+                    "label": "Resource load delay",
+                    "duration": 7.373
+                  },
+                  {
+                    "subpart": "resourceLoadDuration",
+                    "label": "Resource load duration",
+                    "duration": 7.475
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 118.302
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "checklist",
+                "items": {
+                  "priorityHinted": {
+                    "label": "fetchpriority=high applied",
+                    "value": true
+                  },
+                  "requestDiscoverable": {
+                    "label": "Request is discoverable in initial document",
+                    "value": true
+                  },
+                  "eagerlyLoaded": {
+                    "label": "LCP resources should not use loading=lazy",
+                    "value": true
+                  }
+                }
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3w8-9b50g4jqq.css",
+                "totalBytes": 7913,
+                "wastedMs": 304
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 154
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Fimages%2Fwedding.jpg&w=640&q=50",
+          "bytes": 19074,
+          "transferred": 19497,
+          "priority": "High"
+        },
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=96&q=75",
+          "bytes": 2172,
+          "transferred": 2604,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "landing",
+      "run": 3,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3002,
+      "score": 98,
+      "lcpMs": 2382.0115,
+      "cls": 1.843423755563454e-5,
+      "tbtMs": 36,
+      "fcpMs": 1060.0115,
+      "speedIndexMs": 1060.0115,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 4.177
+                  },
+                  {
+                    "subpart": "resourceLoadDelay",
+                    "label": "Resource load delay",
+                    "duration": 6.151
+                  },
+                  {
+                    "subpart": "resourceLoadDuration",
+                    "label": "Resource load duration",
+                    "duration": 5.929
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 117.328
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "checklist",
+                "items": {
+                  "priorityHinted": {
+                    "label": "fetchpriority=high applied",
+                    "value": true
+                  },
+                  "requestDiscoverable": {
+                    "label": "Request is discoverable in initial document",
+                    "value": true
+                  },
+                  "eagerlyLoaded": {
+                    "label": "LCP resources should not use loading=lazy",
+                    "value": true
+                  }
+                }
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-IMG",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,SECTION,1,DIV,0,DIV,0,IMG",
+                "selector": "section.hero > div.hero-visual > div.hero-image-wrap > img.hero-image",
+                "boundingRect": {
+                  "top": 698,
+                  "bottom": 1148,
+                  "left": 36,
+                  "right": 388,
+                  "width": 352,
+                  "height": 450
+                },
+                "snippet": "<img alt=\"A sunlit wedding table with garden flowers, delicate glassware, and carefu\u2026\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" class=\"hero-image\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"(max-width: 760px) calc(100vw - 64px), (max-width: 1100px) 45vw, 520px\" srcset=\"/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=384&amp;q=50 384w, /_next/image?url\u2026\" src=\"http://127.0.0.1:3044/_next/image?url=%2Fimages%2Fwedding.jpg&amp;w=640&amp;q=50\">",
+                "nodeLabel": "A sunlit wedding table with garden flowers, delicate glassware, and carefully a\u2026"
+              }
+            ]
+          }
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3w8-9b50g4jqq.css",
+                "totalBytes": 7913,
+                "wastedMs": 305
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 155
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Fimages%2Fwedding.jpg&w=640&q=50",
+          "bytes": 19074,
+          "transferred": 19497,
+          "priority": "High"
+        },
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=96&q=75",
+          "bytes": 2172,
+          "transferred": 2604,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 1,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3197,
+      "score": 100,
+      "lcpMs": 1819.4492,
+      "cls": 0,
+      "tbtMs": 43.5,
+      "fcpMs": 909.7246,
+      "speedIndexMs": 909.7246,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 9.707
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 56.549
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,1,H1",
+                "selector": "main#main > div.container > div.wizard-intro > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 174,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 41
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Let\u2019s make it yours."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 305
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 155
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 2,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3218,
+      "score": 100,
+      "lcpMs": 1820.0592000000001,
+      "cls": 0,
+      "tbtMs": 46.5,
+      "fcpMs": 910.0296000000001,
+      "speedIndexMs": 910.0296000000001,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 7.264
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 67.976
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,1,H1",
+                "selector": "main#main > div.container > div.wizard-intro > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 174,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 41
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Let\u2019s make it yours."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 305
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 155
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "wizard",
+      "run": 3,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3079,
+      "score": 100,
+      "lcpMs": 1820.9892,
+      "cls": 0,
+      "tbtMs": 63,
+      "fcpMs": 910.4946,
+      "speedIndexMs": 910.4946,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 7.806
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 63.242
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,1,H1",
+                "selector": "main#main > div.container > div.wizard-intro > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 174,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 41
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Let\u2019s make it yours."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 305
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 155
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 1,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3239,
+      "score": 100,
+      "lcpMs": 1808.9874,
+      "cls": 0,
+      "tbtMs": 39,
+      "fcpMs": 908.9874,
+      "speedIndexMs": 908.9874,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 2.968
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 55.137
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.page-heading > div > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 211,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 78
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Your occasions, all together."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 304
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 154
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 2,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3175.5,
+      "score": 100,
+      "lcpMs": 1808.5818,
+      "cls": 0,
+      "tbtMs": 36.5,
+      "fcpMs": 908.5817999999999,
+      "speedIndexMs": 908.5817999999999,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 3.257
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 46.971
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.page-heading > div > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 211,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 78
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Your occasions, all together."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 304
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 154
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "saved",
+      "run": 3,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3337.5,
+      "score": 100,
+      "lcpMs": 1813.75,
+      "cls": 0,
+      "tbtMs": 61,
+      "fcpMs": 913.75,
+      "speedIndexMs": 913.75,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 3.0140000009536743
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 60.751999999046326
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,0,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.page-heading > div > h1",
+                "boundingRect": {
+                  "top": 133,
+                  "bottom": 211,
+                  "left": 20,
+                  "right": 392,
+                  "width": 372,
+                  "height": 78
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Your occasions, all together."
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 307
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 157
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 1,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3063,
+      "score": 98,
+      "lcpMs": 2358.1682,
+      "cls": 0,
+      "tbtMs": 37,
+      "fcpMs": 911.1682000000001,
+      "speedIndexMs": 911.1682000000001,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 7.238
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 169.055
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,1,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.dashboard-heading > div > h1",
+                "boundingRect": {
+                  "top": 182,
+                  "bottom": 258,
+                  "left": 20,
+                  "right": 323,
+                  "width": 303,
+                  "height": 76
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Performance garden wedding"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 306
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 156
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 2,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3362,
+      "score": 98,
+      "lcpMs": 2362.8225,
+      "cls": 0,
+      "tbtMs": 46,
+      "fcpMs": 908.8225,
+      "speedIndexMs": 908.8225,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 10.331
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 155.495
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,1,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.dashboard-heading > div > h1",
+                "boundingRect": {
+                  "top": 182,
+                  "bottom": 258,
+                  "left": 20,
+                  "right": 323,
+                  "width": 303,
+                  "height": 76
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Performance garden wedding"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 304
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 154
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "dashboard",
+      "run": 3,
+      "lighthouseVersion": "13.5.0",
+      "benchmarkIndex": 3351,
+      "score": 97,
+      "lcpMs": 2516.6872,
+      "cls": 0,
+      "tbtMs": 68.49999999999977,
+      "fcpMs": 908.6872000000001,
+      "speedIndexMs": 908.6872000000001,
+      "insights": {
+        "lcp-breakdown-insight": {
+          "score": 1,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "table",
+                "headings": [
+                  {
+                    "key": "label",
+                    "valueType": "text",
+                    "label": "Subpart"
+                  },
+                  {
+                    "key": "duration",
+                    "valueType": "ms",
+                    "label": "Duration"
+                  }
+                ],
+                "items": [
+                  {
+                    "subpart": "timeToFirstByte",
+                    "label": "Time to first byte",
+                    "duration": 6.3830000009536745
+                  },
+                  {
+                    "subpart": "elementRenderDelay",
+                    "label": "Element render delay",
+                    "duration": 161.52899999904633
+                  }
+                ]
+              },
+              {
+                "type": "node",
+                "lhId": "page-0-H1",
+                "path": "1,HTML,1,BODY,1,DIV,2,MAIN,0,DIV,1,DIV,0,DIV,1,H1",
+                "selector": "div.container > div.dashboard-heading > div > h1",
+                "boundingRect": {
+                  "top": 182,
+                  "bottom": 258,
+                  "left": 20,
+                  "right": 323,
+                  "width": 303,
+                  "height": 76
+                },
+                "snippet": "<h1>",
+                "nodeLabel": "Performance garden wedding"
+              }
+            ]
+          }
+        },
+        "lcp-discovery-insight": {
+          "score": null
+        },
+        "render-blocking-insight": {
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/3o8imbui8uf5_.css",
+                "totalBytes": 9329,
+                "wastedMs": 304
+              },
+              {
+                "url": "http://127.0.0.1:3044/_next/static/chunks/2yd_zwqcxece8.css",
+                "totalBytes": 4014,
+                "wastedMs": 154
+              }
+            ]
+          }
+        }
+      },
+      "imageRequests": [
+        {
+          "request": "/_next/image?url=%2Flogo-mark-rounded.png&w=64&q=75",
+          "bytes": 1354,
+          "transferred": 1786,
+          "priority": "Low"
+        }
+      ],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    }
+  ],
+  "baseCommit": "37b2eec698714d37d3c02ca90ac02cedf846e77f",
+  "measuredWorkingTree": true
+}

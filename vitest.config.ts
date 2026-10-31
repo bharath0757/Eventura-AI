@@ -15,6 +15,7 @@ export default defineConfig({
         "src/lib/storage/**/*.ts",
         "src/lib/ai/**/*.ts",
         "src/lib/dates.ts",
+        "src/lib/utsav/**/*.ts",
       ],
       // Scoped to critical business logic, measured before setting regression gates.
       thresholds: {

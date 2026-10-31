@@ -47,6 +47,8 @@ jobs:
           if-no-files-found: warn
 
   performance:
+    # Performance scoring is optional; ordinary releases run functional checks only.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:

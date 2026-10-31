@@ -12,6 +12,7 @@ import type { Recommendation, Source } from "@/lib/ai/contracts";
 
 type Operation = AIRequest["operation"];
 export interface AssistantProps {
+  initialMode?: Operation;
   event: EventRecord;
   onSaved: (record: EventRecord) => void;
 }
@@ -22,8 +23,8 @@ function assistantContext(event: EventRecord): string {
   return JSON.stringify([event.id, event.brief, event.plan]);
 }
 
-export function useAssistant({ event, onSaved }: AssistantProps) {
-  const [mode, setMode] = useState<Operation>("recommendations");
+export function useAssistant({ event, onSaved, initialMode = "recommendations" }: AssistantProps) {
+  const [mode, setMode] = useState<Operation>(initialMode);
   const [question, setQuestion] = useState(""),
     [instruction, setInstruction] = useState("");
   const [target, setTarget] = useState(String(event.brief.budget)),
