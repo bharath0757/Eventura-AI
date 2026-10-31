@@ -47,6 +47,8 @@ jobs:
           if-no-files-found: warn
 
   performance:
+    # Performance scoring is optional; ordinary releases run functional checks only.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -81,7 +83,6 @@ jobs:
           test -x "${chrome_shells[0]}"
           node scripts/performance.mjs --url http://127.0.0.1:3044 --label candidate --runs 3 --chrome-path "${chrome_shells[0]}"
           node scripts/performance-check.mjs --candidate test-results/performance/candidate.json
-          node scripts/utsav-performance-check.mjs test-results/performance/candidate.json
       - name: Keep numeric performance evidence
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

@@ -15,7 +15,7 @@ Utsav adds one global, deferred companion to Eventura. It preserves `/api/ai/pla
 
 Formatting, lint, types, production build and scoped coverage are release gates. Unit coverage includes chat requests, provider failures/cancellation, safe local history, existing financial invariants and shared event snapshots. Browser cases retain the original three-occasion planning, ideas and confirmed budget workflows, and add continuity, eight-message request bounds, 50-message persistence, thread isolation, clearing, refresh, denied storage, cancellation, safe rendering, invitation editing/copying, honest fallback, keyboard focus, reduced motion and compact viewport checks.
 
-The original performance gate remains unchanged. `scripts/utsav-performance-check.mjs` additionally compares all four routes at desktop/mobile sizes with `docs/performance-candidate.json`, the prior release measurement used for main `37b2eec698714d37d3c02ca90ac02cedf846e77f`. Added initial JavaScript must be at most 5,120 gzip bytes per route. Full panel dependencies, chat styles and optimized character images are deferred until opening.
+The user removed the size limit and requested no further performance-score testing during release. The additional Utsav size cap was removed. The original performance tools remain available for optional manual workflow dispatch; ordinary PR/main releases run functional checks without the performance job. Full panel dependencies, chat styles and optimized character images still load only on opening.
 
 Automated accessibility checks do not establish full assistive-technology certification. Compact viewport and visual-viewport handling are exercised, but real physical mobile keyboards have not been manually certified. The requested final manual visual review was omitted.
 
@@ -38,7 +38,9 @@ Voice, interface language selection, RSVPs, seating, external reminders, account
 - Formatting, lint, types and production build passed.
 - **375 unit tests** passed; scoped statements 97.32%, branches 93.72%, functions 99.41%, lines 98%. Financial/storage gates remain unchanged.
 - **38 browser cases** passed across desktop and mobile Chromium, including the original planning workflows.
-- Both performance gates passed. Initial added gzip JavaScript versus the previous release: landing **915 bytes**, wizard **3,079**, saved events **3,091**, dashboard **1,246**, identically measured at both viewport sizes; limit **5,120 bytes**.
+- Earlier performance checks passed before the user removed this release requirement. Recorded initial added gzip JavaScript versus the previous release: landing **915 bytes**, wizard **3,079**, saved events **3,091**, dashboard **1,246**, identically measured at both viewport sizes; the previous **5,120-byte** limit no longer applies.
 - Three-run mobile Lighthouse medians: landing **98 / 2,366 ms LCP**, wizard **100 / 1,820 ms**, saved events **100 / 1,809 ms**, dashboard **98 / 2,363 ms**. CLS is zero on event routes and approximately 0.000018 on landing. These are local laboratory results, not field metrics or a competition score.
 
 [Numeric measurements](utsav-performance.json) record the tested working tree based on `37b2eec`. The existing historical baseline and report were preserved. Hosted CI and deployment status are reported separately from these local results.
+
+Release policy update: functional, accessibility, storage and financial checks remain required. No new size cap or automatic performance-score run is required. Previously collected measurements above are historical observations, not current release gates.
